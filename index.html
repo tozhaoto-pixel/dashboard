@@ -1,0 +1,2071 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>דשבורד ניהול פרויקטים</title>
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-VWGRSVMR9D"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-VWGRSVMR9D', {
+            'send_page_view': true
+        });
+        
+        // Track custom events
+        function trackEvent(category, action, label) {
+            gtag('event', action, {
+                'event_category': category,
+                'event_label': label
+            });
+        }
+    </script>
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 10px;
+            direction: rtl;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        /* Logo */
+        .logo {
+            position: absolute;
+            top: 10px;
+            left: 20px;
+            z-index: 1000;
+        }
+
+        .logo img {
+            height: 50px;
+            width: auto;
+            filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.2));
+        }
+
+        /* Hamburger Menu Button */
+        .menu-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 2000;
+            background: white;
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 10px;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 5px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .menu-toggle:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+        }
+
+        .menu-toggle span {
+            display: block;
+            width: 25px;
+            height: 3px;
+            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+
+        .menu-toggle.active span:nth-child(1) {
+            transform: rotate(45deg) translate(7px, 7px);
+        }
+
+        .menu-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .menu-toggle.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -7px);
+        }
+
+        /* Side Menu */
+        .side-menu {
+            position: fixed;
+            top: 0;
+            right: -280px;
+            width: 280px;
+            height: 100vh;
+            background: white;
+            box-shadow: -5px 0 25px rgba(0, 0, 0, 0.3);
+            z-index: 1500;
+            transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            overflow-y: auto;
+        }
+
+        .side-menu.active {
+            right: 0;
+        }
+
+        .menu-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px 20px;
+            text-align: center;
+        }
+
+        .menu-header h2 {
+            margin: 0;
+            font-size: 1.5em;
+            font-weight: bold;
+        }
+
+        .menu-header p {
+            margin: 5px 0 0 0;
+            font-size: 0.85em;
+            opacity: 0.9;
+        }
+
+        .menu-items {
+            padding: 20px 0;
+        }
+
+        .menu-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 18px 25px;
+            color: #333;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border-right: 4px solid transparent;
+            cursor: pointer;
+        }
+
+        .menu-item:hover {
+            background: #f8f9fa;
+            border-right-color: #667eea;
+            transform: translateX(-5px);
+        }
+
+        .menu-item.active {
+            background: linear-gradient(90deg, #f0f3ff 0%, #ffffff 100%);
+            border-right-color: #667eea;
+            font-weight: bold;
+        }
+
+        .menu-item-icon {
+            font-size: 1.5em;
+            width: 30px;
+            text-align: center;
+        }
+
+        .menu-item-text {
+            font-size: 1em;
+        }
+
+        /* Menu Overlay */
+        .menu-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1400;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .menu-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        header {
+            text-align: center;
+            color: white;
+            margin-bottom: 15px;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 12px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            font-size: 1.4em;
+            margin-bottom: 5px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .subtitle {
+            font-size: 0.9em;
+            opacity: 0.9;
+        }
+
+        /* Projects Section */
+        .projects-section {
+            margin-top: 15px;
+        }
+
+        .section-title {
+            color: white;
+            font-size: 1.2em;
+            margin-bottom: 12px;
+            text-align: center;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Projects Scroll Container */
+        .projects-scroll-container {
+            max-height: 500px;
+            overflow-y: auto;
+            overflow-x: hidden;
+            border-radius: 0 0 8px 8px;
+        }
+
+        .projects-scroll-container::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .projects-scroll-container::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 4px;
+        }
+
+        .projects-scroll-container::-webkit-scrollbar-thumb {
+            background: linear-gradient(180deg, #667eea 0%, #764ba2 100%);
+            border-radius: 4px;
+        }
+
+        .projects-scroll-container::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(180deg, #764ba2 0%, #667eea 100%);
+        }
+
+        /* Search Box */
+        .search-container {
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .search-box {
+            width: 100%;
+            max-width: 500px;
+            padding: 12px 20px;
+            font-size: 1em;
+            border: none;
+            border-radius: 25px;
+            background: white;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            outline: none;
+            transition: box-shadow 0.3s ease;
+            text-align: center;
+            direction: rtl;
+        }
+
+        .search-box:focus {
+            box-shadow: 0 6px 25px rgba(102, 126, 234, 0.4);
+        }
+
+        .search-box::placeholder {
+            color: #999;
+        }
+
+        .projects-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .project-card {
+            background: white;
+            border-radius: 6px;
+            padding: 0;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+            transition: all 0.2s ease;
+            position: relative;
+            overflow: hidden;
+            border-right: 3px solid transparent;
+        }
+
+        .project-card:hover {
+            transform: translateX(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            border-right-color: #4facfe;
+            background: #fafbfc;
+        }
+
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 3px;
+            height: 100%;
+            background: linear-gradient(180deg, #4facfe 0%, #43e97b 100%);
+        }
+
+        .project-row {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr 1fr 1.2fr;
+            gap: 0;
+            align-items: center;
+            min-height: 45px;
+        }
+
+        .project-cell {
+            padding: 10px 12px;
+            border-left: 1px solid #e9ecef;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            transition: background 0.2s ease;
+        }
+
+        .project-cell:first-child {
+            border-right: none;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .project-cell:hover {
+            background: #f8f9fa;
+        }
+
+        .cell-label {
+            font-size: 0.65em;
+            color: #999;
+            text-transform: uppercase;
+            margin-bottom: 2px;
+        }
+
+        .cell-value {
+            font-size: 0.85em;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .amount {
+            color: #4facfe;
+        }
+
+        .paid {
+            color: #43e97b;
+        }
+
+        .deadline {
+            color: #764ba2;
+            font-size: 0.8em;
+        }
+
+        .remaining {
+            color: #ff6b6b;
+            font-weight: 900;
+            font-size: 0.9em;
+        }
+
+        .progress-cell {
+            padding: 10px 12px;
+            border-left: 1px solid #e9ecef;
+        }
+
+        /* Progress Bar - inline */
+        .progress-mini {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .progress-bar-mini {
+            flex: 1;
+            height: 4px;
+            background: #e9ecef;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #43e97b 0%, #4facfe 100%);
+            border-radius: 4px;
+            transition: width 0.6s ease;
+        }
+
+        .progress-text {
+            font-size: 0.7em;
+            font-weight: 600;
+            color: #43e97b;
+            min-width: 35px;
+        }
+
+        /* Completed Projects Section */
+        .completed-section {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 2px dashed rgba(255, 255, 255, 0.3);
+        }
+
+        /* Payments Section */
+        .payments-section {
+            margin-top: 30px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .payments-section .section-title {
+            color: white;
+            margin-bottom: 20px;
+        }
+
+        .payments-header {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 15px 20px;
+            border-radius: 8px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 15px;
+        }
+
+        .payments-header-cell {
+            text-align: center;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            transition: color 0.3s ease;
+        }
+
+        .payments-header-cell:hover {
+            color: #667eea;
+        }
+
+        .payments-list {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            max-height: 500px;
+            overflow-y: auto;
+        }
+
+        .payment-item {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 8px;
+            padding: 15px 20px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            align-items: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .payment-item:hover {
+            transform: translateX(-5px);
+            border-color: white;
+            background: white;
+            box-shadow: 0 4px 15px rgba(255, 255, 255, 0.4);
+        }
+
+        .payment-date {
+            font-size: 1em;
+            font-weight: 600;
+            color: #333;
+            text-align: center;
+        }
+
+        .payment-amount {
+            font-size: 1em;
+            font-weight: bold;
+            color: #667eea;
+            text-align: center;
+        }
+
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .payment-details {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+        }
+
+        .payment-detail-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px;
+            border-bottom: 1px solid #e9ecef;
+        }
+
+        .payment-detail-row:last-child {
+            border-bottom: none;
+        }
+
+        .payment-project {
+            color: #666;
+            font-weight: 500;
+        }
+
+        .payment-detail-amount {
+            color: #667eea;
+            font-weight: 600;
+        }
+
+        .completed-card {
+            opacity: 0.8;
+        }
+
+        .completed-card::before {
+            background: linear-gradient(90deg, #999 0%, #666 100%) !important;
+        }
+
+        /* Monthly Payment Timeline */
+        .monthly-timeline {
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 15px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .timeline-title {
+            text-align: center;
+            font-size: 1em;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #e9ecef;
+        }
+
+        /* Filter Buttons */
+        .filter-container {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .filter-btn {
+            padding: 8px 20px;
+            border: 2px solid #667eea;
+            background: white;
+            color: #667eea;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 0.85em;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .filter-btn:hover {
+            background: #f0f3ff;
+            transform: translateY(-2px);
+        }
+
+        .filter-btn.active {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        /* Table Header with Totals */
+        .table-header {
+            background: white;
+            border-radius: 8px 8px 0 0;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            position: relative;
+            z-index: 10;
+        }
+
+        .header-row {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr 1fr 1.2fr;
+            gap: 0;
+            border-bottom: 2px solid #e9ecef;
+        }
+
+        .header-cell {
+            padding: 12px;
+            text-align: center;
+            border-left: 1px solid #e9ecef;
+        }
+
+        .header-cell:first-child {
+            text-align: right;
+            border-right: none;
+        }
+
+        .header-label {
+            font-size: 0.7em;
+            font-weight: 700;
+            color: #666;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .sort-arrows {
+            display: flex;
+            flex-direction: column;
+            gap: 1px;
+            opacity: 0.4;
+            transition: opacity 0.2s ease;
+        }
+
+        .header-cell:hover .sort-arrows {
+            opacity: 1;
+        }
+
+        .sort-arrow {
+            font-size: 0.7em;
+            line-height: 0.5em;
+            color: #667eea;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .sort-arrow:hover {
+            transform: scale(1.3);
+            color: #764ba2;
+        }
+
+        .sort-arrow.active {
+            opacity: 1;
+            color: #764ba2;
+            font-weight: bold;
+        }
+
+        .header-total {
+            font-size: 0.95em;
+            font-weight: bold;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .timeline-title {
+            text-align: center;
+            font-size: 1em;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #e9ecef;
+        }
+
+        .timeline-months {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 8px;
+            direction: rtl;
+        }
+
+        .month-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 10px 5px;
+            background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .month-item:hover {
+            transform: translateY(-3px);
+            border-color: #667eea;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+        }
+
+        .month-item.payment-due {
+            animation: blink-orange 1.5s infinite;
+            border-color: #ff9800 !important;
+        }
+
+        @keyframes blink-orange {
+            0%, 100% {
+                background: linear-gradient(135deg, #fff3e0 0%, #ffe0b2 100%);
+                box-shadow: 0 4px 15px rgba(255, 152, 0, 0.4);
+            }
+            50% {
+                background: linear-gradient(135deg, #ffcc80 0%, #ffb74d 100%);
+                box-shadow: 0 4px 20px rgba(255, 152, 0, 0.6);
+            }
+        }
+
+        .month-name {
+            font-size: 0.9em;
+            font-weight: 600;
+            color: #666;
+            margin-bottom: 4px;
+            text-align: center;
+        }
+
+        .month-date {
+            font-size: 0.8em;
+            color: #999;
+            margin-bottom: 6px;
+            text-align: center;
+        }
+
+        .month-amount {
+            font-size: 1em;
+            font-weight: bold;
+            color: #667eea;
+            text-align: center;
+        }
+
+        /* Modal for Monthly Breakdown */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 1000;
+            backdrop-filter: blur(4px);
+            animation: fadeIn 0.3s ease;
+        }
+
+        .modal-overlay.active {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .modal-content {
+            background: white;
+            border-radius: 16px;
+            max-width: 700px;
+            width: 100%;
+            max-height: 80vh;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            animation: slideUp 0.3s ease;
+            direction: rtl;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .modal-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .modal-title {
+            font-size: 1.3em;
+            font-weight: bold;
+        }
+
+        .modal-close {
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            color: white;
+            font-size: 1.5em;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-close:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: rotate(90deg);
+        }
+
+        .modal-body {
+            padding: 25px;
+            max-height: calc(80vh - 140px);
+            overflow-y: auto;
+        }
+
+        .modal-body::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .modal-body::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+
+        .modal-body::-webkit-scrollbar-thumb {
+            background: #667eea;
+            border-radius: 3px;
+        }
+
+        .breakdown-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px;
+            margin-bottom: 10px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            border-right: 4px solid #667eea;
+            transition: all 0.2s ease;
+        }
+
+        .breakdown-item:hover {
+            background: #e9ecef;
+            transform: translateX(-3px);
+        }
+
+        .breakdown-project-name {
+            font-weight: 600;
+            color: #333;
+            font-size: 0.95em;
+        }
+
+        .breakdown-amount {
+            font-weight: bold;
+            color: #667eea;
+            font-size: 1.1em;
+        }
+
+        .breakdown-total {
+            margin-top: 20px;
+            padding: 20px;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border-radius: 12px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border: 2px solid #667eea;
+        }
+
+        .breakdown-total-label {
+            font-size: 1.1em;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .breakdown-total-amount {
+            font-size: 1.4em;
+            font-weight: bold;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .breakdown-empty {
+            text-align: center;
+            padding: 40px 20px;
+            color: #999;
+        }
+
+        .breakdown-empty-icon {
+            font-size: 3em;
+            margin-bottom: 15px;
+        }
+
+        /* Loading State */
+        .loading {
+            text-align: center;
+            color: white;
+            font-size: 1.5em;
+            padding: 50px;
+        }
+
+        .spinner {
+            border: 4px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top: 4px solid white;
+            width: 50px;
+            height: 50px;
+            animation: spin 1s linear infinite;
+            margin: 20px auto;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 1.2em;
+            }
+
+            .summary-cards {
+                grid-template-columns: 1fr;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .card-value {
+                font-size: 1.3em;
+            }
+
+            .search-box {
+                font-size: 0.9em;
+            }
+
+            .timeline-months {
+                grid-template-columns: repeat(6, 1fr);
+                gap: 6px;
+            }
+
+            .month-name {
+                font-size: 0.6em;
+            }
+
+            .month-amount {
+                font-size: 0.75em;
+            }
+
+            .project-row {
+                grid-template-columns: 1fr;
+                gap: 0;
+            }
+
+            .project-cell {
+                border-left: none;
+                border-bottom: 1px solid #f0f0f0;
+                padding: 8px 12px;
+            }
+
+            .project-cell:last-child {
+                border-bottom: none;
+            }
+
+            .cell-label {
+                display: inline;
+                margin-left: 5px;
+            }
+
+            .cell-value {
+                display: inline;
+            }
+
+            .filter-container {
+                flex-direction: column;
+                gap: 8px;
+            }
+
+            .filter-btn {
+                width: 100%;
+            }
+
+            .header-row {
+                grid-template-columns: 1fr;
+            }
+
+            .header-cell {
+                border-left: none;
+                border-bottom: 1px solid #f0f0f0;
+                text-align: right;
+            }
+
+            .header-cell:last-child {
+                border-bottom: none;
+            }
+
+            .menu-toggle {
+                top: 15px;
+                right: 15px;
+                width: 45px;
+                height: 45px;
+            }
+
+            .side-menu {
+                width: 250px;
+                right: -250px;
+            }
+        }
+
+        /* Animation */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            animation: fadeIn 0.5s ease forwards;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 1.2em;
+            }
+
+            .summary-cards {
+                grid-template-columns: 1fr;
+            }
+
+            .card-value {
+                font-size: 1.3em;
+            }
+
+            .search-box {
+                font-size: 0.9em;
+            }
+
+            .month-date {
+                font-size: 0.5em;
+            }
+
+            .project-details {
+                grid-template-columns: 1fr;
+            }
+
+            .detail-row {
+                border-left: none;
+                border-bottom: 1px solid #e9ecef;
+            }
+
+            .detail-row:last-child {
+                border-bottom: none;
+            }
+
+            .timeline-months {
+                grid-template-columns: repeat(6, 1fr);
+                gap: 6px;
+            }
+
+            .month-name {
+                font-size: 0.6em;
+            }
+
+            .month-amount {
+                font-size: 0.75em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hamburger Menu Button -->
+    <button class="menu-toggle" id="menuToggle">
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+
+    <!-- Menu Overlay -->
+    <div class="menu-overlay" id="menuOverlay"></div>
+
+    <!-- Side Menu -->
+    <div class="side-menu" id="sideMenu">
+        <div class="menu-header">
+            <h2>📋 ניהול פרויקטים</h2>
+            <p>מערכת ניהול ומעקב</p>
+        </div>
+        <div class="menu-items">
+            <div class="menu-item active" onclick="navigateTo('home')">
+                <span class="menu-item-icon">🏠</span>
+                <span class="menu-item-text">דף הבית</span>
+            </div>
+            <div class="menu-item" onclick="navigateTo('projects')">
+                <span class="menu-item-icon">📊</span>
+                <span class="menu-item-text">פרויקטים</span>
+            </div>
+            <div class="menu-item" onclick="navigateTo('payments')">
+                <span class="menu-item-icon">💰</span>
+                <span class="menu-item-text">תשלומים</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="logo">
+            <img src="logo.png" alt="Logo">
+        </div>
+        
+        <header class="fade-in">
+            <h1>📊 דשבורד ניהול פרויקטים</h1>
+            <p class="subtitle">לקוח: זכרון אהרן</p>
+        </header>
+
+        <div id="loading" class="loading">
+            <div class="spinner"></div>
+            <p>טוען נתונים...</p>
+        </div>
+
+        <div id="content" style="display: none;">
+            <!-- Monthly Payment Timeline -->
+            <div class="monthly-timeline fade-in">
+                <div class="timeline-title">💰 תשלומים חודשיים נדרשים ל-12 החודשים הקרובים</div>
+                <div id="monthlyTimeline" class="timeline-months"></div>
+            </div>
+
+            <!-- Projects Section -->
+            <div class="projects-section">
+                <h2 class="section-title">פרויקטים</h2>
+                
+                <!-- Filter Buttons -->
+                <div class="filter-container">
+                    <button class="filter-btn active" data-filter="active">פעילים</button>
+                    <button class="filter-btn" data-filter="completed">שהסתיימו</button>
+                    <button class="filter-btn" data-filter="all">הכל</button>
+                </div>
+
+                <!-- Search Box -->
+                <div class="search-container">
+                    <input type="text" id="searchBox" class="search-box" placeholder="🔍 חיפוש פרויקט...">
+                </div>
+
+                <!-- Table Header with Totals -->
+                <div class="table-header">
+                    <div class="header-row">
+                        <div class="header-cell">
+                            <div class="header-label" onclick="sortProjects('name')">
+                                שם פרויקט
+                                <div class="sort-arrows">
+                                    <span class="sort-arrow" data-dir="asc">▲</span>
+                                    <span class="sort-arrow" data-dir="desc">▼</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="header-cell">
+                            <div class="header-label" onclick="sortProjects('quoted')">
+                                הצעת מחיר
+                                <div class="sort-arrows">
+                                    <span class="sort-arrow" data-dir="asc">▲</span>
+                                    <span class="sort-arrow" data-dir="desc">▼</span>
+                                </div>
+                            </div>
+                            <div class="header-total" id="headerTotalQuoted">$0</div>
+                        </div>
+                        <div class="header-cell">
+                            <div class="header-label" onclick="sortProjects('paid')">
+                                סכום ששולם
+                                <div class="sort-arrows">
+                                    <span class="sort-arrow" data-dir="asc">▲</span>
+                                    <span class="sort-arrow" data-dir="desc">▼</span>
+                                </div>
+                            </div>
+                            <div class="header-total" id="headerTotalPaid">$0</div>
+                        </div>
+                        <div class="header-cell">
+                            <div class="header-label" onclick="sortProjects('remaining')">
+                                יתרה לתשלום
+                                <div class="sort-arrows">
+                                    <span class="sort-arrow" data-dir="asc">▲</span>
+                                    <span class="sort-arrow" data-dir="desc">▼</span>
+                                </div>
+                            </div>
+                            <div class="header-total" id="headerTotalRemaining">$0</div>
+                        </div>
+                        <div class="header-cell">
+                            <div class="header-label" onclick="sortProjects('deadline')">
+                                דד-ליין
+                                <div class="sort-arrows">
+                                    <span class="sort-arrow" data-dir="asc">▲</span>
+                                    <span class="sort-arrow" data-dir="desc">▼</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="header-cell">
+                            <div class="header-label">התקדמות התשלום</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="projects-scroll-container">
+                    <div id="projectsGrid" class="projects-grid"></div>
+                </div>
+            </div>
+
+            <!-- Completed Projects Section -->
+            <div id="completedSection" class="projects-section completed-section" style="display: none;">
+                <div class="projects-scroll-container">
+                    <div id="completedGrid" class="projects-grid"></div>
+                </div>
+            </div>
+
+            <!-- Payments Section -->
+            <div class="payments-section fade-in">
+                <h2 class="section-title">💰 תשלומים</h2>
+                <div class="payments-header">
+                    <div class="payments-header-cell" onclick="sortPayments('date')">
+                        תאריך
+                        <div class="sort-arrows">
+                            <span class="sort-arrow" data-dir="asc">▲</span>
+                            <span class="sort-arrow" data-dir="desc">▼</span>
+                        </div>
+                    </div>
+                    <div class="payments-header-cell" onclick="sortPayments('amount')">
+                        סכום
+                        <div class="sort-arrows">
+                            <span class="sort-arrow" data-dir="asc">▲</span>
+                            <span class="sort-arrow" data-dir="desc">▼</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="payments-list" id="paymentsList"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Payment Details Modal -->
+    <div id="paymentModal" class="modal-overlay">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="modal-title" id="paymentModalTitle">פירוט תשלומים</div>
+                <button class="modal-close" onclick="closePaymentModal()">×</button>
+            </div>
+            <div class="modal-body" id="paymentModalBody"></div>
+        </div>
+    </div>
+
+    <!-- Monthly Breakdown Modal -->
+    <div id="monthModal" class="modal-overlay">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="modal-title" id="modalTitle">פירוט חודשי</div>
+                <button class="modal-close" onclick="closeMonthModal()">×</button>
+            </div>
+            <div class="modal-body" id="modalBody">
+                <!-- Content will be populated by JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Google Apps Script URL - direct access, no proxy needed!
+        const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxqTkFRe0YQ5tmaPn-VJrm6Q_ZfNlnMwI8D0vW1pkvGVzcmLhlTJiDZMsdhHNVnJmC-ZA/exec';
+
+        function parseCSV(csv) {
+            const lines = csv.trim().split('\n');
+            const activeProjects = [];
+            const completedProjects = [];
+
+            // Parse CSV properly handling quotes and commas
+            for (let i = 1; i < lines.length; i++) {
+                const line = lines[i];
+                if (!line.trim()) continue;
+                
+                const values = [];
+                let current = '';
+                let inQuotes = false;
+                
+                for (let j = 0; j < line.length; j++) {
+                    const char = line[j];
+                    if (char === '"') {
+                        inQuotes = !inQuotes;
+                    } else if (char === ',' && !inQuotes) {
+                        values.push(current.trim());
+                        current = '';
+                    } else {
+                        current += char;
+                    }
+                }
+                values.push(current.trim());
+                
+                // Create project object with correct column mapping
+                const clientName = values[2] || ''; // C column (index 2)
+                const statusF = values[5] || ''; // F column (index 5) - Status
+                const statusG = values[6] || ''; // G column (index 6) - Secondary status
+                
+                // Filter: client "בלייער יונתן" AND status contains "מאושר"
+                if (values.length >= 18 && values[3] && 
+                    clientName.includes('בלייער יונתן') && 
+                    statusF.includes('מאושר')) {
+                    
+                    const project = {
+                        'name': values[3] || '',
+                        'quoted': values[10] || '0',
+                        'deadline': values[13] || '',
+                        'paid': values[14] || '0',
+                        'remaining': values[17] || '0',
+                        'status': statusF
+                    };
+                    
+                    if (statusG.includes('הסתיים')) {
+                        completedProjects.push(project);
+                    } else {
+                        activeProjects.push(project);
+                    }
+                }
+            }
+
+            return { active: activeProjects, completed: completedProjects };
+        }
+
+        function formatCurrency(amount) {
+            const num = parseFloat(String(amount).replace(/[^\d.-]/g, '')) || 0;
+            return '$' + num.toLocaleString('en-US', { maximumFractionDigits: 0 });
+        }
+
+        function parseDeadlineDate(dateStr) {
+            // Parse DD/MM/YYYY format
+            const parts = dateStr.split('/');
+            if (parts.length === 3) {
+                const day = parseInt(parts[0]);
+                const month = parseInt(parts[1]) - 1; // JS months are 0-indexed
+                const year = parseInt(parts[2]);
+                return new Date(year, month, day);
+            }
+            return null;
+        }
+
+        function getMonthsBetween(startDate, endDate) {
+            const years = endDate.getFullYear() - startDate.getFullYear();
+            const months = endDate.getMonth() - startDate.getMonth();
+            return Math.max(1, years * 12 + months);
+        }
+
+        function getHebrewMonthName(date) {
+            const months = ['ינואר', 'פברואר', 'מרץ', 'אפריל', 'מאי', 'יוני', 
+                          'יולי', 'אוגוסט', 'ספטמבר', 'אוקטובר', 'נובמבר', 'דצמבר'];
+            return months[date.getMonth()];
+        }
+
+        function calculateProgress(quoted, paid) {
+            const quotedNum = parseFloat(String(quoted).replace(/[^\d.-]/g, '')) || 0;
+            const paidNum = parseFloat(String(paid).replace(/[^\d.-]/g, '')) || 0;
+            if (quotedNum === 0) return 0;
+            return Math.round((paidNum / quotedNum) * 100);
+        }
+
+        function createProjectCard(project, isCompleted = false) {
+            const progress = calculateProgress(project.quoted, project.paid);
+            const cardClass = isCompleted ? 'project-card completed-card' : 'project-card';
+            
+            return `
+                <div class="${cardClass} fade-in">
+                    <div class="project-row">
+                        <div class="project-cell">
+                            <div class="cell-value">📋 ${project.name}</div>
+                        </div>
+                        <div class="project-cell">
+                            <div class="cell-value amount">${formatCurrency(project.quoted)}</div>
+                        </div>
+                        <div class="project-cell">
+                            <div class="cell-value paid">${formatCurrency(project.paid)}</div>
+                        </div>
+                        <div class="project-cell">
+                            <div class="cell-value remaining">${formatCurrency(project.remaining)}</div>
+                        </div>
+                        <div class="project-cell">
+                            <div class="cell-value deadline">📅 ${project.deadline}</div>
+                        </div>
+                        <div class="progress-cell">
+                            <div class="progress-mini">
+                                <div class="progress-bar-mini">
+                                    <div class="progress-fill" style="width: ${progress}%"></div>
+                                </div>
+                                <div class="progress-text">${progress}%</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        async function loadData() {
+            try {
+                // Call Apps Script directly - sheet name with slash
+                const response = await fetch(APPS_SCRIPT_URL + '?sheet=' + encodeURIComponent('פרויקטים/לידים'));
+                const csv = await response.text();
+                const projectsData = parseCSV(csv);
+                const activeProjects = projectsData.active;
+                const completedProjects = projectsData.completed;
+
+                let totalQuoted = 0;
+                let totalPaid = 0;
+
+                // Calculate totals from ACTIVE projects only (not completed)
+                activeProjects.forEach(project => {
+                    const quoted = parseFloat(String(project.quoted).replace(/[^\d.-]/g, '')) || 0;
+                    const paid = parseFloat(String(project.paid).replace(/[^\d.-]/g, '')) || 0;
+                    totalQuoted += quoted;
+                    totalPaid += paid;
+                });
+
+                const remaining = totalQuoted - totalPaid;
+
+                // Calculate monthly payments for next 12 months
+                const today = new Date();
+                const monthlyPayments = Array(12).fill(0);
+                
+                activeProjects.forEach(project => {
+                    const deadlineDate = parseDeadlineDate(project.deadline);
+                    if (deadlineDate) {
+                        const monthsRemaining = getMonthsBetween(today, deadlineDate);
+                        const remainingAmount = parseFloat(String(project.remaining).replace(/[^\d.-]/g, '')) || 0;
+                        const monthlyPayment = remainingAmount / monthsRemaining;
+                        
+                        // Distribute payment across the months until deadline
+                        const monthsToDistribute = Math.min(12, monthsRemaining);
+                        for (let i = 0; i < monthsToDistribute; i++) {
+                            monthlyPayments[i] += monthlyPayment;
+                        }
+                    }
+                });
+
+                // Create monthly timeline - blink the month that needs payment
+                // Day 21-31 of October: Show from November, blink November
+                // Day 1-10 of November: Show from November, blink November
+                // Day 11-20 of November: Show from December, no blink
+                const monthlyTimeline = document.getElementById('monthlyTimeline');
+                let timelineHTML = '';
+                
+                const currentDay = today.getDate();
+                const currentMonth = today.getMonth();
+                
+                // Determine timeline start and which month blinks
+                let startMonth;
+                let shouldBlinkFirst = false;
+                
+                if (currentDay >= 21) {
+                    // Day 21-31: Start from NEXT month, and it blinks
+                    startMonth = currentMonth + 1;
+                    shouldBlinkFirst = true;
+                } else if (currentDay <= 10) {
+                    // Day 1-10: Start from CURRENT month, and it blinks
+                    startMonth = currentMonth;
+                    shouldBlinkFirst = true;
+                } else {
+                    // Day 11-20: Start from NEXT month, no blink
+                    startMonth = currentMonth + 1;
+                    shouldBlinkFirst = false;
+                }
+                
+                for (let i = 0; i < 12; i++) {
+                    const monthDate = new Date(today.getFullYear(), startMonth + i, 1);
+                    const monthName = getHebrewMonthName(monthDate);
+                    const monthNum = String(monthDate.getMonth() + 1).padStart(2, '0');
+                    const year = monthDate.getFullYear();
+                    const dateStr = `01/${monthNum}/${year}`;
+                    const amount = monthlyPayments[i];
+                    
+                    // First month in list blinks if in payment period
+                    const blinkClass = (i === 0 && shouldBlinkFirst) ? 'payment-due' : '';
+                    
+                    timelineHTML += `
+                        <div class="month-item ${blinkClass}" onclick="showMonthBreakdown(${i}, '${monthName}', '${dateStr}', ${amount})" style="cursor: pointer;">
+                            <div class="month-name">${monthName}</div>
+                            <div class="month-date">${dateStr}</div>
+                            <div class="month-amount">${formatCurrency(amount.toString())}</div>
+                        </div>
+                    `;
+                }
+                
+                monthlyTimeline.innerHTML = timelineHTML;
+
+                // Store projects globally for filtering
+                window.allActiveProjects = activeProjects;
+                window.allCompletedProjects = completedProjects;
+
+                // Initial display - show active projects
+                displayFilteredProjects('active');
+
+                // Hide loading, show content
+                document.getElementById('loading').style.display = 'none';
+                document.getElementById('content').style.display = 'block';
+
+            } catch (error) {
+                console.error('Error loading data:', error);
+                document.getElementById('loading').innerHTML = `
+                    <p style="color: #ff6b6b;">❌ שגיאה בטעינת הנתונים</p>
+                    <p style="font-size: 0.9em;">אנא בדוק שהגיליון פורסם כראוי</p>
+                    <p style="font-size: 0.8em; margin-top: 10px;">שגיאה: ${error.message}</p>
+                `;
+            }
+        }
+
+        // Load data on page load
+        loadData();
+        loadPayments();
+
+        // Refresh every 5 minutes
+        setInterval(() => {
+            loadData();
+            loadPayments();
+        }, 300000);
+
+        // Load and display payments
+        async function loadPayments() {
+            try {
+                // Call Apps Script directly for "תקבולים" sheet - no proxy needed!
+                const response = await fetch(APPS_SCRIPT_URL + '?sheet=תקבולים');
+                
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                
+                const csv = await response.text();
+                console.log('Payments CSV loaded, length:', csv.length);
+                
+                const payments = parsePaymentsCSV(csv);
+                console.log('Parsed payments:', payments.length);
+                
+                if (payments.length === 0) {
+                    document.getElementById('paymentsList').innerHTML = '<p style="text-align: center; color: #666; padding: 20px;">אין תקבולים להצגה</p>';
+                } else {
+                    displayPayments(payments);
+                }
+            } catch (error) {
+                console.error('Error loading payments:', error);
+                document.getElementById('paymentsList').innerHTML = `
+                    <p style="text-align: center; color: #e74c3c; padding: 20px;">
+                        שגיאה בטעינת תקבולים: ${error.message}<br>
+                        <small>נסה לרענן את הדף</small>
+                    </p>
+                `;
+            }
+        }
+
+        function parsePaymentsCSV(csv) {
+            const lines = csv.trim().split('\n');
+            const payments = [];
+
+            for (let i = 1; i < lines.length; i++) {
+                const line = lines[i];
+                if (!line.trim()) continue;
+                
+                const values = [];
+                let current = '';
+                let inQuotes = false;
+                
+                for (let j = 0; j < line.length; j++) {
+                    const char = line[j];
+                    if (char === '"') {
+                        inQuotes = !inQuotes;
+                    } else if (char === ',' && !inQuotes) {
+                        values.push(current.trim());
+                        current = '';
+                    } else {
+                        current += char;
+                    }
+                }
+                values.push(current.trim());
+                
+                // Columns: A=date, B=client, C=project, D=amount
+                const date = values[0] || '';
+                const client = values[1] || '';
+                const project = values[2] || '';
+                const amount = values[3] || '0';
+                
+                // Filter for "בלייער יונתן"
+                if (client.includes('בלייער יונתן') && date && amount) {
+                    payments.push({
+                        date: date,
+                        project: project,
+                        amount: amount
+                    });
+                }
+            }
+
+            return payments;
+        }
+
+        function displayPayments(payments) {
+            // Group by date and sum amounts
+            const paymentsByDate = {};
+            
+            payments.forEach(payment => {
+                if (!paymentsByDate[payment.date]) {
+                    paymentsByDate[payment.date] = {
+                        total: 0,
+                        details: []
+                    };
+                }
+                
+                const amount = parseFloat(String(payment.amount).replace(/[^\d.-]/g, '')) || 0;
+                paymentsByDate[payment.date].total += amount;
+                paymentsByDate[payment.date].details.push({
+                    project: payment.project,
+                    amount: amount
+                });
+            });
+
+            // Store data globally for click handlers and sorting
+            window.paymentsData = paymentsByDate;
+
+            // Display with current sort settings
+            displayPaymentsSorted(paymentsByDate);
+        }
+
+        function parseDate(dateStr) {
+            // Parse DD/MM/YYYY format
+            const parts = dateStr.split('/');
+            if (parts.length === 3) {
+                const day = parseInt(parts[0]);
+                const month = parseInt(parts[1]) - 1;
+                const year = parseInt(parts[2]);
+                return new Date(year, month, day);
+            }
+            return new Date(dateStr);
+        }
+
+        function showPaymentDetails(date) {
+            // Track payment click
+            trackEvent('Payments', 'view_payment_details', date);
+            
+            const details = window.paymentsData[date].details;
+            const modalTitle = document.getElementById('paymentModalTitle');
+            const modalBody = document.getElementById('paymentModalBody');
+            
+            modalTitle.textContent = `תשלומים מיום ${date}`;
+            
+            let totalAmount = 0;
+            const detailsHTML = details.map(detail => {
+                totalAmount += detail.amount;
+                return `
+                    <div class="payment-detail-row">
+                        <div class="payment-project">${detail.project || 'ללא שם'}</div>
+                        <div class="payment-detail-amount">${formatCurrency(detail.amount.toString())}</div>
+                    </div>
+                `;
+            }).join('');
+            
+            modalBody.innerHTML = `
+                <div class="payment-details">
+                    ${detailsHTML}
+                    <div class="payment-detail-row" style="border-top: 2px solid #667eea; margin-top: 10px; padding-top: 15px; font-weight: bold;">
+                        <div>סה"כ</div>
+                        <div class="payment-detail-amount">${formatCurrency(totalAmount.toString())}</div>
+                    </div>
+                </div>
+            `;
+            
+            document.getElementById('paymentModal').style.display = 'flex';
+        }
+
+        function closePaymentModal() {
+            document.getElementById('paymentModal').style.display = 'none';
+        }
+
+        // Close modal on outside click
+        document.getElementById('paymentModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closePaymentModal();
+            }
+        });
+
+        // Sort payments function
+        let paymentSortField = 'date';
+        let paymentSortOrder = 'desc';
+
+        function sortPayments(field) {
+            // Toggle sort order if clicking same field
+            if (paymentSortField === field) {
+                paymentSortOrder = paymentSortOrder === 'asc' ? 'desc' : 'asc';
+            } else {
+                paymentSortField = field;
+                paymentSortOrder = 'desc';
+            }
+
+            // Update arrow indicators
+            document.querySelectorAll('.payments-header-cell .sort-arrow').forEach(arrow => {
+                arrow.classList.remove('active');
+            });
+            
+            const activeHeader = document.querySelector(`.payments-header-cell[onclick="sortPayments('${field}')"]`);
+            if (activeHeader) {
+                const activeArrow = activeHeader.querySelector(`.sort-arrow[data-dir="${paymentSortOrder}"]`);
+                if (activeArrow) {
+                    activeArrow.classList.add('active');
+                }
+            }
+
+            // Re-display payments with new sorting
+            if (window.paymentsData) {
+                displayPaymentsSorted(window.paymentsData);
+            }
+        }
+
+        function displayPaymentsSorted(paymentsByDate) {
+            // Sort dates based on current sort settings
+            const sortedDates = Object.keys(paymentsByDate).sort((a, b) => {
+                if (paymentSortField === 'date') {
+                    const dateA = parseDate(a);
+                    const dateB = parseDate(b);
+                    return paymentSortOrder === 'desc' ? dateB - dateA : dateA - dateB;
+                } else if (paymentSortField === 'amount') {
+                    const amountA = paymentsByDate[a].total;
+                    const amountB = paymentsByDate[b].total;
+                    return paymentSortOrder === 'desc' ? amountB - amountA : amountA - amountB;
+                }
+                return 0;
+            });
+
+            // Display payment items
+            const paymentsList = document.getElementById('paymentsList');
+            paymentsList.innerHTML = sortedDates.map(date => {
+                const data = paymentsByDate[date];
+                return `
+                    <div class="payment-item" onclick="showPaymentDetails('${date}')">
+                        <div class="payment-date">${date}</div>
+                        <div class="payment-amount">${formatCurrency(data.total.toString())}</div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        // Function to display filtered projects and update header totals
+        function displayFilteredProjects(filter) {
+            let projectsToShow = [];
+            
+            if (filter === 'active') {
+                projectsToShow = window.allActiveProjects || [];
+            } else if (filter === 'completed') {
+                projectsToShow = window.allCompletedProjects || [];
+            } else { // 'all'
+                projectsToShow = [...(window.allActiveProjects || []), ...(window.allCompletedProjects || [])];
+            }
+
+            // Calculate totals for header
+            let totalQuoted = 0;
+            let totalPaid = 0;
+            let totalRemaining = 0;
+
+            projectsToShow.forEach(project => {
+                totalQuoted += parseFloat(String(project.quoted).replace(/[^\d.-]/g, '')) || 0;
+                totalPaid += parseFloat(String(project.paid).replace(/[^\d.-]/g, '')) || 0;
+                totalRemaining += parseFloat(String(project.remaining).replace(/[^\d.-]/g, '')) || 0;
+            });
+
+            // Update header totals
+            document.getElementById('headerTotalQuoted').textContent = formatCurrency(totalQuoted.toString());
+            document.getElementById('headerTotalPaid').textContent = formatCurrency(totalPaid.toString());
+            document.getElementById('headerTotalRemaining').textContent = formatCurrency(totalRemaining.toString());
+
+            // Display projects
+            const projectsGrid = document.getElementById('projectsGrid');
+            const completedSection = document.getElementById('completedSection');
+            
+            projectsGrid.innerHTML = projectsToShow.map(project => {
+                const isCompleted = (window.allCompletedProjects || []).includes(project);
+                return createProjectCard(project, isCompleted);
+            }).join('');
+
+            // Hide completed section when using filter
+            completedSection.style.display = 'none';
+        }
+
+        // Filter button handlers
+        document.addEventListener('DOMContentLoaded', function() {
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            
+            filterButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // Remove active class from all buttons
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    
+                    // Add active class to clicked button
+                    this.classList.add('active');
+                    
+                    // Get filter value and display projects
+                    const filter = this.getAttribute('data-filter');
+                    
+                    // Track filter click
+                    trackEvent('Projects', 'filter_projects', filter);
+                    
+                    displayFilteredProjects(filter);
+                });
+            });
+        });
+
+        // Search functionality - searches in displayed projects
+        document.getElementById('searchBox').addEventListener('input', function(e) {
+            const searchTerm = e.target.value.toLowerCase();
+            
+            // Track search
+            if (searchTerm.length > 2) {
+                trackEvent('Search', 'project_search', searchTerm);
+            }
+            
+            const allProjectCards = document.querySelectorAll('.project-card');
+            
+            allProjectCards.forEach(card => {
+                const projectCells = card.querySelectorAll('.cell-value');
+                if (projectCells.length > 0) {
+                    const projectName = projectCells[0].textContent.toLowerCase();
+                    if (projectName.includes(searchTerm)) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                }
+            });
+        });
+
+        // Sort functionality
+        let currentSortField = null;
+        let currentSortDir = 'asc';
+
+        function sortProjects(field) {
+            // Toggle direction if same field, otherwise reset to asc
+            if (currentSortField === field) {
+                currentSortDir = currentSortDir === 'asc' ? 'desc' : 'asc';
+            } else {
+                currentSortField = field;
+                currentSortDir = 'asc';
+            }
+
+            const projectsGrid = document.getElementById('projectsGrid');
+            const projectCards = Array.from(projectsGrid.querySelectorAll('.project-card'));
+
+            projectCards.sort((a, b) => {
+                let aValue, bValue;
+
+                if (field === 'name') {
+                    aValue = a.querySelector('.cell-value').textContent.toLowerCase();
+                    bValue = b.querySelector('.cell-value').textContent.toLowerCase();
+                } else if (field === 'deadline') {
+                    const aCells = a.querySelectorAll('.cell-value');
+                    const bCells = b.querySelectorAll('.cell-value');
+                    aValue = aCells[4].textContent.replace('📅 ', '');
+                    bValue = bCells[4].textContent.replace('📅 ', '');
+                    // Parse DD/MM/YYYY for comparison
+                    const aDate = parseDeadlineDate(aValue);
+                    const bDate = parseDeadlineDate(bValue);
+                    return currentSortDir === 'asc' ? aDate - bDate : bDate - aDate;
+                } else {
+                    // Numeric fields: quoted, paid, remaining
+                    const fieldIndex = field === 'quoted' ? 1 : field === 'paid' ? 2 : 3;
+                    const aCells = a.querySelectorAll('.cell-value');
+                    const bCells = b.querySelectorAll('.cell-value');
+                    aValue = parseFloat(aCells[fieldIndex].textContent.replace(/[^\d.-]/g, '')) || 0;
+                    bValue = parseFloat(bCells[fieldIndex].textContent.replace(/[^\d.-]/g, '')) || 0;
+                }
+
+                if (field !== 'deadline') {
+                    if (currentSortDir === 'asc') {
+                        return aValue > bValue ? 1 : aValue < bValue ? -1 : 0;
+                    } else {
+                        return aValue < bValue ? 1 : aValue > bValue ? -1 : 0;
+                    }
+                }
+                return 0;
+            });
+
+            // Re-append sorted cards
+            projectCards.forEach(card => projectsGrid.appendChild(card));
+
+            // Update arrow indicators
+            document.querySelectorAll('.sort-arrow').forEach(arrow => arrow.classList.remove('active'));
+            const headerLabels = document.querySelectorAll('.header-label');
+            headerLabels.forEach(label => {
+                if (label.onclick && label.onclick.toString().includes(`'${field}'`)) {
+                    const arrows = label.querySelectorAll('.sort-arrow');
+                    arrows.forEach(arrow => {
+                        if (arrow.dataset.dir === currentSortDir) {
+                            arrow.classList.add('active');
+                        }
+                    });
+                }
+            });
+        }
+
+        // Modal functions
+        function showMonthBreakdown(monthIndex, monthName, dateStr, totalAmount) {
+            // Track month click
+            trackEvent('Monthly Timeline', 'view_month', monthName);
+            
+            const today = new Date();
+            
+            // Get active projects
+            const activeProjects = window.allActiveProjects || [];
+            
+            // Calculate breakdown for this month
+            const breakdown = [];
+            
+            activeProjects.forEach(project => {
+                const deadlineDate = parseDeadlineDate(project.deadline);
+                if (deadlineDate) {
+                    const monthsRemaining = getMonthsBetween(today, deadlineDate);
+                    const remainingAmount = parseFloat(String(project.remaining).replace(/[^\d.-]/g, '')) || 0;
+                    
+                    // Check if this project contributes to this month
+                    if (monthIndex < monthsRemaining) {
+                        const monthlyPayment = remainingAmount / monthsRemaining;
+                        breakdown.push({
+                            name: project.name,
+                            amount: monthlyPayment
+                        });
+                    }
+                }
+            });
+
+            // Populate modal
+            document.getElementById('modalTitle').textContent = `פירוט תשלומים - ${monthName} (${dateStr})`;
+            
+            let modalBodyHTML = '';
+            
+            if (breakdown.length === 0) {
+                modalBodyHTML = `
+                    <div class="breakdown-empty">
+                        <div class="breakdown-empty-icon">📭</div>
+                        <div>אין תשלומים מתוכננים לחודש זה</div>
+                    </div>
+                `;
+            } else {
+                // Sort by amount descending
+                breakdown.sort((a, b) => b.amount - a.amount);
+                
+                breakdown.forEach(item => {
+                    modalBodyHTML += `
+                        <div class="breakdown-item">
+                            <div class="breakdown-project-name">📋 ${item.name}</div>
+                            <div class="breakdown-amount">${formatCurrency(item.amount.toString())}</div>
+                        </div>
+                    `;
+                });
+                
+                modalBodyHTML += `
+                    <div class="breakdown-total">
+                        <div class="breakdown-total-label">💰 סה"כ לחודש:</div>
+                        <div class="breakdown-total-amount">${formatCurrency(totalAmount.toString())}</div>
+                    </div>
+                `;
+            }
+            
+            document.getElementById('modalBody').innerHTML = modalBodyHTML;
+            document.getElementById('monthModal').classList.add('active');
+        }
+
+        function closeMonthModal() {
+            document.getElementById('monthModal').classList.remove('active');
+        }
+
+        // Close modal on overlay click
+        document.getElementById('monthModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeMonthModal();
+            }
+        });
+
+        // Close modal on ESC key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeMonthModal();
+                closeMenu();
+            }
+        });
+
+        // Menu functions
+        const menuToggle = document.getElementById('menuToggle');
+        const sideMenu = document.getElementById('sideMenu');
+        const menuOverlay = document.getElementById('menuOverlay');
+
+        menuToggle.addEventListener('click', function() {
+            toggleMenu();
+        });
+
+        menuOverlay.addEventListener('click', function() {
+            closeMenu();
+        });
+
+        function toggleMenu() {
+            menuToggle.classList.toggle('active');
+            sideMenu.classList.toggle('active');
+            menuOverlay.classList.toggle('active');
+        }
+
+        function closeMenu() {
+            menuToggle.classList.remove('active');
+            sideMenu.classList.remove('active');
+            menuOverlay.classList.remove('active');
+        }
+
+        function navigateTo(page) {
+            // Track navigation
+            trackEvent('Navigation', 'menu_click', page);
+            
+            // Remove active from all items
+            document.querySelectorAll('.menu-item').forEach(item => {
+                item.classList.remove('active');
+            });
+            
+            // Add active to clicked item
+            event.currentTarget.classList.add('active');
+            
+            // Close the menu
+            closeMenu();
+            
+            // Scroll to section
+            if (page === 'home') {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            } else if (page === 'projects') {
+                const projectsSection = document.querySelector('.projects-section');
+                if (projectsSection) {
+                    projectsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            } else if (page === 'payments') {
+                const paymentsSection = document.querySelector('.payments-section');
+                if (paymentsSection) {
+                    paymentsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            }
+        }
+    </script>
+</body>
+</html>
