@@ -581,21 +581,27 @@
             border: 2px solid #ff9800;
             border-right: 6px solid #ff6b00;
             border-radius: 8px;
-            padding: 15px 20px;
+            padding: 15px 10px;
             margin: 15px 0;
-            display: flex;
-            align-items: center;
-            gap: 12px;
             box-shadow: 0 4px 12px rgba(255, 152, 0, 0.15);
             animation: slideDown 0.5s ease;
             overflow: hidden;
             position: relative;
+            display: flex;
+            align-items: center;
         }
 
         .warning-message-icon {
             font-size: 1.8em;
             flex-shrink: 0;
+            margin-left: 12px;
             z-index: 2;
+        }
+
+        .warning-message-content {
+            flex: 1;
+            overflow: hidden;
+            position: relative;
         }
 
         .warning-message-text {
@@ -604,21 +610,20 @@
             line-height: 1.5;
             font-weight: 500;
             white-space: nowrap;
-            animation: scrollText 15s linear infinite;
             display: inline-block;
-            padding-right: 100%;
+            animation: scrollTextRTL 25s linear infinite;
         }
 
         .warning-message:hover .warning-message-text {
             animation-play-state: paused;
         }
 
-        @keyframes scrollText {
+        @keyframes scrollTextRTL {
             0% {
-                transform: translateX(100%);
+                transform: translateX(-100%);
             }
             100% {
-                transform: translateX(-100%);
+                transform: translateX(100%);
             }
         }
 
@@ -1223,8 +1228,10 @@
             <!-- Warning Message -->
             <div class="warning-message fade-in">
                 <div class="warning-message-icon">⚠️</div>
-                <div class="warning-message-text">
-                    <strong>שימו לב:</strong> פרויקטים הממתינים לאישור טרם עודכנו במערכת ואינם כלולים בחישוב התשלומים החודשיים!
+                <div class="warning-message-content">
+                    <div class="warning-message-text">
+                        <strong>שימו לב:</strong> פרויקטים הממתינים לאישור טרם עודכנו במערכת ואינם כלולים בחישוב התשלומים החודשיים!
+                    </div>
                 </div>
             </div>
 
