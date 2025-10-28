@@ -1750,9 +1750,7 @@
     </div>
 
     <div class="container">
-        <div class="logo">
-            <img src="logo.png" alt="Logo">
-        </div>
+        <!-- Logo removed to avoid 404 error - add logo.png file to enable -->
 
         <!-- World Clocks -->
         <div class="world-clocks-corner">
@@ -2532,18 +2530,6 @@
 
             // Display with current sort settings
             displayPaymentsSorted(paymentsByDate);
-        }
-
-        function parseDate(dateStr) {
-            // Parse DD/MM/YYYY format
-            const parts = dateStr.split('/');
-            if (parts.length === 3) {
-                const day = parseInt(parts[0]);
-                const month = parseInt(parts[1]) - 1;
-                const year = parseInt(parts[2]);
-                return new Date(year, month, day);
-            }
-            return new Date(dateStr);
         }
 
         function showPaymentDetails(date) {
