@@ -59,6 +59,125 @@
             filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.2));
         }
 
+        /* World Clocks - Analog + Digital */
+        .world-clocks-corner {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            z-index: 1000;
+        }
+
+        .clock-analog-container {
+            background: white;
+            padding: 12px;
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            min-width: 160px;
+            border: 2px solid #667eea;
+        }
+
+        .clock-analog-header {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.8em;
+            font-weight: 700;
+            color: #667eea;
+            text-transform: uppercase;
+        }
+
+        .clock-analog-flag {
+            font-size: 1.3em;
+        }
+
+        /* Analog Clock Face */
+        .clock-face {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            position: relative;
+            border: 4px solid #667eea;
+            box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .clock-center {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 8px;
+            height: 8px;
+            background: #667eea;
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 10;
+        }
+
+        /* Clock Hands */
+        .hand {
+            position: absolute;
+            bottom: 50%;
+            left: 50%;
+            transform-origin: bottom center;
+            background: #333;
+            border-radius: 10px;
+        }
+
+        .hour-hand {
+            width: 4px;
+            height: 28px;
+            background: #333;
+            margin-left: -2px;
+        }
+
+        .minute-hand {
+            width: 3px;
+            height: 38px;
+            background: #667eea;
+            margin-left: -1.5px;
+        }
+
+        .second-hand {
+            width: 2px;
+            height: 42px;
+            background: #ff6b6b;
+            margin-left: -1px;
+        }
+
+        /* Clock Numbers */
+        .clock-number {
+            position: absolute;
+            font-size: 0.7em;
+            font-weight: bold;
+            color: #667eea;
+        }
+
+        .num-12 { top: 5px; left: 50%; transform: translateX(-50%); }
+        .num-3 { right: 8px; top: 50%; transform: translateY(-50%); }
+        .num-6 { bottom: 5px; left: 50%; transform: translateX(-50%); }
+        .num-9 { left: 8px; top: 50%; transform: translateY(-50%); }
+
+        /* Digital Time Below */
+        .clock-digital-time {
+            font-size: 1.3em;
+            font-weight: bold;
+            color: #333;
+            font-family: 'Courier New', monospace;
+            letter-spacing: 1px;
+        }
+
+        .clock-digital-date {
+            font-size: 0.7em;
+            color: #666;
+        }
+
         /* Contact Card - Below Clocks */
         .contact-card {
             position: fixed;
@@ -66,118 +185,122 @@
             left: 20px;
             z-index: 1000;
             background: white;
-            padding: 25px;
-            border-radius: 24px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-            min-width: 340px;
+            padding: 15px;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+            max-width: 200px;
         }
 
         .contact-card-title {
             text-align: center;
-            font-size: 1.1em;
+            font-size: 0.85em;
             font-weight: 800;
             color: #2d3748;
-            margin-bottom: 20px;
-            letter-spacing: 0.5px;
+            margin-bottom: 12px;
+            letter-spacing: 0.3px;
         }
 
         .contact-item {
-            padding: 16px 18px;
-            margin-bottom: 10px;
-            border-radius: 16px;
+            padding: 10px 8px;
+            margin-bottom: 6px;
+            border-radius: 10px;
             display: flex;
             align-items: center;
-            gap: 16px;
+            gap: 8px;
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             cursor: pointer;
             background: #f7fafc;
-            border-left: 4px solid transparent;
+            border-left: 3px solid transparent;
         }
 
         .contact-item:hover {
-            transform: translateX(-8px);
+            transform: translateX(-5px);
             background: #edf2f7;
             border-left-color: #667eea;
-            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.15);
+            box-shadow: 0 3px 8px rgba(102, 126, 234, 0.15);
         }
 
         .contact-item-primary {
             background: linear-gradient(135deg, #e6f2ff 0%, #f0e6ff 100%);
-            padding: 20px;
-            margin-bottom: 18px;
-            border-left: 4px solid #667eea;
-            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.12);
-            position: relative;
+            padding: 12px 10px;
+            margin-bottom: 10px;
+            border-left: 3px solid #667eea;
+            box-shadow: 0 3px 10px rgba(102, 126, 234, 0.12);
         }
 
         .contact-item-primary:hover {
-            transform: translateX(-8px) translateY(-2px);
+            transform: translateX(-5px) translateY(-1px);
             background: linear-gradient(135deg, #dae9ff 0%, #e6d9ff 100%);
-            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.2);
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.2);
         }
 
         .contact-icon-circle {
-            width: 52px;
-            height: 52px;
+            width: 32px;
+            height: 32px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             background: white;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
             flex-shrink: 0;
         }
 
         .contact-primary-icon-circle {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            box-shadow: 0 6px 15px rgba(102, 126, 234, 0.3);
+            box-shadow: 0 3px 8px rgba(102, 126, 234, 0.3);
         }
 
         .contact-icon {
-            font-size: 1.9em;
+            font-size: 1.2em;
         }
 
         .contact-details {
             display: flex;
             flex-direction: column;
-            gap: 5px;
+            gap: 3px;
             flex: 1;
+            min-width: 0;
         }
 
         .contact-name {
-            font-size: 0.95em;
+            font-size: 0.7em;
             font-weight: 700;
             color: #2d3748;
-            letter-spacing: 0.3px;
+            letter-spacing: 0.2px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
 
         .contact-primary-name {
-            font-size: 1.15em;
+            font-size: 0.8em;
             font-weight: 800;
             background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
             font-family: 'Georgia', 'Times New Roman', serif;
-            letter-spacing: 0.5px;
+            letter-spacing: 0.3px;
         }
 
         .contact-phone {
-            font-size: 0.92em;
+            font-size: 0.72em;
             color: #718096;
             font-family: 'Courier New', monospace;
             direction: ltr;
             text-align: left;
             font-weight: 600;
             background: rgba(0, 0, 0, 0.03);
-            padding: 5px 10px;
-            border-radius: 6px;
+            padding: 3px 5px;
+            border-radius: 4px;
             display: inline-block;
+            white-space: nowrap;
         }
 
         .contact-primary-phone {
             color: #667eea;
-            font-size: 1.05em;
+            font-size: 0.78em;
             font-weight: 700;
             background: rgba(102, 126, 234, 0.08);
         }
@@ -185,7 +308,7 @@
         .contact-divider {
             height: 1px;
             background: linear-gradient(90deg, transparent, #e2e8f0, transparent);
-            margin: 10px 0;
+            margin: 6px 0;
         }
 
         /* Hamburger Menu Button */
@@ -1337,6 +1460,55 @@
             <img src="logo.png" alt="Logo">
         </div>
 
+        <!-- World Clocks -->
+        <div class="world-clocks-corner">
+            <!-- New York Clock -->
+            <div class="clock-analog-container">
+                <div class="clock-analog-header">
+                    <span class="clock-analog-flag">🗽</span>
+                    <span>ניו יורק</span>
+                </div>
+                
+                <div class="clock-face" id="nyClockFace">
+                    <div class="clock-number num-12">12</div>
+                    <div class="clock-number num-3">3</div>
+                    <div class="clock-number num-6">6</div>
+                    <div class="clock-number num-9">9</div>
+                    
+                    <div class="hand hour-hand" id="nyHourHand"></div>
+                    <div class="hand minute-hand" id="nyMinuteHand"></div>
+                    <div class="hand second-hand" id="nySecondHand"></div>
+                    <div class="clock-center"></div>
+                </div>
+                
+                <div class="clock-digital-time" id="nyTime">--:--:--</div>
+                <div class="clock-digital-date" id="nyDate">---</div>
+            </div>
+
+            <!-- Jerusalem Clock -->
+            <div class="clock-analog-container">
+                <div class="clock-analog-header">
+                    <span class="clock-analog-flag">🕎</span>
+                    <span>ירושלים</span>
+                </div>
+                
+                <div class="clock-face" id="ilClockFace">
+                    <div class="clock-number num-12">12</div>
+                    <div class="clock-number num-3">3</div>
+                    <div class="clock-number num-6">6</div>
+                    <div class="clock-number num-9">9</div>
+                    
+                    <div class="hand hour-hand" id="ilHourHand"></div>
+                    <div class="hand minute-hand" id="ilMinuteHand"></div>
+                    <div class="hand second-hand" id="ilSecondHand"></div>
+                    <div class="clock-center"></div>
+                </div>
+                
+                <div class="clock-digital-time" id="ilTime">--:--:--</div>
+                <div class="clock-digital-date" id="ilDate">---</div>
+            </div>
+        </div>
+
         <!-- Contact Card -->
         <div class="contact-card">
             <div class="contact-card-title">📞 צור קשר</div>
@@ -2317,6 +2489,94 @@
                 }
             }
         }
+
+        // World Clocks Update Function
+        function updateClocks() {
+            const now = new Date();
+            
+            // New York
+            const nyTimeStr = now.toLocaleString('en-US', {
+                timeZone: 'America/New_York',
+                hour: '2-digit',
+                minute: '2-digit',
+                second: '2-digit',
+                hour12: true
+            });
+            
+            const nyDateStr = now.toLocaleDateString('he-IL', {
+                timeZone: 'America/New_York',
+                weekday: 'short',
+                day: 'numeric',
+                month: 'short'
+            });
+            
+            const nyDate = new Date(now.toLocaleString('en-US', { timeZone: 'America/New_York' }));
+            const nyHours = nyDate.getHours();
+            const nyMinutes = nyDate.getMinutes();
+            const nySeconds = nyDate.getSeconds();
+            
+            // Jerusalem
+            const ilTimeStr = now.toLocaleTimeString('he-IL', {
+                timeZone: 'Asia/Jerusalem',
+                hour: '2-digit',
+                minute: '2-digit',
+                second: '2-digit',
+                hour12: false
+            });
+            
+            const ilDateStr = now.toLocaleDateString('he-IL', {
+                timeZone: 'Asia/Jerusalem',
+                weekday: 'short',
+                day: 'numeric',
+                month: 'short'
+            });
+            
+            const ilDate = new Date(now.toLocaleString('en-US', { timeZone: 'Asia/Jerusalem' }));
+            const ilHours = ilDate.getHours();
+            const ilMinutes = ilDate.getMinutes();
+            const ilSeconds = ilDate.getSeconds();
+            
+            // Update displays
+            const nyTimeEl = document.getElementById('nyTime');
+            const nyDateEl = document.getElementById('nyDate');
+            const ilTimeEl = document.getElementById('ilTime');
+            const ilDateEl = document.getElementById('ilDate');
+            
+            if (nyTimeEl) nyTimeEl.textContent = nyTimeStr;
+            if (nyDateEl) nyDateEl.textContent = nyDateStr;
+            if (ilTimeEl) ilTimeEl.textContent = ilTimeStr;
+            if (ilDateEl) ilDateEl.textContent = ilDateStr;
+            
+            // Update NY hands
+            const nyHourDeg = (nyHours % 12) * 30 + nyMinutes * 0.5;
+            const nyMinuteDeg = nyMinutes * 6 + nySeconds * 0.1;
+            const nySecondDeg = nySeconds * 6;
+            
+            const nyHourHand = document.getElementById('nyHourHand');
+            const nyMinuteHand = document.getElementById('nyMinuteHand');
+            const nySecondHand = document.getElementById('nySecondHand');
+            
+            if (nyHourHand) nyHourHand.style.transform = `rotate(${nyHourDeg}deg)`;
+            if (nyMinuteHand) nyMinuteHand.style.transform = `rotate(${nyMinuteDeg}deg)`;
+            if (nySecondHand) nySecondHand.style.transform = `rotate(${nySecondDeg}deg)`;
+            
+            // Update IL hands
+            const ilHourDeg = (ilHours % 12) * 30 + ilMinutes * 0.5;
+            const ilMinuteDeg = ilMinutes * 6 + ilSeconds * 0.1;
+            const ilSecondDeg = ilSeconds * 6;
+            
+            const ilHourHand = document.getElementById('ilHourHand');
+            const ilMinuteHand = document.getElementById('ilMinuteHand');
+            const ilSecondHand = document.getElementById('ilSecondHand');
+            
+            if (ilHourHand) ilHourHand.style.transform = `rotate(${ilHourDeg}deg)`;
+            if (ilMinuteHand) ilMinuteHand.style.transform = `rotate(${ilMinuteDeg}deg)`;
+            if (ilSecondHand) ilSecondHand.style.transform = `rotate(${ilSecondDeg}deg)`;
+        }
+        
+        // Start clock updates
+        updateClocks();
+        setInterval(updateClocks, 1000);
     </script>
 </body>
 </html>
