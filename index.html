@@ -474,6 +474,53 @@
             opacity: 0.9;
         }
 
+        /* Summary Cards */
+        .summary-cards-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+            margin: 25px 0;
+        }
+
+        .summary-card {
+            background: white;
+            border-radius: 16px;
+            padding: 20px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .summary-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+        }
+
+        .summary-card-icon {
+            font-size: 3em;
+            flex-shrink: 0;
+        }
+
+        .summary-card-content {
+            flex: 1;
+        }
+
+        .summary-card-label {
+            font-size: 0.9em;
+            color: #666;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .summary-card-value {
+            font-size: 2.5em;
+            font-weight: 800;
+            color: #667eea;
+            line-height: 1;
+        }
+
         /* Projects Section */
         .projects-section {
             margin-top: 15px;
@@ -806,6 +853,38 @@
 
         .completed-card::before {
             background: linear-gradient(90deg, #999 0%, #666 100%) !important;
+        }
+
+        .pending-approval-card::before {
+            background: linear-gradient(90deg, #f39c12 0%, #e67e22 100%) !important;
+        }
+
+        .pending-execution-card::before {
+            background: linear-gradient(90deg, #3498db 0%, #2980b9 100%) !important;
+        }
+
+        .project-badge {
+            display: inline-block;
+            padding: 3px 8px;
+            border-radius: 12px;
+            font-size: 0.75em;
+            font-weight: bold;
+            margin-right: 8px;
+        }
+
+        .badge-completed {
+            background: #95a5a6;
+            color: white;
+        }
+
+        .badge-pending-approval {
+            background: #f39c12;
+            color: white;
+        }
+
+        .badge-pending-execution {
+            background: #3498db;
+            color: white;
         }
 
         /* Monthly Payment Timeline */
@@ -1372,6 +1451,221 @@
             animation: fadeIn 0.5s ease forwards;
         }
 
+        /* Budget Planning Tool */
+        .budget-planner-section {
+            background: white;
+            border-radius: 16px;
+            padding: 30px;
+            margin: 20px 0;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .budget-planner-header {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .budget-planner-header h2 {
+            font-size: 1.8em;
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+
+        .budget-planner-header p {
+            color: #666;
+            font-size: 1.05em;
+        }
+
+        .budget-input-section {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            justify-content: center;
+        }
+
+        .budget-input-section label {
+            font-weight: 700;
+            color: #333;
+            font-size: 1.1em;
+        }
+
+        .budget-input-section input {
+            max-width: 200px;
+            padding: 12px;
+            border: 2px solid #667eea;
+            border-radius: 8px;
+            font-size: 1.3em;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .budget-input-section span {
+            font-size: 1.3em;
+            font-weight: bold;
+        }
+
+        .budget-projects-selector {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+        }
+
+        .budget-project-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 15px;
+            background: white;
+            border-radius: 10px;
+            margin-bottom: 10px;
+            border: 2px solid #e0e0e0;
+            transition: all 0.3s ease;
+        }
+
+        .budget-project-item:hover {
+            border-color: #667eea;
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.2);
+        }
+
+        .budget-project-item input[type="checkbox"] {
+            width: 24px;
+            height: 24px;
+            cursor: pointer;
+        }
+
+        .budget-project-info {
+            flex: 1;
+        }
+
+        .budget-project-name {
+            font-weight: 700;
+            color: #333;
+            font-size: 1.1em;
+            margin-bottom: 5px;
+        }
+
+        .budget-project-details {
+            color: #666;
+            font-size: 0.9em;
+        }
+
+        .budget-date-selector {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .budget-date-selector label {
+            font-weight: 600;
+            font-size: 0.9em;
+        }
+
+        .budget-date-selector select {
+            padding: 8px 12px;
+            border: 2px solid #667eea;
+            border-radius: 8px;
+            font-size: 0.95em;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .budget-comparison-section h3 {
+            font-size: 1.3em;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .budget-comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        .budget-comparison-table th {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px;
+            text-align: center;
+            font-size: 1.05em;
+            font-weight: 700;
+        }
+
+        .budget-comparison-table td {
+            padding: 12px;
+            text-align: center;
+            border: 1px solid #e0e0e0;
+            font-size: 1em;
+        }
+
+        .budget-comparison-table tr:nth-child(even) {
+            background: #f8f9fa;
+        }
+
+        .budget-amount {
+            font-weight: bold;
+            font-family: 'Courier New', monospace;
+            font-size: 1.05em;
+        }
+
+        .budget-amount-normal {
+            color: #27ae60;
+        }
+
+        .budget-amount-increased {
+            color: #e74c3c;
+        }
+
+        .budget-amount-over {
+            color: #e74c3c;
+            font-weight: bold;
+            background: #ffe6e6;
+            padding: 4px 8px;
+            border-radius: 4px;
+        }
+
+        .budget-diff {
+            font-weight: bold;
+        }
+
+        .budget-diff-up {
+            color: #e74c3c;
+        }
+
+        .budget-diff-ok {
+            color: #27ae60;
+        }
+
+        .budget-recommendation {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 12px;
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .budget-recommendation h3 {
+            font-size: 1.6em;
+            margin-bottom: 15px;
+        }
+
+        .budget-recommendation p {
+            font-size: 1.15em;
+            line-height: 1.7;
+            margin-bottom: 10px;
+        }
+
+        .budget-recommendation strong {
+            font-weight: 800;
+        }
+
         /* Responsive */
         @media (max-width: 768px) {
             h1 {
@@ -1563,6 +1857,38 @@
             <p class="subtitle">לקוח: זכרון אהרן</p>
         </header>
 
+        <!-- Summary Cards -->
+        <div class="summary-cards-container fade-in" id="summaryCards" style="display: none;">
+            <div class="summary-card">
+                <div class="summary-card-icon">🎯</div>
+                <div class="summary-card-content">
+                    <div class="summary-card-label">פעילים</div>
+                    <div class="summary-card-value" id="summaryActive">0</div>
+                </div>
+            </div>
+            <div class="summary-card">
+                <div class="summary-card-icon">⏳</div>
+                <div class="summary-card-content">
+                    <div class="summary-card-label">ממתינים לאישור</div>
+                    <div class="summary-card-value" id="summaryPendingApproval">0</div>
+                </div>
+            </div>
+            <div class="summary-card">
+                <div class="summary-card-icon">🔜</div>
+                <div class="summary-card-content">
+                    <div class="summary-card-label">ממתינים לביצוע</div>
+                    <div class="summary-card-value" id="summaryPendingExecution">0</div>
+                </div>
+            </div>
+            <div class="summary-card">
+                <div class="summary-card-icon">✅</div>
+                <div class="summary-card-content">
+                    <div class="summary-card-label">הסתיימו</div>
+                    <div class="summary-card-value" id="summaryCompleted">0</div>
+                </div>
+            </div>
+        </div>
+
         <div id="loading" class="loading">
             <div class="spinner"></div>
             <p>טוען נתונים...</p>
@@ -1573,6 +1899,49 @@
             <div class="monthly-timeline fade-in">
                 <div class="timeline-title">💰 תשלומים חודשיים נדרשים ל-12 החודשים הקרובים</div>
                 <div id="monthlyTimeline" class="timeline-months"></div>
+            </div>
+
+            <!-- Budget Planning Tool -->
+            <div class="budget-planner-section fade-in" style="display: none;" id="budgetPlannerSection">
+                <div class="budget-planner-header">
+                    <h2>🧮 כלי תכנון תקציב</h2>
+                    <p>בחר פרויקטים וראה כיצד הם ישפיעו על התשלומים החודשיים</p>
+                </div>
+
+                <!-- Budget Input -->
+                <div class="budget-input-section">
+                    <label>💰 התקציב החודשי שלי:</label>
+                    <input type="number" id="monthlyBudget" value="8000" step="100" min="0">
+                    <span>$</span>
+                </div>
+
+                <!-- Projects Selector -->
+                <div class="budget-projects-selector" id="budgetProjectsSelector">
+                    <!-- Will be populated by JavaScript -->
+                </div>
+
+                <!-- Comparison Table -->
+                <div class="budget-comparison-section">
+                    <h3>📊 השוואת תשלומים חודשיים</h3>
+                    <table class="budget-comparison-table">
+                        <thead>
+                            <tr>
+                                <th>חודש</th>
+                                <th>ללא פרויקטים חדשים</th>
+                                <th>עם פרויקטים נבחרים</th>
+                                <th>הפרש</th>
+                            </tr>
+                        </thead>
+                        <tbody id="budgetComparisonBody">
+                            <!-- Will be populated by JavaScript -->
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Recommendation -->
+                <div class="budget-recommendation" id="budgetRecommendation">
+                    <!-- Will be populated by JavaScript -->
+                </div>
             </div>
 
             <!-- Warning Message -->
@@ -1592,6 +1961,8 @@
                 <!-- Filter Buttons -->
                 <div class="filter-container">
                     <button class="filter-btn active" data-filter="active">פעילים</button>
+                    <button class="filter-btn" data-filter="pendingApproval">ממתינים לאישור</button>
+                    <button class="filter-btn" data-filter="pendingExecution">ממתינים לביצוע</button>
                     <button class="filter-btn" data-filter="completed">שהסתיימו</button>
                     <button class="filter-btn" data-filter="all">הכל</button>
                 </div>
@@ -1726,6 +2097,8 @@
             const lines = csv.trim().split('\n');
             const activeProjects = [];
             const completedProjects = [];
+            const pendingApprovalProjects = []; // NEW: ממתינים לאישור
+            const pendingExecutionProjects = []; // NEW: ממתינים לביצוע
 
             // Parse CSV properly handling quotes and commas
             for (let i = 1; i < lines.length; i++) {
@@ -1751,16 +2124,16 @@
                 
                 // Create project object with correct column mapping
                 const clientName = values[2] || ''; // C column (index 2)
+                const startDate = values[1] || ''; // B column (index 1) - תאריך אישור
                 const statusF = values[5] || ''; // F column (index 5) - Status
                 const statusG = values[6] || ''; // G column (index 6) - Secondary status
                 
-                // Filter: client "בלייער יונתן" AND status contains "מאושר"
-                if (values.length >= 18 && values[3] && 
-                    clientName.includes('בלייער יונתן') && 
-                    statusF.includes('מאושר')) {
+                // Only process projects for "בלייער יונתן"
+                if (values.length >= 18 && values[3] && clientName.includes('בלייער יונתן')) {
                     
                     const project = {
                         'name': values[3] || '',
+                        'startDate': startDate,
                         'quoted': values[10] || '0',
                         'deadline': values[13] || '',
                         'paid': values[14] || '0',
@@ -1768,15 +2141,47 @@
                         'status': statusF
                     };
                     
+                    // Categorize projects
                     if (statusG.includes('הסתיים')) {
+                        // הסתיים
                         completedProjects.push(project);
-                    } else {
-                        activeProjects.push(project);
+                    } else if (statusF.includes('ממתין לתשובה הלקוח')) {
+                        // ממתינים לאישור
+                        pendingApprovalProjects.push(project);
+                    } else if (statusF.includes('מאושר')) {
+                        // Check if start date is in future months (not current month)
+                        const today = new Date();
+                        const currentMonth = today.getMonth();
+                        const currentYear = today.getFullYear();
+                        
+                        // Parse start date (assuming DD/MM/YYYY format)
+                        const dateParts = startDate.split('/');
+                        if (dateParts.length === 3) {
+                            const projectMonth = parseInt(dateParts[1]) - 1; // Month is 0-indexed
+                            const projectYear = parseInt(dateParts[2]);
+                            
+                            if (projectYear > currentYear || 
+                                (projectYear === currentYear && projectMonth > currentMonth)) {
+                                // ממתינים לביצוע - starts in future month
+                                pendingExecutionProjects.push(project);
+                            } else {
+                                // פעילים - already started
+                                activeProjects.push(project);
+                            }
+                        } else {
+                            // If date parsing fails, treat as active
+                            activeProjects.push(project);
+                        }
                     }
                 }
             }
 
-            return { active: activeProjects, completed: completedProjects };
+            return { 
+                active: activeProjects, 
+                completed: completedProjects,
+                pendingApproval: pendingApprovalProjects,
+                pendingExecution: pendingExecutionProjects
+            };
         }
 
         function formatCurrency(amount) {
@@ -1795,6 +2200,9 @@
             }
             return null;
         }
+
+        // Alias for parseDeadlineDate
+        const parseDate = parseDeadlineDate;
 
         function getMonthsBetween(startDate, endDate) {
             const years = endDate.getFullYear() - startDate.getFullYear();
@@ -1815,15 +2223,27 @@
             return Math.round((paidNum / quotedNum) * 100);
         }
 
-        function createProjectCard(project, isCompleted = false) {
+        function createProjectCard(project, isCompleted = false, isPendingApproval = false, isPendingExecution = false) {
             const progress = calculateProgress(project.quoted, project.paid);
-            const cardClass = isCompleted ? 'project-card completed-card' : 'project-card';
+            let cardClass = 'project-card';
+            let badge = '';
+            
+            if (isCompleted) {
+                cardClass += ' completed-card';
+                badge = '<span class="project-badge badge-completed">✅ הסתיים</span>';
+            } else if (isPendingApproval) {
+                cardClass += ' pending-approval-card';
+                badge = '<span class="project-badge badge-pending-approval">⏳ ממתין לאישור</span>';
+            } else if (isPendingExecution) {
+                cardClass += ' pending-execution-card';
+                badge = '<span class="project-badge badge-pending-execution">🔜 ממתין לביצוע</span>';
+            }
             
             return `
                 <div class="${cardClass} fade-in">
                     <div class="project-row">
                         <div class="project-cell">
-                            <div class="cell-value">📋 ${project.name}</div>
+                            <div class="cell-value">📋 ${project.name} ${badge}</div>
                         </div>
                         <div class="project-cell">
                             <div class="cell-value amount">${formatCurrency(project.quoted)}</div>
@@ -1835,7 +2255,7 @@
                             <div class="cell-value remaining">${formatCurrency(project.remaining)}</div>
                         </div>
                         <div class="project-cell">
-                            <div class="cell-value deadline">📅 ${project.deadline}</div>
+                            <div class="cell-value deadline">📅 ${project.deadline || project.startDate || 'N/A'}</div>
                         </div>
                         <div class="progress-cell">
                             <div class="progress-mini">
@@ -1876,6 +2296,7 @@
                 const today = new Date();
                 const monthlyPayments = Array(12).fill(0);
                 
+                // Include active projects
                 activeProjects.forEach(project => {
                     const deadlineDate = parseDeadlineDate(project.deadline);
                     if (deadlineDate) {
@@ -1887,6 +2308,32 @@
                         const monthsToDistribute = Math.min(12, monthsRemaining);
                         for (let i = 0; i < monthsToDistribute; i++) {
                             monthlyPayments[i] += monthlyPayment;
+                        }
+                    }
+                });
+
+                // Include pending execution projects (starts in future months)
+                const pendingExecutionProjects = projectsData.pendingExecution || [];
+                pendingExecutionProjects.forEach(project => {
+                    const startDate = parseDate(project.startDate);
+                    const deadlineDate = parseDeadlineDate(project.deadline);
+                    
+                    if (startDate && deadlineDate) {
+                        // Calculate from start date to deadline
+                        const monthsTotal = getMonthsBetween(startDate, deadlineDate);
+                        const totalAmount = parseFloat(String(project.quoted).replace(/[^\d.-]/g, '')) || 0;
+                        const monthlyPayment = totalAmount / monthsTotal;
+                        
+                        // Find which month index the project starts (relative to today)
+                        const monthsUntilStart = getMonthsBetween(today, startDate);
+                        
+                        // Distribute payments starting from the project start month
+                        const monthsToDistribute = Math.min(12 - monthsUntilStart, monthsTotal);
+                        for (let i = 0; i < monthsToDistribute; i++) {
+                            const monthIndex = monthsUntilStart + i;
+                            if (monthIndex >= 0 && monthIndex < 12) {
+                                monthlyPayments[monthIndex] += monthlyPayment;
+                            }
                         }
                     }
                 });
@@ -1944,9 +2391,21 @@
                 // Store projects globally for filtering
                 window.allActiveProjects = activeProjects;
                 window.allCompletedProjects = completedProjects;
+                window.allPendingApprovalProjects = projectsData.pendingApproval || [];
+                window.allPendingExecutionProjects = projectsData.pendingExecution || [];
+
+                // Update summary cards
+                document.getElementById('summaryActive').textContent = activeProjects.length;
+                document.getElementById('summaryPendingApproval').textContent = (projectsData.pendingApproval || []).length;
+                document.getElementById('summaryPendingExecution').textContent = (projectsData.pendingExecution || []).length;
+                document.getElementById('summaryCompleted').textContent = completedProjects.length;
+                document.getElementById('summaryCards').style.display = 'grid';
 
                 // Initial display - show active projects
                 displayFilteredProjects('active');
+
+                // Initialize budget planner
+                initBudgetPlanner();
 
                 // Hide loading, show content
                 document.getElementById('loading').style.display = 'none';
@@ -2200,8 +2659,17 @@
                 projectsToShow = window.allActiveProjects || [];
             } else if (filter === 'completed') {
                 projectsToShow = window.allCompletedProjects || [];
+            } else if (filter === 'pendingApproval') {
+                projectsToShow = window.allPendingApprovalProjects || [];
+            } else if (filter === 'pendingExecution') {
+                projectsToShow = window.allPendingExecutionProjects || [];
             } else { // 'all'
-                projectsToShow = [...(window.allActiveProjects || []), ...(window.allCompletedProjects || [])];
+                projectsToShow = [
+                    ...(window.allActiveProjects || []), 
+                    ...(window.allCompletedProjects || []),
+                    ...(window.allPendingApprovalProjects || []),
+                    ...(window.allPendingExecutionProjects || [])
+                ];
             }
 
             // Calculate totals for header
@@ -2226,7 +2694,9 @@
             
             projectsGrid.innerHTML = projectsToShow.map(project => {
                 const isCompleted = (window.allCompletedProjects || []).includes(project);
-                return createProjectCard(project, isCompleted);
+                const isPendingApproval = (window.allPendingApprovalProjects || []).includes(project);
+                const isPendingExecution = (window.allPendingExecutionProjects || []).includes(project);
+                return createProjectCard(project, isCompleted, isPendingApproval, isPendingExecution);
             }).join('');
 
             // Hide completed section when using filter
@@ -2577,6 +3047,204 @@
         // Start clock updates
         updateClocks();
         setInterval(updateClocks, 1000);
+
+        // Budget Planner Logic
+        function initBudgetPlanner() {
+            const pendingApprovalProjects = window.allPendingApprovalProjects || [];
+            
+            if (pendingApprovalProjects.length === 0) {
+                // No pending approval projects - hide the section
+                document.getElementById('budgetPlannerSection').style.display = 'none';
+                return;
+            }
+
+            // Show the section
+            document.getElementById('budgetPlannerSection').style.display = 'block';
+
+            // Populate projects selector
+            const selector = document.getElementById('budgetProjectsSelector');
+            const today = new Date();
+            const currentMonth = today.getMonth();
+            const currentYear = today.getFullYear();
+
+            // Generate next 3 months options
+            const monthOptions = [];
+            for (let i = 0; i < 3; i++) {
+                const monthDate = new Date(currentYear, currentMonth + i, 1);
+                const monthName = getHebrewMonthName(monthDate);
+                const year = monthDate.getFullYear();
+                monthOptions.push({ value: i, label: `${monthName} ${year}`, date: monthDate });
+            }
+
+            selector.innerHTML = '<h4 style="margin-bottom: 15px; color: #667eea; font-weight: 700;">📋 בחר פרויקטים ממתינים לאישור</h4>' +
+                pendingApprovalProjects.map((project, idx) => {
+                    const amount = parseFloat(String(project.quoted).replace(/[^\d.-]/g, '')) || 0;
+                    const duration = 2; // Default duration - could be calculated from project data
+                    
+                    return `
+                        <div class="budget-project-item">
+                            <input type="checkbox" id="budgetProj${idx}" data-project-idx="${idx}">
+                            <div class="budget-project-info">
+                                <div class="budget-project-name">${project.name}</div>
+                                <div class="budget-project-details">💰 $${amount.toLocaleString()} | ⏱️ ${duration} חודשים</div>
+                            </div>
+                            <div class="budget-date-selector">
+                                <label>מתי לאשר:</label>
+                                <select id="budgetDate${idx}" data-project-idx="${idx}">
+                                    ${monthOptions.map(opt => `<option value="${opt.value}">${opt.label}</option>`).join('')}
+                                </select>
+                            </div>
+                        </div>
+                    `;
+                }).join('');
+
+            // Add event listeners
+            pendingApprovalProjects.forEach((project, idx) => {
+                const checkbox = document.getElementById(`budgetProj${idx}`);
+                const dateSelector = document.getElementById(`budgetDate${idx}`);
+                
+                checkbox.addEventListener('change', updateBudgetComparison);
+                dateSelector.addEventListener('change', updateBudgetComparison);
+            });
+
+            document.getElementById('monthlyBudget').addEventListener('input', updateBudgetComparison);
+
+            // Initial calculation
+            updateBudgetComparison();
+        }
+
+        function updateBudgetComparison() {
+            const pendingApprovalProjects = window.allPendingApprovalProjects || [];
+            const activeProjects = window.allActiveProjects || [];
+            const pendingExecutionProjects = window.allPendingExecutionProjects || [];
+            const monthlyBudget = parseFloat(document.getElementById('monthlyBudget').value) || 0;
+            
+            const today = new Date();
+            const currentMonth = today.getMonth();
+            const currentYear = today.getFullYear();
+
+            // Calculate base monthly payments (without new projects)
+            const basePayments = Array(12).fill(0);
+            
+            // Include active projects
+            activeProjects.forEach(project => {
+                const deadlineDate = parseDeadlineDate(project.deadline);
+                if (deadlineDate) {
+                    const monthsRemaining = getMonthsBetween(today, deadlineDate);
+                    const remainingAmount = parseFloat(String(project.remaining).replace(/[^\d.-]/g, '')) || 0;
+                    const monthlyPayment = remainingAmount / monthsRemaining;
+                    
+                    const monthsToDistribute = Math.min(12, monthsRemaining);
+                    for (let i = 0; i < monthsToDistribute; i++) {
+                        basePayments[i] += monthlyPayment;
+                    }
+                }
+            });
+
+            // Include pending execution projects
+            pendingExecutionProjects.forEach(project => {
+                const startDate = parseDate(project.startDate);
+                const deadlineDate = parseDeadlineDate(project.deadline);
+                
+                if (startDate && deadlineDate) {
+                    const monthsTotal = getMonthsBetween(startDate, deadlineDate);
+                    const totalAmount = parseFloat(String(project.quoted).replace(/[^\d.-]/g, '')) || 0;
+                    const monthlyPayment = totalAmount / monthsTotal;
+                    
+                    const monthsUntilStart = getMonthsBetween(today, startDate);
+                    const monthsToDistribute = Math.min(12 - monthsUntilStart, monthsTotal);
+                    
+                    for (let i = 0; i < monthsToDistribute; i++) {
+                        const monthIndex = monthsUntilStart + i;
+                        if (monthIndex >= 0 && monthIndex < 12) {
+                            basePayments[monthIndex] += monthlyPayment;
+                        }
+                    }
+                }
+            });
+
+            // Calculate with selected projects
+            const withProjectsPayments = [...basePayments];
+            
+            pendingApprovalProjects.forEach((project, idx) => {
+                const checkbox = document.getElementById(`budgetProj${idx}`);
+                if (!checkbox || !checkbox.checked) return;
+                
+                const dateSelector = document.getElementById(`budgetDate${idx}`);
+                const monthsOffset = parseInt(dateSelector.value);
+                const amount = parseFloat(String(project.quoted).replace(/[^\d.-]/g, '')) || 0;
+                const duration = 2; // Default duration
+                const monthlyPayment = amount / duration;
+                
+                for (let i = 0; i < duration && (monthsOffset + i) < 12; i++) {
+                    withProjectsPayments[monthsOffset + i] += monthlyPayment;
+                }
+            });
+
+            // Build comparison table
+            const tbody = document.getElementById('budgetComparisonBody');
+            let tableHTML = '';
+            let overBudgetMonths = [];
+
+            for (let i = 0; i < 12; i++) {
+                const monthDate = new Date(currentYear, currentMonth + i, 1);
+                const monthName = getHebrewMonthName(monthDate);
+                const monthNum = String(monthDate.getMonth() + 1).padStart(2, '0');
+                const year = monthDate.getFullYear();
+
+                const baseAmount = basePayments[i];
+                const withProjectsAmount = withProjectsPayments[i];
+                const diff = withProjectsAmount - baseAmount;
+
+                const baseClass = baseAmount > monthlyBudget ? 'budget-amount-over' : 'budget-amount-normal';
+                const withClass = withProjectsAmount > monthlyBudget ? 'budget-amount-over' : 'budget-amount-increased';
+                const diffClass = diff > 0 ? 'budget-diff-up' : 'budget-diff-ok';
+
+                if (withProjectsAmount > monthlyBudget) {
+                    overBudgetMonths.push({ month: monthName, amount: withProjectsAmount, over: withProjectsAmount - monthlyBudget });
+                }
+
+                tableHTML += `
+                    <tr>
+                        <td><strong>${monthName} ${year}</strong></td>
+                        <td><span class="budget-amount ${baseClass}">$${Math.round(baseAmount).toLocaleString()}</span></td>
+                        <td><span class="budget-amount ${withClass}">$${Math.round(withProjectsAmount).toLocaleString()}</span></td>
+                        <td><span class="budget-diff ${diffClass}">${diff > 0 ? '+' : ''}$${Math.round(diff).toLocaleString()} ${diff > 0 ? '⬆️' : '✅'}</span></td>
+                    </tr>
+                `;
+            }
+
+            tbody.innerHTML = tableHTML;
+
+            // Update recommendation
+            const recommendation = document.getElementById('budgetRecommendation');
+            if (overBudgetMonths.length > 0) {
+                const monthsList = overBudgetMonths.map(m => `<strong>${m.month}</strong>`).join(', ');
+                const maxOver = Math.max(...overBudgetMonths.map(m => m.over));
+                
+                recommendation.innerHTML = `
+                    <h3>💡 המלצה חכמה</h3>
+                    <p>
+                        ⚠️ <strong>אזהרה:</strong> החודשים ${monthsList} יעברו את התקציב החודשי שלך!
+                        <br>החריגה המקסימלית: <strong>$${Math.round(maxOver).toLocaleString()}</strong>
+                    </p>
+                    <p style="margin-top: 15px;">
+                        💚 <strong>המלצה:</strong> שקול לדחות חלק מהפרויקטים לחודשים אחרים כדי לשמור על תקציב מאוזן.
+                    </p>
+                `;
+            } else {
+                recommendation.innerHTML = `
+                    <h3>💡 המלצה חכמה</h3>
+                    <p>
+                        ✅ <strong>מצוין!</strong> כל החודשים נשארים בתקציב החודשי שלך.
+                        <br>אתה יכול לאשר את הפרויקטים הנבחרים ללא חשש.
+                    </p>
+                `;
+            }
+        }
+
+        // Initialize budget planner when projects are loaded
+        window.addEventListener('projectsLoaded', initBudgetPlanner);
     </script>
 </body>
 </html>
