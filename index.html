@@ -507,10 +507,16 @@
 
         .section-title {
             color: white;
-            font-size: 1.2em;
-            margin-bottom: 12px;
+            font-size: 2em;
+            font-weight: 800;
+            margin-bottom: 20px;
             text-align: center;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3);
+            letter-spacing: 1px;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0.1) 100%);
+            padding: 15px;
+            border-radius: 12px;
+            backdrop-filter: blur(10px);
         }
 
         /* Projects Scroll Container */
@@ -958,41 +964,44 @@
         }
 
         .filter-btn {
-            padding: 10px 18px;
-            border: 2px solid #667eea;
+            padding: 12px 22px;
+            border: 3px solid #667eea;
             background: white;
             color: #667eea;
-            border-radius: 20px;
-            font-weight: 600;
-            font-size: 0.85em;
+            border-radius: 25px;
+            font-weight: 700;
+            font-size: 1em;
             cursor: pointer;
             transition: all 0.3s ease;
             display: flex;
             align-items: center;
-            gap: 6px;
+            gap: 8px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
         }
 
         .filter-btn:hover {
             background: #f0f3ff;
-            transform: translateY(-2px);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
         }
 
         .filter-btn.active {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
-            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.5);
+            transform: scale(1.05);
         }
 
         .filter-count {
-            background: rgba(255, 255, 255, 0.3);
-            padding: 2px 8px;
-            border-radius: 10px;
-            font-weight: 700;
-            font-size: 0.9em;
+            background: rgba(255, 255, 255, 0.35);
+            padding: 3px 10px;
+            border-radius: 12px;
+            font-weight: 800;
+            font-size: 1em;
         }
 
         .filter-btn.active .filter-count {
-            background: rgba(255, 255, 255, 0.25);
+            background: rgba(255, 255, 255, 0.3);
         }
 
         /* Table Header with Totals */
@@ -1903,15 +1912,7 @@
                 <!-- Content will be populated by JavaScript -->
             </div>
 
-            <!-- Warning Message -->
-            <div class="warning-message fade-in">
-                <div class="warning-message-icon">⚠️</div>
-                <div class="warning-message-content">
-                    <div class="warning-message-text">
-                        <strong>שימו לב:</strong> פרויקטים הממתינים לאישור טרם עודכנו במערכת ואינם כלולים בחישוב התשלומים החודשיים!
-                    </div>
-                </div>
-            </div>
+
 
             <!-- Projects Section -->
             <div class="projects-section">
@@ -1919,14 +1920,14 @@
                 
                 <!-- Filter Buttons with counts -->
                 <div class="filter-container" id="filterContainer">
-                    <button class="filter-btn active" data-filter="active">
-                        🎯 פעילים <span class="filter-count" id="filterCountActive">0</span>
-                    </button>
                     <button class="filter-btn" data-filter="pendingApproval">
                         ⏳ ממתינים לאישור <span class="filter-count" id="filterCountPendingApproval">0</span>
                     </button>
                     <button class="filter-btn" data-filter="pendingExecution">
                         🔜 ממתינים לביצוע <span class="filter-count" id="filterCountPendingExecution">0</span>
+                    </button>
+                    <button class="filter-btn active" data-filter="active">
+                        🎯 פעילים <span class="filter-count" id="filterCountActive">0</span>
                     </button>
                     <button class="filter-btn" data-filter="completed">
                         ✅ שהסתיימו <span class="filter-count" id="filterCountCompleted">0</span>
