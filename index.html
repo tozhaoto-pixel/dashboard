@@ -1452,89 +1452,144 @@
         }
 
         /* Budget Planning Tool */
+        .budget-planner-toggle-container {
+            text-align: center;
+            margin: 15px 0;
+        }
+
+        .budget-planner-toggle-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 25px;
+            font-size: 1em;
+            font-weight: 700;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .budget-planner-toggle-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.5);
+        }
+
+        .toggle-icon {
+            font-size: 1.2em;
+        }
+
+        .toggle-arrow {
+            transition: transform 0.3s ease;
+        }
+
+        .budget-planner-toggle-btn.active .toggle-arrow {
+            transform: rotate(180deg);
+        }
+
         .budget-planner-section {
             background: white;
-            border-radius: 16px;
-            padding: 30px;
-            margin: 20px 0;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            border-radius: 12px;
+            padding: 20px;
+            margin: 15px 0;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+            max-height: 0;
+            overflow: hidden;
+            opacity: 0;
+            transition: all 0.5s ease;
+        }
+
+        .budget-planner-section.active {
+            max-height: 3000px;
+            opacity: 1;
+            padding: 20px;
         }
 
         .budget-planner-header {
             text-align: center;
-            margin-bottom: 25px;
+            margin-bottom: 20px;
         }
 
         .budget-planner-header h2 {
-            font-size: 1.8em;
+            font-size: 1.4em;
             color: #667eea;
-            margin-bottom: 10px;
+            margin-bottom: 8px;
         }
 
         .budget-planner-header p {
             color: #666;
-            font-size: 1.05em;
+            font-size: 0.9em;
         }
 
         .budget-input-section {
             background: #f8f9fa;
-            padding: 20px;
-            border-radius: 12px;
-            margin-bottom: 20px;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 15px;
             display: flex;
             align-items: center;
-            gap: 15px;
+            gap: 12px;
             justify-content: center;
         }
 
         .budget-input-section label {
-            font-weight: 700;
+            font-weight: 600;
             color: #333;
-            font-size: 1.1em;
+            font-size: 0.95em;
         }
 
         .budget-input-section input {
-            max-width: 200px;
-            padding: 12px;
+            max-width: 150px;
+            padding: 10px;
             border: 2px solid #667eea;
             border-radius: 8px;
-            font-size: 1.3em;
+            font-size: 1.1em;
             font-weight: bold;
             text-align: center;
         }
 
         .budget-input-section span {
-            font-size: 1.3em;
+            font-size: 1.1em;
             font-weight: bold;
         }
 
         .budget-projects-selector {
             background: #f8f9fa;
-            padding: 20px;
-            border-radius: 12px;
-            margin-bottom: 20px;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 15px;
+        }
+
+        .budget-projects-selector h4 {
+            margin-bottom: 12px;
+            color: #667eea;
+            font-weight: 700;
+            font-size: 1em;
         }
 
         .budget-project-item {
             display: flex;
             align-items: center;
-            gap: 15px;
-            padding: 15px;
+            gap: 12px;
+            padding: 12px;
             background: white;
-            border-radius: 10px;
-            margin-bottom: 10px;
+            border-radius: 8px;
+            margin-bottom: 8px;
             border: 2px solid #e0e0e0;
             transition: all 0.3s ease;
         }
 
         .budget-project-item:hover {
             border-color: #667eea;
-            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.2);
+            box-shadow: 0 3px 10px rgba(102, 126, 234, 0.15);
         }
 
         .budget-project-item input[type="checkbox"] {
-            width: 24px;
-            height: 24px;
+            width: 20px;
+            height: 20px;
             cursor: pointer;
         }
 
@@ -1543,65 +1598,66 @@
         }
 
         .budget-project-name {
-            font-weight: 700;
+            font-weight: 600;
             color: #333;
-            font-size: 1.1em;
-            margin-bottom: 5px;
+            font-size: 0.95em;
+            margin-bottom: 4px;
         }
 
         .budget-project-details {
             color: #666;
-            font-size: 0.9em;
+            font-size: 0.8em;
         }
 
         .budget-date-selector {
             display: flex;
-            gap: 10px;
+            gap: 8px;
             align-items: center;
         }
 
         .budget-date-selector label {
             font-weight: 600;
-            font-size: 0.9em;
+            font-size: 0.8em;
         }
 
         .budget-date-selector select {
-            padding: 8px 12px;
+            padding: 6px 10px;
             border: 2px solid #667eea;
-            border-radius: 8px;
-            font-size: 0.95em;
+            border-radius: 6px;
+            font-size: 0.85em;
             font-weight: 600;
             cursor: pointer;
         }
 
         .budget-comparison-section h3 {
-            font-size: 1.3em;
+            font-size: 1.1em;
             font-weight: bold;
             color: #333;
-            margin-bottom: 15px;
+            margin-bottom: 12px;
             text-align: center;
         }
 
         .budget-comparison-table {
             width: 100%;
             border-collapse: collapse;
-            margin-top: 20px;
+            margin-top: 15px;
+            font-size: 0.9em;
         }
 
         .budget-comparison-table th {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
-            padding: 15px;
+            padding: 10px;
             text-align: center;
-            font-size: 1.05em;
+            font-size: 0.9em;
             font-weight: 700;
         }
 
         .budget-comparison-table td {
-            padding: 12px;
+            padding: 8px;
             text-align: center;
             border: 1px solid #e0e0e0;
-            font-size: 1em;
+            font-size: 0.85em;
         }
 
         .budget-comparison-table tr:nth-child(even) {
@@ -1611,7 +1667,7 @@
         .budget-amount {
             font-weight: bold;
             font-family: 'Courier New', monospace;
-            font-size: 1.05em;
+            font-size: 0.95em;
         }
 
         .budget-amount-normal {
@@ -1626,7 +1682,7 @@
             color: #e74c3c;
             font-weight: bold;
             background: #ffe6e6;
-            padding: 4px 8px;
+            padding: 3px 6px;
             border-radius: 4px;
         }
 
@@ -1645,21 +1701,21 @@
         .budget-recommendation {
             background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
             color: white;
-            padding: 25px;
-            border-radius: 12px;
-            margin-top: 20px;
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 15px;
             text-align: center;
         }
 
         .budget-recommendation h3 {
-            font-size: 1.6em;
-            margin-bottom: 15px;
+            font-size: 1.2em;
+            margin-bottom: 10px;
         }
 
         .budget-recommendation p {
-            font-size: 1.15em;
-            line-height: 1.7;
-            margin-bottom: 10px;
+            font-size: 0.95em;
+            line-height: 1.6;
+            margin-bottom: 8px;
         }
 
         .budget-recommendation strong {
@@ -1899,47 +1955,18 @@
                 <div id="monthlyTimeline" class="timeline-months"></div>
             </div>
 
+            <!-- Budget Planner Toggle Button -->
+            <div class="budget-planner-toggle-container fade-in" id="budgetPlannerToggle" style="display: none;">
+                <button class="budget-planner-toggle-btn" onclick="toggleBudgetPlanner()">
+                    <span class="toggle-icon">🧮</span>
+                    <span class="toggle-text">פתח כלי תכנון תקציב</span>
+                    <span class="toggle-arrow">▼</span>
+                </button>
+            </div>
+
             <!-- Budget Planning Tool -->
-            <div class="budget-planner-section fade-in" style="display: none;" id="budgetPlannerSection">
-                <div class="budget-planner-header">
-                    <h2>🧮 כלי תכנון תקציב</h2>
-                    <p>בחר פרויקטים וראה כיצד הם ישפיעו על התשלומים החודשיים</p>
-                </div>
-
-                <!-- Budget Input -->
-                <div class="budget-input-section">
-                    <label>💰 התקציב החודשי שלי:</label>
-                    <input type="number" id="monthlyBudget" value="8000" step="100" min="0">
-                    <span>$</span>
-                </div>
-
-                <!-- Projects Selector -->
-                <div class="budget-projects-selector" id="budgetProjectsSelector">
-                    <!-- Will be populated by JavaScript -->
-                </div>
-
-                <!-- Comparison Table -->
-                <div class="budget-comparison-section">
-                    <h3>📊 השוואת תשלומים חודשיים</h3>
-                    <table class="budget-comparison-table">
-                        <thead>
-                            <tr>
-                                <th>חודש</th>
-                                <th>ללא פרויקטים חדשים</th>
-                                <th>עם פרויקטים נבחרים</th>
-                                <th>הפרש</th>
-                            </tr>
-                        </thead>
-                        <tbody id="budgetComparisonBody">
-                            <!-- Will be populated by JavaScript -->
-                        </tbody>
-                    </table>
-                </div>
-
-                <!-- Recommendation -->
-                <div class="budget-recommendation" id="budgetRecommendation">
-                    <!-- Will be populated by JavaScript -->
-                </div>
+            <div class="budget-planner-section" style="display: block;" id="budgetPlannerSection">
+                <!-- Content will be populated by JavaScript -->
             </div>
 
             <!-- Warning Message -->
@@ -3035,17 +3062,74 @@
         setInterval(updateClocks, 1000);
 
         // Budget Planner Logic
+        function toggleBudgetPlanner() {
+            const section = document.getElementById('budgetPlannerSection');
+            const button = document.querySelector('.budget-planner-toggle-btn');
+            
+            section.classList.toggle('active');
+            button.classList.toggle('active');
+            
+            // Track toggle
+            const isOpen = section.classList.contains('active');
+            trackEvent('Budget Planner', isOpen ? 'open' : 'close', 'toggle');
+        }
+
         function initBudgetPlanner() {
             const pendingApprovalProjects = window.allPendingApprovalProjects || [];
             
             if (pendingApprovalProjects.length === 0) {
-                // No pending approval projects - hide the section
+                // No pending approval projects - hide the button and section
+                document.getElementById('budgetPlannerToggle').style.display = 'none';
                 document.getElementById('budgetPlannerSection').style.display = 'none';
                 return;
             }
 
-            // Show the section
-            document.getElementById('budgetPlannerSection').style.display = 'block';
+            // Show the toggle button
+            document.getElementById('budgetPlannerToggle').style.display = 'block';
+
+            // Build the full budget planner HTML
+            const budgetSection = document.getElementById('budgetPlannerSection');
+            budgetSection.innerHTML = `
+                <div class="budget-planner-header">
+                    <h2>🧮 כלי תכנון תקציב</h2>
+                    <p>בחר פרויקטים וראה כיצד הם ישפיעו על התשלומים החודשיים</p>
+                </div>
+
+                <!-- Budget Input -->
+                <div class="budget-input-section">
+                    <label>💰 התקציב החודשי שלי:</label>
+                    <input type="number" id="monthlyBudget" value="8000" step="100" min="0">
+                    <span>$</span>
+                </div>
+
+                <!-- Projects Selector -->
+                <div class="budget-projects-selector" id="budgetProjectsSelector">
+                    <!-- Will be populated below -->
+                </div>
+
+                <!-- Comparison Table -->
+                <div class="budget-comparison-section">
+                    <h3>📊 השוואת תשלומים חודשיים</h3>
+                    <table class="budget-comparison-table">
+                        <thead>
+                            <tr>
+                                <th>חודש</th>
+                                <th>ללא פרויקטים חדשים</th>
+                                <th>עם פרויקטים נבחרים</th>
+                                <th>הפרש</th>
+                            </tr>
+                        </thead>
+                        <tbody id="budgetComparisonBody">
+                            <!-- Will be populated by JavaScript -->
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Recommendation -->
+                <div class="budget-recommendation" id="budgetRecommendation">
+                    <!-- Will be populated by JavaScript -->
+                </div>
+            `;
 
             // Populate projects selector
             const selector = document.getElementById('budgetProjectsSelector');
@@ -3062,7 +3146,7 @@
                 monthOptions.push({ value: i, label: `${monthName} ${year}`, date: monthDate });
             }
 
-            selector.innerHTML = '<h4 style="margin-bottom: 15px; color: #667eea; font-weight: 700;">📋 בחר פרויקטים ממתינים לאישור</h4>' +
+            selector.innerHTML = '<h4>📋 בחר פרויקטים ממתינים לאישור</h4>' +
                 pendingApprovalProjects.map((project, idx) => {
                     const amount = parseFloat(String(project.quoted).replace(/[^\d.-]/g, '')) || 0;
                     const duration = 2; // Default duration - could be calculated from project data
