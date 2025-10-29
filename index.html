@@ -2388,9 +2388,18 @@
                     };
                 }
                 
-                // חילוץ אחוזים מהטקסט
-                const completedMatch = percentages.match(/השלם:\s*([\d.]+)%/);
-                const inProgressMatch = percentages.match(/ביצוע:\s*([\d.]+)%/);
+                // חילוץ אחוזים מהטקסט - תמיכה בשני פורמטים
+                // פורמט 1: "השלם: 91.7%"
+                // פורמט 2: "91.7% :השלם"
+                let completedMatch = percentages.match(/השלם:\s*([\d.]+)%/);
+                if (!completedMatch) {
+                    completedMatch = percentages.match(/([\d.]+)%\s*:?השלם/);
+                }
+                
+                let inProgressMatch = percentages.match(/ביצוע:\s*([\d.]+)%/);
+                if (!inProgressMatch) {
+                    inProgressMatch = percentages.match(/([\d.]+)%\s*:?ביצוע/);
+                }
                 
                 if (completedMatch) {
                     projectsMap[projectName].completedPercent = parseFloat(completedMatch[1]);
