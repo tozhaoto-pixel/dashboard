@@ -1219,7 +1219,7 @@
             background: white;
             border-radius: 16px;
             width: 100%;
-            max-width: 900px;
+            max-width: 1200px;
             max-height: 90vh;
             overflow: hidden;
             box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
@@ -1260,6 +1260,25 @@
         .budget-modal-body::-webkit-scrollbar-thumb {
             background: #ffa500;
             border-radius: 3px;
+        }
+
+        .budget-two-columns {
+            display: grid;
+            grid-template-columns: 60% 40%;
+            gap: 25px;
+            align-items: start;
+        }
+
+        .budget-left-column {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .budget-right-column {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
         }
 
         .budget-input-section {
@@ -3026,23 +3045,29 @@
             }
 
             budgetBody.innerHTML = `
-                <div class="budget-projects-selector" id="budgetProjectsSelector">
-                    <h4>📋 פרויקטים ממתינים לאישור</h4>
-                </div>
-
-                <div class="budget-comparison-section">
-                    <h3>📊 השוואת תקציב</h3>
-                    <table class="budget-comparison-table">
-                        <thead>
-                            <tr>
-                                <th>חודש</th>
-                                <th>בסיס</th>
-                                <th>תוספת</th>
-                                <th>סה"כ לתשלום</th>
-                            </tr>
-                        </thead>
-                        <tbody id="budgetComparisonBody"></tbody>
-                    </table>
+                <div class="budget-two-columns">
+                    <div class="budget-left-column">
+                        <div class="budget-comparison-section">
+                            <h3>📊 השוואת תקציב</h3>
+                            <table class="budget-comparison-table">
+                                <thead>
+                                    <tr>
+                                        <th>חודש</th>
+                                        <th>בסיס</th>
+                                        <th>תוספת</th>
+                                        <th>סה"כ לתשלום</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="budgetComparisonBody"></tbody>
+                            </table>
+                        </div>
+                    </div>
+                    
+                    <div class="budget-right-column">
+                        <div class="budget-projects-selector" id="budgetProjectsSelector">
+                            <h4>📋 פרויקטים ממתינים לאישור</h4>
+                        </div>
+                    </div>
                 </div>
             `;
 
