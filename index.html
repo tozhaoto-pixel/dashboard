@@ -3064,8 +3064,10 @@
             
             const today = new Date();
             const activeProjects = window.allActiveProjects || [];
+            const pendingExecutionProjects = window.allPendingExecutionProjects || [];
             const breakdown = [];
             
+            // פרויקטים פעילים
             activeProjects.forEach(project => {
                 const deadlineDate = parseDeadlineDate(project.deadline);
                 if (deadlineDate) {
@@ -3076,7 +3078,31 @@
                         const monthlyPayment = remainingAmount / monthsRemaining;
                         breakdown.push({
                             name: project.name,
-                            amount: monthlyPayment
+                            amount: monthlyPayment,
+                            type: 'פעיל'
+                        });
+                    }
+                }
+            });
+
+            // פרויקטים ממתינים לביצוע
+            pendingExecutionProjects.forEach(project => {
+                const startDate = parseDeadlineDate(project.startDate);
+                const deadlineDate = parseDeadlineDate(project.deadline);
+                
+                if (startDate && deadlineDate) {
+                    const monthsTotal = getMonthsBetween(startDate, deadlineDate);
+                    const totalAmount = parseFloat(String(project.quoted).replace(/[^\d.-]/g, '')) || 0;
+                    const monthlyPayment = totalAmount / monthsTotal;
+                    
+                    const monthsUntilStart = getMonthsBetween(today, startDate);
+                    
+                    // בדיקה אם החודש הזה נכנס לטווח הביצוע
+                    if (monthIndex >= monthsUntilStart && monthIndex < monthsUntilStart + monthsTotal) {
+                        breakdown.push({
+                            name: project.name,
+                            amount: monthlyPayment,
+                            type: 'ממתין לביצוע'
                         });
                     }
                 }
@@ -3097,9 +3123,13 @@
                 breakdown.sort((a, b) => b.amount - a.amount);
                 
                 breakdown.forEach(item => {
+                    const badge = item.type === 'ממתין לביצוע' 
+                        ? '<span style="font-size: 0.75em; background: #ffd700; color: #333; padding: 3px 8px; border-radius: 12px; margin-right: 8px;">🔜 ממתין</span>' 
+                        : '';
+                    
                     modalBodyHTML += `
                         <div class="breakdown-item" onclick="openProjectFromMonth('${item.name.replace(/'/g, "\\'")}', event)" style="cursor: pointer; transition: background 0.2s;">
-                            <div class="breakdown-project-name">📋 ${item.name}</div>
+                            <div class="breakdown-project-name">📋 ${item.name} ${badge}</div>
                             <div class="breakdown-amount">${formatCurrency(item.amount.toString())}</div>
                         </div>
                     `;
@@ -3130,7 +3160,13 @@
 
         function openProjectDetails(projectName, event) {
             if (event) event.stopPropagation();
-            const project = window.allActiveProjects.find(p => p.name === projectName);
+            
+            // חיפוש בפרויקטים פעילים וממתינים לביצוע
+            let project = (window.allActiveProjects || []).find(p => p.name === projectName);
+            if (!project) {
+                project = (window.allPendingExecutionProjects || []).find(p => p.name === projectName);
+            }
+            
             if (!project) return;
             
             const modal = document.getElementById('projectDetailsModal');
