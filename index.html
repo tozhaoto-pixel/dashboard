@@ -1043,7 +1043,7 @@
         .modal-content {
             background: white;
             border-radius: 16px;
-            max-width: 900px;
+            max-width: 1100px;
             width: 100%;
             max-height: 80vh;
             overflow: hidden;
@@ -3139,12 +3139,12 @@
             
             // כותרת עם כל פרטי הפרויקט
             title.innerHTML = `
-                <div style="display: flex; flex-wrap: wrap; gap: 15px; align-items: center; font-size: 0.9em;">
-                    <span style="font-weight: bold;">📋 ${projectName}</span>
-                    <span>💰 ${formatCurrency(project.quoted)}</span>
-                    <span style="color: #43e97b;">✅ שולם: ${formatCurrency(project.paid)}</span>
-                    <span style="color: #ff6b6b;">⏳ יתרה: ${formatCurrency(project.remaining)}</span>
-                    <span>📅 ${project.deadline || project.startDate || 'N/A'}</span>
+                <div style="display: flex; flex-wrap: wrap; gap: 12px; align-items: center; font-size: 0.8em; line-height: 1.4;">
+                    <span style="font-weight: bold; font-size: 1.1em;">📋 ${projectName}</span>
+                    <span style="white-space: nowrap;">💰 ${formatCurrency(project.quoted)}</span>
+                    <span style="color: #43e97b; white-space: nowrap;">✅ שולם: ${formatCurrency(project.paid)}</span>
+                    <span style="color: #ff6b6b; white-space: nowrap;">⏳ יתרה: ${formatCurrency(project.remaining)}</span>
+                    <span style="white-space: nowrap;">📅 ${project.deadline || project.startDate || 'N/A'}</span>
                 </div>
             `;
             
