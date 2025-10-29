@@ -15,7 +15,6 @@
             'send_page_view': true
         });
         
-        // Track custom events
         function trackEvent(category, action, label) {
             gtag('event', action, {
                 'event_category': category,
@@ -43,6 +42,146 @@
             max-width: 1400px;
             margin: 0 auto;
             position: relative;
+        }
+
+        /* Loading Skeleton - Neon Glow */
+        .skeleton-loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .skeleton-loader.hidden {
+            display: none;
+        }
+
+        .skeleton-content {
+            max-width: 1400px;
+            width: 100%;
+        }
+
+        .skeleton-neon {
+            background: linear-gradient(
+                90deg,
+                rgba(255, 255, 255, 0.1) 0%,
+                rgba(255, 255, 255, 0.3) 25%,
+                rgba(240, 147, 251, 0.4) 50%,
+                rgba(255, 255, 255, 0.3) 75%,
+                rgba(255, 255, 255, 0.1) 100%
+            );
+            background-size: 400% 100%;
+            animation: neonScan 2s ease-in-out infinite;
+            border-radius: 12px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .skeleton-neon::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                90deg,
+                transparent,
+                rgba(255, 255, 255, 0.6),
+                transparent
+            );
+            animation: shine 2s ease-in-out infinite;
+        }
+
+        .skeleton-neon::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 10px;
+            height: 10px;
+            background: white;
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
+            animation: sparkle 1.5s ease-in-out infinite;
+        }
+
+        @keyframes neonScan {
+            0%, 100% {
+                background-position: 0% 0%;
+            }
+            50% {
+                background-position: 100% 0%;
+            }
+        }
+
+        @keyframes shine {
+            0% {
+                left: -100%;
+            }
+            100% {
+                left: 200%;
+            }
+        }
+
+        @keyframes sparkle {
+            0%, 100% {
+                opacity: 0;
+                transform: translate(-50%, -50%) scale(0);
+            }
+            50% {
+                opacity: 1;
+                transform: translate(-50%, -50%) scale(1);
+            }
+        }
+
+        .skeleton-header {
+            height: 80px;
+            margin-bottom: 20px;
+        }
+
+        .skeleton-timeline {
+            height: 150px;
+            margin-bottom: 20px;
+        }
+
+        .skeleton-title {
+            height: 60px;
+            margin-bottom: 15px;
+        }
+
+        .skeleton-filters {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .skeleton-filter {
+            height: 50px;
+            flex: 1;
+        }
+
+        .skeleton-search {
+            height: 50px;
+            margin-bottom: 15px;
+        }
+
+        .skeleton-table-header {
+            height: 60px;
+            margin-bottom: 10px;
+        }
+
+        .skeleton-card {
+            height: 60px;
+            margin-bottom: 8px;
         }
 
         /* Sidebar Toggle Button */
@@ -94,7 +233,7 @@
             left: 20px;
         }
 
-        /* World Clocks - Analog + Digital */
+        /* World Clocks */
         .world-clocks-corner {
             display: flex;
             flex-direction: column;
@@ -128,7 +267,6 @@
             font-size: 1.3em;
         }
 
-        /* Analog Clock Face */
         .clock-face {
             width: 100px;
             height: 100px;
@@ -151,7 +289,6 @@
             z-index: 10;
         }
 
-        /* Clock Hands */
         .hand {
             position: absolute;
             bottom: 50%;
@@ -182,7 +319,6 @@
             margin-left: -1px;
         }
 
-        /* Clock Numbers */
         .clock-number {
             position: absolute;
             font-size: 0.7em;
@@ -195,7 +331,6 @@
         .num-6 { bottom: 5px; left: 50%; transform: translateX(-50%); }
         .num-9 { left: 8px; top: 50%; transform: translateY(-50%); }
 
-        /* Digital Time Below */
         .clock-digital-time {
             font-size: 1.3em;
             font-weight: bold;
@@ -337,7 +472,7 @@
             margin: 6px 0;
         }
 
-        /* Hamburger Menu Button */
+        /* Hamburger Menu */
         .menu-toggle {
             position: fixed;
             top: 20px;
@@ -459,7 +594,6 @@
             font-size: 1em;
         }
 
-        /* Menu Overlay */
         .menu-overlay {
             position: fixed;
             top: 0;
@@ -505,21 +639,67 @@
             margin-top: 15px;
         }
 
-        .section-title {
-            color: white;
-            font-size: 2em;
-            font-weight: 800;
+        /* Section Title + Search */
+        .section-title-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
             margin-bottom: 20px;
-            text-align: center;
-            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3);
-            letter-spacing: 1px;
             background: linear-gradient(135deg, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0.1) 100%);
-            padding: 15px;
+            padding: 15px 20px;
             border-radius: 12px;
             backdrop-filter: blur(10px);
         }
 
-        /* Projects Scroll Container */
+        .section-title {
+            color: white;
+            font-size: 2em;
+            font-weight: 800;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3);
+            letter-spacing: 1px;
+            margin: 0;
+        }
+
+        .search-box-inline {
+            flex: 0 0 300px;
+            padding: 12px 20px 12px 45px;
+            font-size: 1em;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 25px;
+            background: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            outline: none;
+            transition: all 0.3s ease;
+            direction: rtl;
+            position: relative;
+        }
+
+        .search-box-inline:focus {
+            border-color: white;
+            box-shadow: 0 6px 25px rgba(255, 255, 255, 0.4);
+            background: white;
+        }
+
+        .search-box-inline::placeholder {
+            color: #999;
+        }
+
+        .search-wrapper {
+            position: relative;
+            flex: 0 0 300px;
+        }
+
+        .search-icon {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.2em;
+            color: #667eea;
+            pointer-events: none;
+        }
+
         .projects-scroll-container {
             max-height: 500px;
             overflow-y: auto;
@@ -543,35 +723,6 @@
 
         .projects-scroll-container::-webkit-scrollbar-thumb:hover {
             background: linear-gradient(180deg, #764ba2 0%, #667eea 100%);
-        }
-
-        /* Search Box */
-        .search-container {
-            margin-bottom: 15px;
-            text-align: center;
-        }
-
-        .search-box {
-            width: 100%;
-            max-width: 500px;
-            padding: 12px 20px;
-            font-size: 1em;
-            border: none;
-            border-radius: 25px;
-            background: white;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-            outline: none;
-            transition: box-shadow 0.3s ease;
-            text-align: center;
-            direction: rtl;
-        }
-
-        .search-box:focus {
-            box-shadow: 0 6px 25px rgba(102, 126, 234, 0.4);
-        }
-
-        .search-box::placeholder {
-            color: #999;
         }
 
         .projects-grid {
@@ -674,7 +825,6 @@
             border-left: 1px solid #e9ecef;
         }
 
-        /* Progress Bar - inline */
         .progress-mini {
             display: flex;
             align-items: center;
@@ -703,7 +853,6 @@
             min-width: 35px;
         }
 
-        /* Completed Projects Section */
         .completed-section {
             margin-top: 30px;
             padding-top: 20px;
@@ -722,6 +871,7 @@
         .payments-section .section-title {
             color: white;
             margin-bottom: 20px;
+            text-align: center;
         }
 
         .payments-header {
@@ -803,6 +953,87 @@
             z-index: 1000;
             align-items: center;
             justify-content: center;
+            backdrop-filter: blur(4px);
+        }
+
+        .modal-overlay.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: white;
+            border-radius: 16px;
+            max-width: 700px;
+            width: 100%;
+            max-height: 80vh;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            animation: slideUp 0.3s ease;
+            direction: rtl;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .modal-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .modal-title {
+            font-size: 1.3em;
+            font-weight: bold;
+        }
+
+        .modal-close {
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            color: white;
+            font-size: 1.5em;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-close:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: rotate(90deg);
+        }
+
+        .modal-body {
+            padding: 25px;
+            max-height: calc(80vh - 140px);
+            overflow-y: auto;
+        }
+
+        .modal-body::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .modal-body::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+
+        .modal-body::-webkit-scrollbar-thumb {
+            background: #667eea;
+            border-radius: 3px;
         }
 
         .payment-details {
@@ -872,7 +1103,7 @@
             color: white;
         }
 
-        /* Monthly Payment Timeline */
+        /* Monthly Timeline */
         .monthly-timeline {
             background: white;
             border-radius: 12px;
@@ -889,69 +1120,6 @@
             margin-bottom: 15px;
             padding-bottom: 10px;
             border-bottom: 2px solid #e9ecef;
-        }
-
-        /* Warning Message */
-        .warning-message {
-            background: linear-gradient(135deg, #fff3cd 0%, #ffeaa7 100%);
-            border: 2px solid #ff9800;
-            border-right: 6px solid #ff6b00;
-            border-radius: 8px;
-            padding: 15px 10px;
-            margin: 15px 0;
-            box-shadow: 0 4px 12px rgba(255, 152, 0, 0.15);
-            animation: slideDown 0.5s ease;
-            overflow: hidden;
-            position: relative;
-            display: flex;
-            align-items: center;
-        }
-
-        .warning-message-icon {
-            font-size: 1.8em;
-            flex-shrink: 0;
-            margin-left: 12px;
-            z-index: 2;
-        }
-
-        .warning-message-content {
-            flex: 1;
-            overflow: hidden;
-            position: relative;
-        }
-
-        .warning-message-text {
-            color: #663c00;
-            font-size: 0.95em;
-            line-height: 1.5;
-            font-weight: 500;
-            white-space: nowrap;
-            display: inline-block;
-            animation: scrollTextRTL 25s linear infinite;
-        }
-
-        .warning-message:hover .warning-message-text {
-            animation-play-state: paused;
-        }
-
-        @keyframes scrollTextRTL {
-            0% {
-                transform: translateX(-100%);
-            }
-            100% {
-                transform: translateX(100%);
-            }
-        }
-
-        @keyframes slideDown {
-            from {
-                opacity: 0;
-                transform: translateY(-10px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
         }
 
         /* Filter Buttons */
@@ -1004,7 +1172,318 @@
             background: rgba(255, 255, 255, 0.3);
         }
 
-        /* Table Header with Totals */
+        /* Budget Button in Filter Row */
+        .budget-planner-btn {
+            padding: 12px 22px;
+            border: 3px solid #ffa500;
+            background: white;
+            color: #ff8800;
+            border-radius: 25px;
+            font-weight: 700;
+            font-size: 1em;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 3px 10px rgba(255, 165, 0, 0.15);
+        }
+
+        .budget-planner-btn:hover {
+            background: #fff9f0;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(255, 165, 0, 0.3);
+        }
+
+        /* Budget Modal - Narrow and Compact */
+        .budget-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 2000;
+            backdrop-filter: blur(4px);
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .budget-modal.active {
+            display: flex;
+        }
+
+        .budget-modal-content {
+            background: white;
+            border-radius: 16px;
+            width: 100%;
+            max-width: 500px;
+            max-height: 90vh;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            animation: slideUp 0.3s ease;
+        }
+
+        .budget-modal-header {
+            background: linear-gradient(135deg, #ffa500 0%, #ff8800 100%);
+            color: white;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .budget-modal-title {
+            font-size: 1.3em;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .budget-modal-body {
+            padding: 20px;
+            max-height: calc(90vh - 80px);
+            overflow-y: auto;
+        }
+
+        .budget-modal-body::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .budget-modal-body::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+
+        .budget-modal-body::-webkit-scrollbar-thumb {
+            background: #ffa500;
+            border-radius: 3px;
+        }
+
+        .budget-input-section {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            justify-content: center;
+        }
+
+        .budget-input-section label {
+            font-weight: 600;
+            color: #333;
+            font-size: 0.95em;
+        }
+
+        .budget-input-section input {
+            max-width: 150px;
+            padding: 10px;
+            border: 2px solid #ffa500;
+            border-radius: 8px;
+            font-size: 1.1em;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .budget-input-section span {
+            font-size: 1.1em;
+            font-weight: bold;
+        }
+
+        .budget-projects-selector {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 15px;
+        }
+
+        .budget-projects-selector h4 {
+            margin-bottom: 12px;
+            color: #ff8800;
+            font-weight: 700;
+            font-size: 1em;
+        }
+
+        .budget-project-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px;
+            background: white;
+            border-radius: 8px;
+            margin-bottom: 8px;
+            border: 2px solid #e0e0e0;
+            transition: all 0.3s ease;
+        }
+
+        .budget-project-item:hover {
+            border-color: #ffa500;
+            box-shadow: 0 3px 10px rgba(255, 165, 0, 0.15);
+        }
+
+        .budget-project-disabled {
+            opacity: 0.6;
+            background: linear-gradient(135deg, #f5f5f5 0%, #e8e8e8 100%);
+            cursor: not-allowed;
+            border: 2px dashed #ff9800;
+        }
+
+        .budget-project-disabled:hover {
+            border-color: #ff9800;
+            transform: none;
+            box-shadow: 0 2px 8px rgba(255, 152, 0, 0.15);
+        }
+
+        .budget-project-item input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+        }
+
+        .budget-project-disabled input[type="checkbox"] {
+            cursor: not-allowed;
+        }
+
+        .budget-project-info {
+            flex: 1;
+        }
+
+        .budget-project-name {
+            font-weight: 600;
+            color: #333;
+            font-size: 0.9em;
+            margin-bottom: 4px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .warning-badge {
+            background: linear-gradient(135deg, #fff3e0 0%, #ffe0b2 100%);
+            color: #e65100;
+            padding: 3px 8px;
+            border-radius: 12px;
+            font-size: 0.75em;
+            font-weight: 700;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            border: 1px solid #ff9800;
+        }
+
+        .budget-project-details {
+            color: #666;
+            font-size: 0.8em;
+        }
+
+        .budget-project-disabled .budget-project-details {
+            color: #999;
+        }
+
+        .budget-date-selector {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+        }
+
+        .budget-date-selector label {
+            font-weight: 600;
+            font-size: 0.75em;
+        }
+
+        .budget-date-selector select {
+            padding: 6px 10px;
+            border: 2px solid #ffa500;
+            border-radius: 6px;
+            font-size: 0.8em;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .disabled-message {
+            color: #999;
+            font-size: 0.75em;
+            font-style: italic;
+            padding: 6px 10px;
+            background: #f5f5f5;
+            border-radius: 6px;
+            border: 1px dashed #ccc;
+        }
+
+        .budget-comparison-section h3 {
+            font-size: 1em;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 12px;
+            text-align: center;
+        }
+
+        .budget-comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+            font-size: 0.85em;
+        }
+
+        .budget-comparison-table th {
+            background: linear-gradient(135deg, #ffa500 0%, #ff8800 100%);
+            color: white;
+            padding: 10px;
+            text-align: center;
+            font-size: 0.85em;
+            font-weight: 700;
+        }
+
+        .budget-comparison-table td {
+            padding: 8px;
+            text-align: center;
+            border: 1px solid #e0e0e0;
+            font-size: 0.8em;
+        }
+
+        .budget-comparison-table tr:nth-child(even) {
+            background: #f8f9fa;
+        }
+
+        .budget-amount {
+            font-weight: bold;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+        }
+
+        .budget-amount-normal {
+            color: #27ae60;
+        }
+
+        .budget-amount-increased {
+            color: #e74c3c;
+        }
+
+        .budget-amount-over {
+            color: #e74c3c;
+            font-weight: bold;
+            background: #ffe6e6;
+            padding: 3px 6px;
+            border-radius: 4px;
+        }
+
+        .budget-diff {
+            font-weight: bold;
+        }
+
+        .budget-diff-up {
+            color: #e74c3c;
+        }
+
+        .budget-diff-ok {
+            color: #27ae60;
+        }
+
+        /* Table Header */
         .table-header {
             background: white;
             border-radius: 8px 8px 0 0;
@@ -1148,103 +1627,6 @@
             text-align: center;
         }
 
-        /* Modal for Monthly Breakdown */
-        .modal-overlay {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0, 0, 0, 0.7);
-            z-index: 1000;
-            backdrop-filter: blur(4px);
-            animation: fadeIn 0.3s ease;
-        }
-
-        .modal-overlay.active {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-        }
-
-        .modal-content {
-            background: white;
-            border-radius: 16px;
-            max-width: 700px;
-            width: 100%;
-            max-height: 80vh;
-            overflow: hidden;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-            animation: slideUp 0.3s ease;
-            direction: rtl;
-        }
-
-        @keyframes slideUp {
-            from {
-                opacity: 0;
-                transform: translateY(50px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .modal-header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 20px 25px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .modal-title {
-            font-size: 1.3em;
-            font-weight: bold;
-        }
-
-        .modal-close {
-            background: rgba(255, 255, 255, 0.2);
-            border: none;
-            color: white;
-            font-size: 1.5em;
-            width: 35px;
-            height: 35px;
-            border-radius: 50%;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .modal-close:hover {
-            background: rgba(255, 255, 255, 0.3);
-            transform: rotate(90deg);
-        }
-
-        .modal-body {
-            padding: 25px;
-            max-height: calc(80vh - 140px);
-            overflow-y: auto;
-        }
-
-        .modal-body::-webkit-scrollbar {
-            width: 6px;
-        }
-
-        .modal-body::-webkit-scrollbar-track {
-            background: #f1f1f1;
-        }
-
-        .modal-body::-webkit-scrollbar-thumb {
-            background: #667eea;
-            border-radius: 3px;
-        }
-
         .breakdown-item {
             display: flex;
             justify-content: space-between;
@@ -1311,325 +1693,22 @@
             margin-bottom: 15px;
         }
 
-        /* Loading State */
-        .loading {
-            text-align: center;
-            color: white;
-            font-size: 1.5em;
-            padding: 50px;
-        }
-
-        .spinner {
-            border: 4px solid rgba(255, 255, 255, 0.3);
-            border-radius: 50%;
-            border-top: 4px solid white;
-            width: 50px;
-            height: 50px;
-            animation: spin 1s linear infinite;
-            margin: 20px auto;
-        }
-
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
-        /* Budget Planning Tool */
-        .budget-planner-toggle-container {
-            text-align: center;
-            margin: 15px 0;
-        }
-
-        .budget-planner-toggle-btn {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            border: none;
-            padding: 12px 30px;
-            border-radius: 25px;
-            font-size: 1em;
-            font-weight: 700;
-            cursor: pointer;
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
-            transition: all 0.3s ease;
-        }
-
-        .budget-planner-toggle-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.5);
-        }
-
-        .toggle-icon {
-            font-size: 1.2em;
-        }
-
-        .toggle-arrow {
-            transition: transform 0.3s ease;
-        }
-
-        .budget-planner-toggle-btn.active .toggle-arrow {
-            transform: rotate(180deg);
-        }
-
-        .budget-planner-section {
-            background: white;
-            border-radius: 12px;
-            padding: 20px;
-            margin: 15px 0;
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
-            max-height: 0;
-            overflow: hidden;
-            opacity: 0;
-            transition: all 0.5s ease;
-        }
-
-        .budget-planner-section.active {
-            max-height: 3000px;
-            opacity: 1;
-            padding: 20px;
-        }
-
-        .budget-planner-header {
-            text-align: center;
-            margin-bottom: 20px;
-        }
-
-        .budget-planner-header h2 {
-            font-size: 1.4em;
-            color: #667eea;
-            margin-bottom: 8px;
-        }
-
-        .budget-planner-header p {
-            color: #666;
-            font-size: 0.9em;
-        }
-
-        .budget-input-section {
-            background: #f8f9fa;
-            padding: 15px;
-            border-radius: 10px;
-            margin-bottom: 15px;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            justify-content: center;
-        }
-
-        .budget-input-section label {
-            font-weight: 600;
-            color: #333;
-            font-size: 0.95em;
-        }
-
-        .budget-input-section input {
-            max-width: 150px;
-            padding: 10px;
-            border: 2px solid #667eea;
-            border-radius: 8px;
-            font-size: 1.1em;
-            font-weight: bold;
-            text-align: center;
-        }
-
-        .budget-input-section span {
-            font-size: 1.1em;
-            font-weight: bold;
-        }
-
-        .budget-projects-selector {
-            background: #f8f9fa;
-            padding: 15px;
-            border-radius: 10px;
-            margin-bottom: 15px;
-        }
-
-        .budget-projects-selector h4 {
-            margin-bottom: 12px;
-            color: #667eea;
-            font-weight: 700;
-            font-size: 1em;
-        }
-
-        .budget-project-item {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            padding: 12px;
-            background: white;
-            border-radius: 8px;
-            margin-bottom: 8px;
-            border: 2px solid #e0e0e0;
-            transition: all 0.3s ease;
-        }
-
-        .budget-project-item:hover {
-            border-color: #667eea;
-            box-shadow: 0 3px 10px rgba(102, 126, 234, 0.15);
-        }
-
-        .budget-project-disabled {
-            opacity: 0.6;
-            background: linear-gradient(135deg, #f5f5f5 0%, #e8e8e8 100%);
-            cursor: not-allowed;
-            border: 2px dashed #ff9800;
-        }
-
-        .budget-project-disabled:hover {
-            border-color: #ff9800;
-            transform: none;
-            box-shadow: 0 2px 8px rgba(255, 152, 0, 0.15);
-        }
-
-        .budget-project-item input[type="checkbox"] {
-            width: 20px;
-            height: 20px;
-            cursor: pointer;
-        }
-
-        .budget-project-disabled input[type="checkbox"] {
-            cursor: not-allowed;
-        }
-
-        .budget-project-info {
-            flex: 1;
-        }
-
-        .budget-project-name {
-            font-weight: 600;
-            color: #333;
-            font-size: 0.95em;
-            margin-bottom: 4px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .warning-badge {
-            background: linear-gradient(135deg, #fff3e0 0%, #ffe0b2 100%);
-            color: #e65100;
-            padding: 3px 8px;
-            border-radius: 12px;
-            font-size: 0.75em;
-            font-weight: 700;
-            display: inline-flex;
-            align-items: center;
-            gap: 4px;
-            border: 1px solid #ff9800;
-        }
-
-        .budget-project-details {
-            color: #666;
-            font-size: 0.8em;
-        }
-
-        .budget-project-disabled .budget-project-details {
-            color: #999;
-        }
-
-        .budget-date-selector {
-            display: flex;
-            gap: 8px;
-            align-items: center;
-        }
-
-        .budget-date-selector label {
-            font-weight: 600;
-            font-size: 0.8em;
-        }
-
-        .budget-date-selector select {
-            padding: 6px 10px;
-            border: 2px solid #667eea;
-            border-radius: 6px;
-            font-size: 0.85em;
-            font-weight: 600;
-            cursor: pointer;
-        }
-
-        .disabled-message {
-            color: #999;
-            font-size: 0.8em;
-            font-style: italic;
-            padding: 6px 10px;
-            background: #f5f5f5;
-            border-radius: 6px;
-            border: 1px dashed #ccc;
-        }
-
-        .budget-comparison-section h3 {
-            font-size: 1.1em;
-            font-weight: bold;
-            color: #333;
-            margin-bottom: 12px;
-            text-align: center;
-        }
-
-        .budget-comparison-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 15px;
-            font-size: 0.9em;
-        }
-
-        .budget-comparison-table th {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 10px;
-            text-align: center;
-            font-size: 0.9em;
-            font-weight: 700;
-        }
-
-        .budget-comparison-table td {
-            padding: 8px;
-            text-align: center;
-            border: 1px solid #e0e0e0;
-            font-size: 0.85em;
-        }
-
-        .budget-comparison-table tr:nth-child(even) {
-            background: #f8f9fa;
-        }
-
-        .budget-amount {
-            font-weight: bold;
-            font-family: 'Courier New', monospace;
-            font-size: 0.95em;
-        }
-
-        .budget-amount-normal {
-            color: #27ae60;
-        }
-
-        .budget-amount-increased {
-            color: #e74c3c;
-        }
-
-        .budget-amount-over {
-            color: #e74c3c;
-            font-weight: bold;
-            background: #ffe6e6;
-            padding: 3px 6px;
-            border-radius: 4px;
-        }
-
-        .budget-diff {
-            font-weight: bold;
-        }
-
-        .budget-diff-up {
-            color: #e74c3c;
-        }
-
-        .budget-diff-ok {
-            color: #27ae60;
-        }
-
         /* Responsive */
         @media (max-width: 768px) {
+            .section-title-row {
+                flex-direction: column;
+            }
+
+            .search-wrapper {
+                flex: 1;
+                width: 100%;
+            }
+
+            .search-box-inline {
+                flex: 1;
+                width: 100%;
+            }
+
             .sidebar-container {
                 width: 200px;
                 left: -220px;
@@ -1641,14 +1720,6 @@
 
             h1 {
                 font-size: 1.2em;
-            }
-
-            .card-value {
-                font-size: 1.3em;
-            }
-
-            .search-box {
-                font-size: 0.9em;
             }
 
             .timeline-months {
@@ -1724,7 +1795,6 @@
             }
         }
 
-        /* Animation */
         @keyframes fadeIn {
             from {
                 opacity: 0;
@@ -1742,57 +1812,72 @@
     </style>
 </head>
 <body>
+    <!-- Loading Skeleton -->
+    <div class="skeleton-loader" id="skeletonLoader">
+        <div class="skeleton-content">
+            <div class="skeleton-neon skeleton-header"></div>
+            <div class="skeleton-neon skeleton-timeline"></div>
+            <div class="skeleton-neon skeleton-title"></div>
+            <div class="skeleton-filters">
+                <div class="skeleton-neon skeleton-filter"></div>
+                <div class="skeleton-neon skeleton-filter"></div>
+                <div class="skeleton-neon skeleton-filter"></div>
+                <div class="skeleton-neon skeleton-filter"></div>
+                <div class="skeleton-neon skeleton-filter"></div>
+            </div>
+            <div class="skeleton-neon skeleton-search"></div>
+            <div class="skeleton-neon skeleton-table-header"></div>
+            <div class="skeleton-neon skeleton-card"></div>
+            <div class="skeleton-neon skeleton-card"></div>
+            <div class="skeleton-neon skeleton-card"></div>
+            <div class="skeleton-neon skeleton-card"></div>
+            <div class="skeleton-neon skeleton-card"></div>
+        </div>
+    </div>
+
     <!-- Sidebar Toggle Button -->
     <button class="sidebar-toggle" id="sidebarToggle">
         <span class="sidebar-toggle-icon">◀</span>
     </button>
 
-    <!-- Sidebar Container (Clocks + Contacts) -->
+    <!-- Sidebar Container -->
     <div class="sidebar-container" id="sidebarContainer">
         <!-- World Clocks -->
         <div class="world-clocks-corner">
-            <!-- New York Clock -->
             <div class="clock-analog-container">
                 <div class="clock-analog-header">
                     <span class="clock-analog-flag">🗽</span>
                     <span>ניו יורק</span>
                 </div>
-                
                 <div class="clock-face" id="nyClockFace">
                     <div class="clock-number num-12">12</div>
                     <div class="clock-number num-3">3</div>
                     <div class="clock-number num-6">6</div>
                     <div class="clock-number num-9">9</div>
-                    
                     <div class="hand hour-hand" id="nyHourHand"></div>
                     <div class="hand minute-hand" id="nyMinuteHand"></div>
                     <div class="hand second-hand" id="nySecondHand"></div>
                     <div class="clock-center"></div>
                 </div>
-                
                 <div class="clock-digital-time" id="nyTime">--:--:--</div>
                 <div class="clock-digital-date" id="nyDate">---</div>
             </div>
 
-            <!-- Jerusalem Clock -->
             <div class="clock-analog-container">
                 <div class="clock-analog-header">
                     <span class="clock-analog-flag">🕎</span>
                     <span>ירושלים</span>
                 </div>
-                
                 <div class="clock-face" id="ilClockFace">
                     <div class="clock-number num-12">12</div>
                     <div class="clock-number num-3">3</div>
                     <div class="clock-number num-6">6</div>
                     <div class="clock-number num-9">9</div>
-                    
                     <div class="hand hour-hand" id="ilHourHand"></div>
                     <div class="hand minute-hand" id="ilMinuteHand"></div>
                     <div class="hand second-hand" id="ilSecondHand"></div>
                     <div class="clock-center"></div>
                 </div>
-                
                 <div class="clock-digital-time" id="ilTime">--:--:--</div>
                 <div class="clock-digital-date" id="ilDate">---</div>
             </div>
@@ -1801,8 +1886,6 @@
         <!-- Contact Card -->
         <div class="contact-card">
             <div class="contact-card-title">📞 צור קשר</div>
-            
-            <!-- Primary Contact - US Office -->
             <div class="contact-item contact-item-primary">
                 <div class="contact-icon-circle contact-primary-icon-circle">
                     <span class="contact-icon">🇺🇸</span>
@@ -1812,10 +1895,7 @@
                     <div class="contact-phone contact-primary-phone">718-337-8895</div>
                 </div>
             </div>
-
             <div class="contact-divider"></div>
-
-            <!-- Other Contacts -->
             <div class="contact-item">
                 <div class="contact-icon-circle">
                     <span class="contact-icon">📱</span>
@@ -1825,7 +1905,6 @@
                     <div class="contact-phone">011-972-50-413-1411</div>
                 </div>
             </div>
-
             <div class="contact-item">
                 <div class="contact-icon-circle">
                     <span class="contact-icon">📱</span>
@@ -1835,7 +1914,6 @@
                     <div class="contact-phone">011-972-53-495-3660</div>
                 </div>
             </div>
-
             <div class="contact-item">
                 <div class="contact-icon-circle">
                     <span class="contact-icon">🇮🇱</span>
@@ -1848,17 +1926,15 @@
         </div>
     </div>
 
-    <!-- Hamburger Menu Button -->
+    <!-- Hamburger Menu -->
     <button class="menu-toggle" id="menuToggle">
         <span></span>
         <span></span>
         <span></span>
     </button>
 
-    <!-- Menu Overlay -->
     <div class="menu-overlay" id="menuOverlay"></div>
 
-    <!-- Side Menu -->
     <div class="side-menu" id="sideMenu">
         <div class="menu-header">
             <h2>📋 ניהול פרויקטים</h2>
@@ -1886,39 +1962,25 @@
             <p class="subtitle">לקוח: זכרון אהרן</p>
         </header>
 
-        <div id="loading" class="loading">
-            <div class="spinner"></div>
-            <p>טוען נתונים...</p>
-        </div>
-
         <div id="content" style="display: none;">
-            <!-- Monthly Payment Timeline -->
+            <!-- Monthly Timeline -->
             <div class="monthly-timeline fade-in">
                 <div class="timeline-title">💰 תשלומים חודשיים נדרשים ל-12 החודשים הקרובים</div>
                 <div id="monthlyTimeline" class="timeline-months"></div>
             </div>
 
-            <!-- Budget Planner Toggle Button -->
-            <div class="budget-planner-toggle-container fade-in" id="budgetPlannerToggle" style="display: none;">
-                <button class="budget-planner-toggle-btn" onclick="toggleBudgetPlanner()">
-                    <span class="toggle-icon">🧮</span>
-                    <span class="toggle-text">פתח כלי תכנון תקציב</span>
-                    <span class="toggle-arrow">▼</span>
-                </button>
-            </div>
-
-            <!-- Budget Planning Tool -->
-            <div class="budget-planner-section" id="budgetPlannerSection">
-                <!-- Content will be populated by JavaScript -->
-            </div>
-
-
-
             <!-- Projects Section -->
             <div class="projects-section">
-                <h2 class="section-title">פרויקטים</h2>
+                <!-- Section Title + Search -->
+                <div class="section-title-row">
+                    <h2 class="section-title">📊 פרויקטים</h2>
+                    <div class="search-wrapper">
+                        <span class="search-icon">🔍</span>
+                        <input type="text" id="searchBox" class="search-box-inline" placeholder="חיפוש פרויקט...">
+                    </div>
+                </div>
                 
-                <!-- Filter Buttons with counts -->
+                <!-- Filter Buttons with Budget Button -->
                 <div class="filter-container" id="filterContainer">
                     <button class="filter-btn" data-filter="pendingApproval">
                         ⏳ ממתינים לאישור <span class="filter-count" id="filterCountPendingApproval">0</span>
@@ -1935,14 +1997,12 @@
                     <button class="filter-btn" data-filter="all">
                         📊 הכל <span class="filter-count" id="filterCountAll">0</span>
                     </button>
+                    <button class="budget-planner-btn" onclick="openBudgetModal()">
+                        🧮 תכנון תקציב
+                    </button>
                 </div>
 
-                <!-- Search Box -->
-                <div class="search-container">
-                    <input type="text" id="searchBox" class="search-box" placeholder="🔍 חיפוש פרויקט...">
-                </div>
-
-                <!-- Table Header with Totals -->
+                <!-- Table Header -->
                 <div class="table-header">
                     <div class="header-row">
                         <div class="header-cell">
@@ -2004,12 +2064,8 @@
                 </div>
             </div>
 
-            <!-- Completed Projects Section -->
-            <div id="completedSection" class="projects-section completed-section" style="display: none;">
-                <div class="projects-scroll-container">
-                    <div id="completedGrid" class="projects-grid"></div>
-                </div>
-            </div>
+            <!-- Completed Section -->
+            <div id="completedSection" class="projects-section completed-section" style="display: none;"></div>
 
             <!-- Payments Section -->
             <div class="payments-section fade-in">
@@ -2035,7 +2091,7 @@
         </div>
     </div>
 
-    <!-- Payment Details Modal -->
+    <!-- Payment Modal -->
     <div id="paymentModal" class="modal-overlay">
         <div class="modal-content">
             <div class="modal-header">
@@ -2046,28 +2102,40 @@
         </div>
     </div>
 
-    <!-- Monthly Breakdown Modal -->
+    <!-- Month Modal -->
     <div id="monthModal" class="modal-overlay">
         <div class="modal-content">
             <div class="modal-header">
                 <div class="modal-title" id="modalTitle">פירוט חודשי</div>
                 <button class="modal-close" onclick="closeMonthModal()">×</button>
             </div>
-            <div class="modal-body" id="modalBody">
-                <!-- Content will be populated by JavaScript -->
+            <div class="modal-body" id="modalBody"></div>
+        </div>
+    </div>
+
+    <!-- Budget Modal -->
+    <div id="budgetModal" class="budget-modal">
+        <div class="budget-modal-content">
+            <div class="budget-modal-header">
+                <div class="budget-modal-title">
+                    <span>🧮</span>
+                    <span>תכנון תקציב</span>
+                </div>
+                <button class="modal-close" onclick="closeBudgetModal()">×</button>
+            </div>
+            <div class="budget-modal-body" id="budgetModalBody">
+                <!-- Will be populated by JavaScript -->
             </div>
         </div>
     </div>
 
     <script>
-        // Google Apps Script URL
         const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxqTkFRe0YQ5tmaPn-VJrm6Q_ZfNlnMwI8D0vW1pkvGVzcmLhlTJiDZMsdhHNVnJmC-ZA/exec';
 
-        // Sidebar toggle functionality
+        // Sidebar toggle
         const sidebarToggle = document.getElementById('sidebarToggle');
         const sidebarContainer = document.getElementById('sidebarContainer');
         
-        // Check localStorage for saved state
         const sidebarState = localStorage.getItem('sidebarOpen');
         if (sidebarState === 'true') {
             sidebarContainer.classList.add('active');
@@ -2077,12 +2145,25 @@
         sidebarToggle.addEventListener('click', function() {
             sidebarContainer.classList.toggle('active');
             sidebarToggle.classList.toggle('active');
-            
-            // Save state to localStorage
             const isOpen = sidebarContainer.classList.contains('active');
             localStorage.setItem('sidebarOpen', isOpen);
-            
             trackEvent('Sidebar', isOpen ? 'open' : 'close', 'toggle');
+        });
+
+        // Budget Modal
+        function openBudgetModal() {
+            document.getElementById('budgetModal').classList.add('active');
+            trackEvent('Budget', 'open_modal', 'budget_planner');
+        }
+
+        function closeBudgetModal() {
+            document.getElementById('budgetModal').classList.remove('active');
+        }
+
+        document.getElementById('budgetModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeBudgetModal();
+            }
         });
 
         function parseCSV(csv) {
@@ -2351,21 +2432,21 @@
                 window.allPendingApprovalProjects = projectsData.pendingApproval || [];
                 window.allPendingExecutionProjects = projectsData.pendingExecution || [];
 
-                // Update filter counts
                 updateFilterCounts();
-
                 displayFilteredProjects('active');
                 initBudgetPlanner();
 
-                document.getElementById('loading').style.display = 'none';
+                // Hide skeleton, show content
+                document.getElementById('skeletonLoader').classList.add('hidden');
                 document.getElementById('content').style.display = 'block';
 
             } catch (error) {
                 console.error('Error loading data:', error);
-                document.getElementById('loading').innerHTML = `
-                    <p style="color: #ff6b6b;">❌ שגיאה בטעינת הנתונים</p>
-                    <p style="font-size: 0.9em;">אנא בדוק שהגיליון פורסם כראוי</p>
-                    <p style="font-size: 0.8em; margin-top: 10px;">שגיאה: ${error.message}</p>
+                document.getElementById('skeletonLoader').innerHTML = `
+                    <div style="text-align: center; color: white;">
+                        <p style="font-size: 1.5em;">❌ שגיאה בטעינת הנתונים</p>
+                        <p style="font-size: 1em;">אנא בדוק שהגיליון פורסם כראוי</p>
+                    </div>
                 `;
             }
         }
@@ -2412,8 +2493,7 @@
                 console.error('Error loading payments:', error);
                 document.getElementById('paymentsList').innerHTML = `
                     <p style="text-align: center; color: #e74c3c; padding: 20px;">
-                        שגיאה בטעינת תקבולים: ${error.message}<br>
-                        <small>נסה לרענן את הדף</small>
+                        שגיאה בטעינת תקבולים
                     </p>
                 `;
             }
@@ -2514,11 +2594,11 @@
                 </div>
             `;
             
-            document.getElementById('paymentModal').style.display = 'flex';
+            document.getElementById('paymentModal').classList.add('active');
         }
 
         function closePaymentModal() {
-            document.getElementById('paymentModal').style.display = 'none';
+            document.getElementById('paymentModal').classList.remove('active');
         }
 
         document.getElementById('paymentModal').addEventListener('click', function(e) {
@@ -2616,7 +2696,6 @@
             document.getElementById('headerTotalRemaining').textContent = formatCurrency(totalRemaining.toString());
 
             const projectsGrid = document.getElementById('projectsGrid');
-            const completedSection = document.getElementById('completedSection');
             
             projectsGrid.innerHTML = projectsToShow.map(project => {
                 const isCompleted = (window.allCompletedProjects || []).includes(project);
@@ -2624,8 +2703,6 @@
                 const isPendingExecution = (window.allPendingExecutionProjects || []).includes(project);
                 return createProjectCard(project, isCompleted, isPendingApproval, isPendingExecution);
             }).join('');
-
-            completedSection.style.display = 'none';
         }
 
         document.addEventListener('DOMContentLoaded', function() {
@@ -2798,6 +2875,7 @@
         document.addEventListener('keydown', function(e) {
             if (e.key === 'Escape') {
                 closeMonthModal();
+                closeBudgetModal();
                 closeMenu();
             }
         });
@@ -2932,34 +3010,18 @@
         updateClocks();
         setInterval(updateClocks, 1000);
 
-        function toggleBudgetPlanner() {
-            const section = document.getElementById('budgetPlannerSection');
-            const button = document.querySelector('.budget-planner-toggle-btn');
-            
-            section.classList.toggle('active');
-            button.classList.toggle('active');
-            
-            const isOpen = section.classList.contains('active');
-            trackEvent('Budget Planner', isOpen ? 'open' : 'close', 'toggle');
-        }
-
         function initBudgetPlanner() {
             const pendingApprovalProjects = window.allPendingApprovalProjects || [];
             
             if (pendingApprovalProjects.length === 0) {
-                document.getElementById('budgetPlannerToggle').style.display = 'none';
-                document.getElementById('budgetPlannerSection').style.display = 'none';
                 return;
             }
 
-            document.getElementById('budgetPlannerToggle').style.display = 'block';
-
-            const budgetSection = document.getElementById('budgetPlannerSection');
+            const budgetBody = document.getElementById('budgetModalBody');
             const today = new Date();
             const currentMonth = today.getMonth();
             const currentYear = today.getFullYear();
 
-            // Generate next 3 months options (starting from NEXT month)
             const monthOptions = [];
             for (let i = 1; i <= 3; i++) {
                 const monthDate = new Date(currentYear, currentMonth + i, 1);
@@ -2968,99 +3030,85 @@
                 monthOptions.push({ value: i - 1, label: `${monthName} ${year}`, date: monthDate });
             }
 
-            budgetSection.innerHTML = `
-                <div class="budget-planner-header">
-                    <h2>🧮 כלי תכנון תקציב</h2>
-                    <p>בחר פרויקטים וראה כיצד הם ישפיעו על התשלומים החודשיים</p>
-                </div>
-
-                <!-- Budget Input: changed default to 50000 -->
+            budgetBody.innerHTML = `
                 <div class="budget-input-section">
-                    <label>💰 התקציב החודשי שלי:</label>
-                    <input type="number" id="monthlyBudget" value="50000" step="100" min="0">
+                    <label>💰 התקציב החודשי:</label>
+                    <input type="number" id="monthlyBudget" value="50000" step="1000" min="0">
                     <span>$</span>
                 </div>
 
-                <!-- Projects Selector -->
                 <div class="budget-projects-selector" id="budgetProjectsSelector">
-                    <!-- Will be populated below -->
+                    <h4>📋 פרויקטים ממתינים</h4>
                 </div>
 
-                <!-- Comparison Table -->
                 <div class="budget-comparison-section">
-                    <h3>📊 השוואת תשלומים חודשיים</h3>
+                    <h3>📊 השוואה</h3>
                     <table class="budget-comparison-table">
                         <thead>
                             <tr>
                                 <th>חודש</th>
-                                <th>ללא פרויקטים חדשים</th>
-                                <th>עם פרויקטים נבחרים</th>
+                                <th>בסיס</th>
+                                <th>עם פרויקטים</th>
                                 <th>הפרש</th>
                             </tr>
                         </thead>
-                        <tbody id="budgetComparisonBody">
-                            <!-- Will be populated by JavaScript -->
-                        </tbody>
+                        <tbody id="budgetComparisonBody"></tbody>
                     </table>
                 </div>
             `;
 
             const selector = document.getElementById('budgetProjectsSelector');
 
-            selector.innerHTML = '<h4>📋 בחר פרויקטים ממתינים לאישור</h4>' +
-                pendingApprovalProjects.map((project, idx) => {
-                    const amount = parseFloat(String(project.quoted).replace(/[^\d.-]/g, '')) || 0;
-                    
-                    // Calculate real duration from start date to deadline
-                    const startDate = parseDeadlineDate(project.startDate);
-                    const deadlineDate = parseDeadlineDate(project.deadline);
-                    
-                    let duration = 2; // Default
-                    let durationDisplay = 'לא ידוע';
-                    let isDisabled = false;
-                    let warningBadge = '';
-                    
-                    if (!startDate || !deadlineDate) {
-                        // Missing dates - disable project
-                        isDisabled = true;
-                        if (!startDate && !deadlineDate) {
-                            warningBadge = '<span class="warning-badge">⚠️ חסר תאריך</span>';
-                        } else if (!deadlineDate) {
-                            warningBadge = '<span class="warning-badge">⚠️ חסר דדליין</span>';
-                        } else if (!startDate) {
-                            warningBadge = '<span class="warning-badge">⚠️ חסר תאריך אישור</span>';
-                        }
-                    } else {
-                        // Calculate real duration
-                        duration = getMonthsBetween(startDate, deadlineDate);
-                        durationDisplay = `${duration} חודשים`;
+            selector.innerHTML += pendingApprovalProjects.map((project, idx) => {
+                const amount = parseFloat(String(project.quoted).replace(/[^\d.-]/g, '')) || 0;
+                
+                const startDate = parseDeadlineDate(project.startDate);
+                const deadlineDate = parseDeadlineDate(project.deadline);
+                
+                let duration = 2;
+                let durationDisplay = 'לא ידוע';
+                let isDisabled = false;
+                let warningBadge = '';
+                
+                if (!startDate || !deadlineDate) {
+                    isDisabled = true;
+                    if (!startDate && !deadlineDate) {
+                        warningBadge = '<span class="warning-badge">⚠️ חסר תאריך</span>';
+                    } else if (!deadlineDate) {
+                        warningBadge = '<span class="warning-badge">⚠️ חסר דדליין</span>';
+                    } else if (!startDate) {
+                        warningBadge = '<span class="warning-badge">⚠️ חסר תאריך אישור</span>';
                     }
-                    
-                    const disabledClass = isDisabled ? 'budget-project-disabled' : '';
-                    const disabledAttr = isDisabled ? 'disabled' : '';
-                    
-                    return `
-                        <div class="budget-project-item ${disabledClass}">
-                            <input type="checkbox" id="budgetProj${idx}" data-project-idx="${idx}" data-duration="${duration}" ${disabledAttr}>
-                            <div class="budget-project-info">
-                                <div class="budget-project-name">
-                                    ${project.name}
-                                    ${warningBadge}
-                                </div>
-                                <div class="budget-project-details">💰 $${amount.toLocaleString()} | ⏱️ ${durationDisplay}</div>
+                } else {
+                    duration = getMonthsBetween(startDate, deadlineDate);
+                    durationDisplay = `${duration} חודשים`;
+                }
+                
+                const disabledClass = isDisabled ? 'budget-project-disabled' : '';
+                const disabledAttr = isDisabled ? 'disabled' : '';
+                
+                return `
+                    <div class="budget-project-item ${disabledClass}">
+                        <input type="checkbox" id="budgetProj${idx}" data-project-idx="${idx}" data-duration="${duration}" ${disabledAttr}>
+                        <div class="budget-project-info">
+                            <div class="budget-project-name">
+                                ${project.name}
+                                ${warningBadge}
                             </div>
-                            <div class="budget-date-selector">
-                                ${isDisabled ? 
-                                    '<div class="disabled-message">🚫 לא ניתן לבחור - חסרים נתונים</div>' :
-                                    `<label>מתי לאשר:</label>
-                                    <select id="budgetDate${idx}" data-project-idx="${idx}">
-                                        ${monthOptions.map((opt, optIdx) => `<option value="${opt.value}" ${optIdx === 0 ? 'selected' : ''}>${opt.label}</option>`).join('')}
-                                    </select>`
-                                }
-                            </div>
+                            <div class="budget-project-details">💰 $${amount.toLocaleString()} | ⏱️ ${durationDisplay}</div>
                         </div>
-                    `;
-                }).join('');
+                        <div class="budget-date-selector">
+                            ${isDisabled ? 
+                                '<div class="disabled-message">🚫 חסרים נתונים</div>' :
+                                `<label>אישור:</label>
+                                <select id="budgetDate${idx}" data-project-idx="${idx}">
+                                    ${monthOptions.map((opt, optIdx) => `<option value="${opt.value}" ${optIdx === 0 ? 'selected' : ''}>${opt.label}</option>`).join('')}
+                                </select>`
+                            }
+                        </div>
+                    </div>
+                `;
+            }).join('');
 
             pendingApprovalProjects.forEach((project, idx) => {
                 const checkbox = document.getElementById(`budgetProj${idx}`);
@@ -3133,7 +3181,7 @@
                 if (!checkbox || !checkbox.checked) return;
                 
                 const dateSelector = document.getElementById(`budgetDate${idx}`);
-                const monthsOffset = parseInt(dateSelector.value) + 1; // +1 because options start from next month
+                const monthsOffset = parseInt(dateSelector.value) + 1;
                 const amount = parseFloat(String(project.quoted).replace(/[^\d.-]/g, '')) || 0;
                 const duration = parseInt(checkbox.dataset.duration) || 2;
                 const monthlyPayment = amount / duration;
@@ -3149,7 +3197,6 @@
             for (let i = 0; i < 12; i++) {
                 const monthDate = new Date(currentYear, currentMonth + i, 1);
                 const monthName = getHebrewMonthName(monthDate);
-                const year = monthDate.getFullYear();
 
                 const baseAmount = basePayments[i];
                 const withProjectsAmount = withProjectsPayments[i];
@@ -3161,18 +3208,16 @@
 
                 tableHTML += `
                     <tr>
-                        <td><strong>${monthName} ${year}</strong></td>
+                        <td><strong>${monthName}</strong></td>
                         <td><span class="budget-amount ${baseClass}">$${Math.round(baseAmount).toLocaleString()}</span></td>
                         <td><span class="budget-amount ${withClass}">$${Math.round(withProjectsAmount).toLocaleString()}</span></td>
-                        <td><span class="budget-diff ${diffClass}">${diff > 0 ? '+' : ''}$${Math.round(diff).toLocaleString()} ${diff > 0 ? '⬆️' : '✅'}</span></td>
+                        <td><span class="budget-diff ${diffClass}">${diff > 0 ? '+' : ''}$${Math.round(diff).toLocaleString()}</span></td>
                     </tr>
                 `;
             }
 
             tbody.innerHTML = tableHTML;
         }
-
-        window.addEventListener('projectsLoaded', initBudgetPlanner);
     </script>
 </body>
 </html>
