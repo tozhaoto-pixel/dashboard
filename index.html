@@ -3072,7 +3072,7 @@
                     const monthsRemaining = getMonthsBetween(today, deadlineDate);
                     const remainingAmount = parseFloat(String(project.remaining).replace(/[^\d.-]/g, '')) || 0;
                     
-                    if (monthIndex < monthsRemaining) {
+                    if (monthIndex <= monthsRemaining && remainingAmount > 0) {
                         const monthlyPayment = remainingAmount / monthsRemaining;
                         breakdown.push({
                             name: project.name,
