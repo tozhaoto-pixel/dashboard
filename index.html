@@ -3135,10 +3135,13 @@
                     `;
                 });
                 
+                // חישוב הסכום הכולל מכל הפרויקטים בפירוט
+                const calculatedTotal = breakdown.reduce((sum, item) => sum + item.amount, 0);
+                
                 modalBodyHTML += `
                     <div class="breakdown-total">
                         <div class="breakdown-total-label">💰 סה"כ לחודש:</div>
-                        <div class="breakdown-total-amount">${formatCurrency(totalAmount.toString())}</div>
+                        <div class="breakdown-total-amount">${formatCurrency(calculatedTotal.toString())}</div>
                     </div>
                 `;
             }
