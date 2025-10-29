@@ -643,7 +643,7 @@
         .section-title-row {
             display: flex;
             align-items: center;
-            justify-content: center;
+            justify-content: space-between;
             gap: 20px;
             margin-bottom: 20px;
             background: linear-gradient(135deg, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0.1) 100%);
@@ -1452,35 +1452,35 @@
         .budget-amount {
             font-weight: bold;
             font-family: 'Courier New', monospace;
-            font-size: 0.9em;
+            font-size: 1em;
+            color: #000;
         }
 
         .budget-amount-normal {
-            color: #27ae60;
+            color: #000;
         }
 
         .budget-amount-increased {
-            color: #667eea;
+            color: #000;
         }
 
         .budget-amount-over {
-            color: #667eea;
+            color: #000;
             font-weight: bold;
-            background: #e6f2ff;
             padding: 3px 6px;
-            border-radius: 4px;
         }
 
         .budget-diff {
             font-weight: bold;
+            color: #000;
         }
 
         .budget-diff-up {
-            color: #667eea;
+            color: #000;
         }
 
         .budget-diff-ok {
-            color: #27ae60;
+            color: #000;
         }
 
         /* Table Header */
@@ -1980,13 +1980,10 @@
                     </div>
                 </div>
                 
-                <!-- Filter Buttons with Budget Button -->
+                <!-- Filter Buttons -->
                 <div class="filter-container" id="filterContainer">
                     <button class="filter-btn" data-filter="pendingApproval">
                         ⏳ ממתינים לאישור <span class="filter-count" id="filterCountPendingApproval">0</span>
-                    </button>
-                    <button class="budget-planner-btn" onclick="openBudgetModal()" style="margin-right: 30px;">
-                        🧮 תכנון תקציב
                     </button>
                     <button class="filter-btn" data-filter="pendingExecution">
                         🔜 ממתינים לביצוע <span class="filter-count" id="filterCountPendingExecution">0</span>
@@ -1999,6 +1996,9 @@
                     </button>
                     <button class="filter-btn" data-filter="all">
                         📊 הכל <span class="filter-count" id="filterCountAll">0</span>
+                    </button>
+                    <button class="budget-planner-btn" onclick="openBudgetModal()">
+                        🧮 תכנון תקציב
                     </button>
                 </div>
 
@@ -2467,11 +2467,6 @@
 
         loadData();
         loadPayments();
-
-        setInterval(() => {
-            loadData();
-            loadPayments();
-        }, 300000);
 
         async function loadPayments() {
             try {
@@ -3023,7 +3018,7 @@
             const currentYear = today.getFullYear();
 
             const monthOptions = [];
-            for (let i = 1; i <= 3; i++) {
+            for (let i = 1; i <= 5; i++) {
                 const monthDate = new Date(currentYear, currentMonth + i, 1);
                 const monthName = getHebrewMonthName(monthDate);
                 const year = monthDate.getFullYear();
@@ -3031,25 +3026,19 @@
             }
 
             budgetBody.innerHTML = `
-                <div class="budget-input-section">
-                    <label>💰 התקציב החודשי:</label>
-                    <input type="number" id="monthlyBudget" value="50000" step="1000" min="0">
-                    <span>$</span>
-                </div>
-
                 <div class="budget-projects-selector" id="budgetProjectsSelector">
-                    <h4>📋 פרויקטים ממתינים</h4>
+                    <h4>📋 פרויקטים ממתינים לאישור</h4>
                 </div>
 
                 <div class="budget-comparison-section">
-                    <h3>📊 השוואה</h3>
+                    <h3>📊 השוואת תקציב</h3>
                     <table class="budget-comparison-table">
                         <thead>
                             <tr>
                                 <th>חודש</th>
                                 <th>בסיס</th>
-                                <th>עם פרויקטים</th>
-                                <th>הפרש</th>
+                                <th>תוספת</th>
+                                <th>סה"כ לתשלום</th>
                             </tr>
                         </thead>
                         <tbody id="budgetComparisonBody"></tbody>
@@ -3100,7 +3089,7 @@
                         <div class="budget-date-selector">
                             ${isDisabled ? 
                                 '<div class="disabled-message">🚫 חסרים נתונים</div>' :
-                                `<label>אישור:</label>
+                                `<label>אישור בחודש:</label>
                                 <select id="budgetDate${idx}" data-project-idx="${idx}">
                                     ${monthOptions.map((opt, optIdx) => `<option value="${opt.value}" ${optIdx === 0 ? 'selected' : ''}>${opt.label}</option>`).join('')}
                                 </select>`
@@ -3122,8 +3111,6 @@
                 }
             });
 
-            document.getElementById('monthlyBudget').addEventListener('input', updateBudgetComparison);
-
             updateBudgetComparison();
         }
 
@@ -3131,13 +3118,12 @@
             const pendingApprovalProjects = window.allPendingApprovalProjects || [];
             const activeProjects = window.allActiveProjects || [];
             const pendingExecutionProjects = window.allPendingExecutionProjects || [];
-            const monthlyBudget = parseFloat(document.getElementById('monthlyBudget').value) || 0;
             
             const today = new Date();
             const currentMonth = today.getMonth();
             const currentYear = today.getFullYear();
 
-            const basePayments = Array(12).fill(0);
+            const basePayments = Array(24).fill(0);
             
             activeProjects.forEach(project => {
                 const deadlineDate = parseDeadlineDate(project.deadline);
@@ -3186,32 +3172,35 @@
                 const duration = parseInt(checkbox.dataset.duration) || 2;
                 const monthlyPayment = amount / duration;
                 
-                for (let i = 0; i < duration && (monthsOffset + i) < 12; i++) {
+                for (let i = 0; i < duration && (monthsOffset + i) < 24; i++) {
                     withProjectsPayments[monthsOffset + i] += monthlyPayment;
                 }
             });
 
             const tbody = document.getElementById('budgetComparisonBody');
             let tableHTML = '';
+            
+            let monthsToShow = 12;
+            for (let i = 0; i < withProjectsPayments.length; i++) {
+                if (withProjectsPayments[i] > 0 && i >= 12) {
+                    monthsToShow = i + 1;
+                }
+            }
 
-            for (let i = 0; i < 12; i++) {
+            for (let i = 0; i < monthsToShow; i++) {
                 const monthDate = new Date(currentYear, currentMonth + i + 1, 1);
                 const monthName = getHebrewMonthName(monthDate);
 
                 const baseAmount = basePayments[i];
-                const withProjectsAmount = withProjectsPayments[i];
-                const diff = withProjectsAmount - baseAmount;
-
-                const baseClass = baseAmount > monthlyBudget ? 'budget-amount-over' : 'budget-amount-normal';
-                const withClass = withProjectsAmount > monthlyBudget ? 'budget-amount-over' : 'budget-amount-increased';
-                const diffClass = diff > 0 ? 'budget-diff-up' : 'budget-diff-ok';
+                const addition = withProjectsPayments[i] - baseAmount;
+                const totalAmount = withProjectsPayments[i];
 
                 tableHTML += `
                     <tr>
                         <td><strong>${monthName}</strong></td>
-                        <td><span class="budget-amount ${baseClass}">$${Math.round(baseAmount).toLocaleString()}</span></td>
-                        <td><span class="budget-amount ${withClass}">$${Math.round(withProjectsAmount).toLocaleString()}</span></td>
-                        <td><span class="budget-diff ${diffClass}">${diff > 0 ? '+' : ''}$${Math.round(diff).toLocaleString()}</span></td>
+                        <td><span class="budget-amount">$${Math.round(baseAmount).toLocaleString()}</span></td>
+                        <td><span class="budget-amount">${addition > 0 ? '+' : ''}$${Math.round(addition).toLocaleString()}</span></td>
+                        <td><span class="budget-amount">$${Math.round(totalAmount).toLocaleString()}</span></td>
                     </tr>
                 `;
             }
