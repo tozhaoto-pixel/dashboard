@@ -2388,18 +2388,10 @@
                     };
                 }
                 
-                // חילוץ אחוזים מהטקסט - תמיכה בשני פורמטים
-                // פורמט 1: "השלם: 91.7%"
-                // פורמט 2: "91.7% :השלם"
-                let completedMatch = percentages.match(/השלם:\s*([\d.]+)%/);
-                if (!completedMatch) {
-                    completedMatch = percentages.match(/([\d.]+)%\s*:?השלם/);
-                }
-                
-                let inProgressMatch = percentages.match(/ביצוע:\s*([\d.]+)%/);
-                if (!inProgressMatch) {
-                    inProgressMatch = percentages.match(/([\d.]+)%\s*:?ביצוע/);
-                }
+                // חילוץ אחוזים מהטקסט - תמיכה בפורמט עברית
+                // פורמט: "38.9% :הושלם 🟢 • 12.8% :ביצוע 🔵"
+                let completedMatch = percentages.match(/([\d.]+)%\s*:?הושלם/);
+                let inProgressMatch = percentages.match(/([\d.]+)%\s*:?ביצוע/);
                 
                 if (completedMatch) {
                     projectsMap[projectName].completedPercent = parseFloat(completedMatch[1]);
