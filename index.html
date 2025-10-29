@@ -820,6 +820,33 @@
             font-size: 0.9em;
         }
 
+        .execution-progress {
+            margin-top: 5px;
+            font-size: 0.75em;
+        }
+
+        .execution-row {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .execution-label {
+            padding: 2px 6px;
+            border-radius: 4px;
+            background: rgba(255,255,255,0.7);
+            font-weight: 600;
+        }
+
+        .project-card {
+            cursor: pointer;
+        }
+
+        .project-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
         .progress-cell {
             padding: 10px 12px;
             border-left: 1px solid #e9ecef;
@@ -2158,6 +2185,17 @@
         </div>
     </div>
 
+    <!-- Project Details Modal -->
+    <div id="projectDetailsModal" class="modal-overlay">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="modal-title" id="projectDetailsTitle">פירוט פרויקט</div>
+                <button class="modal-close" onclick="closeProjectDetails()">×</button>
+            </div>
+            <div class="modal-body" id="projectDetailsBody"></div>
+        </div>
+    </div>
+
     <!-- Budget Modal -->
     <div id="budgetModal" class="budget-modal">
         <div class="budget-modal-content">
@@ -2290,6 +2328,74 @@
             };
         }
 
+        function parsePinchasData(csv) {
+            const lines = csv.trim().split('\n');
+            const projectsMap = {};
+            
+            for (let i = 1; i < lines.length; i++) {
+                const line = lines[i];
+                if (!line.trim()) continue;
+                
+                const values = [];
+                let current = '';
+                let inQuotes = false;
+                
+                for (let j = 0; j < line.length; j++) {
+                    const char = line[j];
+                    if (char === '"') {
+                        inQuotes = !inQuotes;
+                    } else if (char === ',' && !inQuotes) {
+                        values.push(current.trim());
+                        current = '';
+                    } else {
+                        current += char;
+                    }
+                }
+                values.push(current.trim());
+                
+                const projectName = values[1] || ''; // עמודה B
+                const statusC = values[2] || ''; // עמודה C
+                const statusD = values[3] || ''; // עמודה D  
+                const parsha = values[7] || ''; // עמודה H
+                const percentages = values[11] || ''; // עמודה L (אחוזים)
+                
+                if (!projectName || statusC !== 'עריכה') continue;
+                
+                if (!projectsMap[projectName]) {
+                    projectsMap[projectName] = {
+                        completedPercent: 0,
+                        inProgressPercent: 0,
+                        completedParshiot: [],
+                        inProgressParshiot: []
+                    };
+                }
+                
+                // חילוץ אחוזים מהטקסט
+                const completedMatch = percentages.match(/השלם:\s*([\d.]+)%/);
+                const inProgressMatch = percentages.match(/ביצוע:\s*([\d.]+)%/);
+                
+                if (completedMatch) {
+                    projectsMap[projectName].completedPercent = parseFloat(completedMatch[1]);
+                }
+                if (inProgressMatch) {
+                    projectsMap[projectName].inProgressPercent = parseFloat(inProgressMatch[1]);
+                }
+                
+                // הוספת פרשיות לפי סטטוס
+                if (statusD === 'הסתיים' && parsha) {
+                    if (!projectsMap[projectName].completedParshiot.includes(parsha)) {
+                        projectsMap[projectName].completedParshiot.push(parsha);
+                    }
+                } else if (statusD === 'בביצוע' && parsha) {
+                    if (!projectsMap[projectName].inProgressParshiot.includes(parsha)) {
+                        projectsMap[projectName].inProgressParshiot.push(parsha);
+                    }
+                }
+            }
+            
+            return projectsMap;
+        }
+
         function formatCurrency(amount) {
             const num = parseFloat(String(amount).replace(/[^\d.-]/g, '')) || 0;
             return '$' + num.toLocaleString('en-US', { maximumFractionDigits: 0 });
@@ -2341,11 +2447,27 @@
                 badge = '<span class="project-badge badge-pending-execution">🔜 ממתין לביצוע</span>';
             }
             
+            // בניית תצוגת אחוזי ביצוע
+            let executionProgressHTML = '';
+            if (project.completedPercent !== undefined || project.inProgressPercent !== undefined) {
+                const completed = project.completedPercent || 0;
+                const inProgress = project.inProgressPercent || 0;
+                executionProgressHTML = `
+                    <div class="execution-progress">
+                        <div class="execution-row">
+                            <span class="execution-label">🟢 ${completed.toFixed(1)}%</span>
+                            <span class="execution-label">🔵 ${inProgress.toFixed(1)}%</span>
+                        </div>
+                    </div>
+                `;
+            }
+            
             return `
-                <div class="${cardClass} fade-in">
+                <div class="${cardClass} fade-in" onclick="openProjectDetails('${project.name.replace(/'/g, "\\'")}')">
                     <div class="project-row">
                         <div class="project-cell">
                             <div class="cell-value">📋 ${project.name} ${badge}</div>
+                            ${executionProgressHTML}
                         </div>
                         <div class="project-cell">
                             <div class="cell-value amount">${formatCurrency(project.quoted)}</div>
@@ -2374,11 +2496,28 @@
 
         async function loadData() {
             try {
+                // משיכת נתונים מפרויקטים/לידים
                 const response = await fetch(APPS_SCRIPT_URL + '?sheet=' + encodeURIComponent('פרויקטים/לידים'));
                 const csv = await response.text();
                 const projectsData = parseCSV(csv);
                 const activeProjects = projectsData.active;
                 const completedProjects = projectsData.completed;
+
+                // משיכת נתונים מעבודות פנחס
+                const pinchasResponse = await fetch(APPS_SCRIPT_URL + '?sheet=' + encodeURIComponent('עבודות פנחס'));
+                const pinchasCSV = await pinchasResponse.text();
+                const pinchasData = parsePinchasData(pinchasCSV);
+                
+                // שילוב הנתונים
+                activeProjects.forEach(project => {
+                    const pinchasInfo = pinchasData[project.name];
+                    if (pinchasInfo) {
+                        project.completedPercent = pinchasInfo.completedPercent;
+                        project.inProgressPercent = pinchasInfo.inProgressPercent;
+                        project.completedParshiot = pinchasInfo.completedParshiot;
+                        project.inProgressParshiot = pinchasInfo.inProgressParshiot;
+                    }
+                });
 
                 let totalQuoted = 0;
                 let totalPaid = 0;
@@ -2906,9 +3045,108 @@
             document.getElementById('monthModal').classList.remove('active');
         }
 
+        function openProjectDetails(projectName) {
+            const project = window.allActiveProjects.find(p => p.name === projectName);
+            if (!project) return;
+            
+            const modal = document.getElementById('projectDetailsModal');
+            const title = document.getElementById('projectDetailsTitle');
+            const body = document.getElementById('projectDetailsBody');
+            
+            title.textContent = `📊 פירוט: ${projectName}`;
+            
+            let html = `
+                <div style="padding: 20px;">
+                    <h3 style="margin-bottom: 20px;">📈 התקדמות ביצוע</h3>
+            `;
+            
+            // הושלם
+            if (project.completedPercent > 0) {
+                html += `
+                    <div style="margin-bottom: 25px;">
+                        <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 10px;">
+                            <h4 style="margin: 0;">🟢 הושלם: ${project.completedPercent.toFixed(1)}%</h4>
+                        </div>
+                        <div style="background: #e9ecef; height: 30px; border-radius: 8px; overflow: hidden; margin-bottom: 10px;">
+                            <div style="background: linear-gradient(90deg, #43e97b, #38c96a); height: 100%; width: ${project.completedPercent}%; transition: width 0.6s;"></div>
+                        </div>
+                `;
+                
+                if (project.completedParshiot && project.completedParshiot.length > 0) {
+                    html += `
+                        <div style="background: #f8f9fa; padding: 15px; border-radius: 8px;">
+                            <strong>פרשיות שהושלמו:</strong>
+                            <ul style="margin: 10px 0 0 20px; padding: 0;">
+                    `;
+                    project.completedParshiot.forEach(parsha => {
+                        html += `<li style="margin: 5px 0;">✅ ${parsha}</li>`;
+                    });
+                    html += `
+                            </ul>
+                        </div>
+                    `;
+                }
+                
+                html += `</div>`;
+            }
+            
+            // בביצוע
+            if (project.inProgressPercent > 0) {
+                html += `
+                    <div style="margin-bottom: 25px;">
+                        <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 10px;">
+                            <h4 style="margin: 0;">🔵 בביצוע: ${project.inProgressPercent.toFixed(1)}%</h4>
+                        </div>
+                        <div style="background: #e9ecef; height: 30px; border-radius: 8px; overflow: hidden; margin-bottom: 10px;">
+                            <div style="background: linear-gradient(90deg, #4facfe, #667eea); height: 100%; width: ${project.inProgressPercent}%; transition: width 0.6s;"></div>
+                        </div>
+                `;
+                
+                if (project.inProgressParshiot && project.inProgressParshiot.length > 0) {
+                    html += `
+                        <div style="background: #f8f9fa; padding: 15px; border-radius: 8px;">
+                            <strong>פרשיות בביצוע:</strong>
+                            <ul style="margin: 10px 0 0 20px; padding: 0;">
+                    `;
+                    project.inProgressParshiot.forEach(parsha => {
+                        html += `<li style="margin: 5px 0;">⏳ ${parsha}</li>`;
+                    });
+                    html += `
+                            </ul>
+                        </div>
+                    `;
+                }
+                
+                html += `</div>`;
+            }
+            
+            if (project.completedPercent === 0 && project.inProgressPercent === 0) {
+                html += `
+                    <div style="text-align: center; padding: 40px; color: #999;">
+                        <p>אין נתוני התקדמות זמינים לפרויקט זה</p>
+                    </div>
+                `;
+            }
+            
+            html += `</div>`;
+            
+            body.innerHTML = html;
+            modal.classList.add('active');
+        }
+
+        function closeProjectDetails() {
+            document.getElementById('projectDetailsModal').classList.remove('active');
+        }
+
         document.getElementById('monthModal').addEventListener('click', function(e) {
             if (e.target === this) {
                 closeMonthModal();
+            }
+        });
+
+        document.getElementById('projectDetailsModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeProjectDetails();
             }
         });
 
@@ -2916,6 +3154,7 @@
             if (e.key === 'Escape') {
                 closeMonthModal();
                 closeBudgetModal();
+                closeProjectDetails();
                 closeMenu();
             }
         });
