@@ -1726,11 +1726,13 @@
             border-radius: 8px;
             border-right: 4px solid #667eea;
             transition: all 0.2s ease;
+            cursor: pointer;
         }
 
         .breakdown-item:hover {
-            background: #e9ecef;
-            transform: translateX(-3px);
+            background: #e3e7fc;
+            transform: translateX(-5px);
+            box-shadow: 0 3px 10px rgba(102, 126, 234, 0.2);
         }
 
         .breakdown-project-name {
@@ -3052,7 +3054,7 @@
                 
                 breakdown.forEach(item => {
                     modalBodyHTML += `
-                        <div class="breakdown-item">
+                        <div class="breakdown-item" onclick="openProjectFromMonth('${item.name.replace(/'/g, "\\'")}', event)" style="cursor: pointer; transition: background 0.2s;">
                             <div class="breakdown-project-name">📋 ${item.name}</div>
                             <div class="breakdown-amount">${formatCurrency(item.amount.toString())}</div>
                         </div>
@@ -3073,6 +3075,18 @@
 
         function closeMonthModal() {
             document.getElementById('monthModal').classList.remove('active');
+        }
+
+        function openProjectFromMonth(projectName, event) {
+            if (event) event.stopPropagation();
+            
+            // סגור את המודל החודשי
+            closeMonthModal();
+            
+            // המתן רגע ואז פתח את מודל הפרויקט
+            setTimeout(() => {
+                openProjectDetails(projectName);
+            }, 300);
         }
 
         function openProjectDetails(projectName, event) {
