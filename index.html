@@ -763,7 +763,7 @@
 
         .project-row {
             display: grid;
-            grid-template-columns: 2fr 1fr 1fr 1fr 1fr 1.2fr;
+            grid-template-columns: 1.8fr 0.9fr 0.9fr 0.9fr 0.9fr 1fr 1fr;
             gap: 0;
             align-items: center;
             min-height: 45px;
@@ -825,6 +825,11 @@
             align-items: center;
             justify-content: center;
             padding: 5px;
+            font-size: 0.75em;
+        }
+
+        .progress-cell-execution {
+            padding: 5px 8px;
         }
 
         .execution-progress {
@@ -1576,7 +1581,7 @@
 
         .header-row {
             display: grid;
-            grid-template-columns: 2fr 1fr 1fr 1fr 1fr 1.2fr;
+            grid-template-columns: 1.8fr 0.9fr 0.9fr 0.9fr 0.9fr 1fr 1fr;
             gap: 0;
             border-bottom: 2px solid #e9ecef;
         }
@@ -2484,19 +2489,19 @@
             return `
                 <div class="${cardClass} fade-in" onclick="openProjectDetails('${project.name.replace(/'/g, "\\'")}', event)">
                     <div class="project-row">
-                        <div class="project-cell">
+                        <div class="project-cell project-cell-name">
                             <div class="cell-value">📋 ${project.name} ${badge}</div>
                         </div>
-                        <div class="project-cell">
+                        <div class="project-cell project-cell-amount">
                             <div class="cell-value amount">${formatCurrency(project.quoted)}</div>
                         </div>
-                        <div class="project-cell">
+                        <div class="project-cell project-cell-amount">
                             <div class="cell-value paid">${formatCurrency(project.paid)}</div>
                         </div>
-                        <div class="project-cell">
+                        <div class="project-cell project-cell-amount">
                             <div class="cell-value remaining">${formatCurrency(project.remaining)}</div>
                         </div>
-                        <div class="project-cell">
+                        <div class="project-cell project-cell-deadline">
                             <div class="cell-value deadline">📅 ${project.deadline || project.startDate || 'N/A'}</div>
                         </div>
                         <div class="progress-cell">
@@ -2507,7 +2512,7 @@
                                 <div class="progress-text">${progress}%</div>
                             </div>
                         </div>
-                        <div class="progress-cell">
+                        <div class="progress-cell progress-cell-execution">
                             ${executionProgressHTML}
                         </div>
                     </div>
