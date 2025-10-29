@@ -645,11 +645,22 @@
             align-items: center;
             justify-content: space-between;
             gap: 20px;
-            margin-bottom: 20px;
+            margin-bottom: 40px;
             background: linear-gradient(135deg, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0.1) 100%);
             padding: 15px 20px;
             border-radius: 12px;
             backdrop-filter: blur(10px);
+        }
+
+        .section-title-center {
+            color: white;
+            font-size: 2em;
+            font-weight: 800;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3);
+            letter-spacing: 1px;
+            margin: 0;
+            text-align: center;
+            flex: 0 0 auto;
         }
 
         .section-title {
@@ -659,6 +670,31 @@
             text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3);
             letter-spacing: 1px;
             margin: 0;
+        }
+
+        .search-and-budget-wrapper {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .budget-planner-btn-inline {
+            padding: 12px 24px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 25px;
+            font-weight: 600;
+            font-size: 1em;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+            white-space: nowrap;
+        }
+
+        .budget-planner-btn-inline:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
         }
 
         .search-box-inline {
@@ -891,10 +927,10 @@
         }
 
         .progress-text {
-            font-size: 0.7em;
+            font-size: 0.95em;
             font-weight: 600;
             color: #43e97b;
-            min-width: 35px;
+            min-width: 45px;
         }
 
         .completed-section {
@@ -2062,13 +2098,19 @@
 
             <!-- Projects Section -->
             <div class="projects-section">
-                <!-- Section Title + Search -->
+                <!-- Section Title in Center + Search & Budget -->
                 <div class="section-title-row">
-                    <h2 class="section-title">📊 פרויקטים</h2>
-                    <div class="search-wrapper">
-                        <span class="search-icon">🔍</span>
-                        <input type="text" id="searchBox" class="search-box-inline" placeholder="חיפוש פרויקט...">
+                    <div class="search-and-budget-wrapper">
+                        <div class="search-wrapper">
+                            <span class="search-icon">🔍</span>
+                            <input type="text" id="searchBox" class="search-box-inline" placeholder="חיפוש פרויקט...">
+                        </div>
+                        <button class="budget-planner-btn-inline" onclick="openBudgetModal()">
+                            🧮 תכנון תקציב
+                        </button>
                     </div>
+                    <h2 class="section-title-center">📊 פרויקטים</h2>
+                    <div style="width: 300px;"></div> <!-- Spacer for centering -->
                 </div>
                 
                 <!-- Filter Buttons -->
@@ -2087,9 +2129,6 @@
                     </button>
                     <button class="filter-btn" data-filter="all">
                         📊 הכל <span class="filter-count" id="filterCountAll">0</span>
-                    </button>
-                    <button class="budget-planner-btn" onclick="openBudgetModal()">
-                        🧮 תכנון תקציב
                     </button>
                 </div>
 
