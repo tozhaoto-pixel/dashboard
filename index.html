@@ -1264,7 +1264,7 @@
 
         .budget-two-columns {
             display: grid;
-            grid-template-columns: 60% 40%;
+            grid-template-columns: 40% 60%;
             gap: 25px;
             align-items: start;
         }
@@ -1485,6 +1485,13 @@
 
         .budget-comparison-table tr:nth-child(even) {
             background: #f8f9fa;
+        }
+
+        .budget-total-column {
+            font-weight: 900 !important;
+            font-size: 1.1em !important;
+            color: #000 !important;
+            background: #fff9e6 !important;
         }
 
         .budget-amount {
@@ -3244,7 +3251,7 @@
                         <td><strong>${monthName}</strong></td>
                         <td><span class="budget-amount">$${Math.round(baseAmount).toLocaleString()}</span></td>
                         <td><span class="budget-amount">${addition > 0 ? '+' : ''}$${Math.round(addition).toLocaleString()}</span></td>
-                        <td><span class="budget-amount">$${Math.round(totalAmount).toLocaleString()}</span></td>
+                        <td class="budget-total-column"><span class="budget-amount">$${Math.round(totalAmount).toLocaleString()}</span></td>
                     </tr>
                 `;
             }
