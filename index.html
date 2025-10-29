@@ -645,7 +645,7 @@
             align-items: center;
             justify-content: space-between;
             gap: 20px;
-            margin-bottom: 40px;
+            margin-bottom: 80px;
             background: linear-gradient(135deg, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0.1) 100%);
             padding: 15px 20px;
             border-radius: 12px;
@@ -1034,6 +1034,11 @@
             align-items: center;
             justify-content: center;
             backdrop-filter: blur(4px);
+        }
+
+        .modal-overlay-top {
+            z-index: 1100;
+            background: rgba(0, 0, 0, 0.8);
         }
 
         .modal-overlay.active {
@@ -2247,7 +2252,7 @@
     </div>
 
     <!-- Project Details Modal -->
-    <div id="projectDetailsModal" class="modal-overlay">
+    <div id="projectDetailsModal" class="modal-overlay modal-overlay-top">
         <div class="modal-content">
             <div class="modal-header">
                 <div class="modal-title" id="projectDetailsTitle">פירוט פרויקט</div>
@@ -3119,13 +3124,8 @@
         function openProjectFromMonth(projectName, event) {
             if (event) event.stopPropagation();
             
-            // סגור את המודל החודשי
-            closeMonthModal();
-            
-            // המתן רגע ואז פתח את מודל הפרויקט
-            setTimeout(() => {
-                openProjectDetails(projectName);
-            }, 300);
+            // לא סוגרים את המודל החודשי - פשוט פותחים את מודל הפרויקט מעליו
+            openProjectDetails(projectName);
         }
 
         function openProjectDetails(projectName, event) {
