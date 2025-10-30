@@ -24,65 +24,6 @@
     </script>
     
     <style>
-        /* מסך טעינה */
-        #loadingScreen {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            z-index: 10000;
-            transition: opacity 0.5s ease-out;
-        }
-
-        #loadingScreen.hidden {
-            opacity: 0;
-            pointer-events: none;
-        }
-
-        .loading-content {
-            text-align: center;
-            color: white;
-        }
-
-        .loading-title {
-            font-size: 3em;
-            font-weight: bold;
-            margin-bottom: 30px;
-            animation: fadeInDown 0.8s ease-out;
-        }
-
-        .loading-spinner {
-            width: 60px;
-            height: 60px;
-            border: 5px solid rgba(255, 255, 255, 0.3);
-            border-top: 5px solid white;
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-            margin: 0 auto;
-        }
-
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
-        @keyframes fadeInDown {
-            from {
-                opacity: 0;
-                transform: translateY(-30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
         * {
             margin: 0;
             padding: 0;
@@ -2003,14 +1944,6 @@
     </style>
 </head>
 <body>
-    <!-- מסך טעינה -->
-    <div id="loadingScreen">
-        <div class="loading-content">
-            <div class="loading-title">ממלכת זכרון אהרן</div>
-            <div class="loading-spinner"></div>
-        </div>
-    </div>
-
     <!-- Loading Skeleton -->
     <div class="skeleton-loader" id="skeletonLoader">
         <div class="skeleton-content">
@@ -2550,14 +2483,7 @@
         function getMonthsBetween(startDate, endDate) {
             const years = endDate.getFullYear() - startDate.getFullYear();
             const months = endDate.getMonth() - startDate.getMonth();
-            const totalMonths = years * 12 + months;
-            
-            // אם הדדליין בעבר או היום, החזר 0
-            if (totalMonths <= 0) {
-                return 0;
-            }
-            
-            return totalMonths;
+            return Math.max(1, years * 12 + months);
         }
 
         // פונקציה מרכזית לחישוב תשלומים לחודש ספציפי
@@ -2574,7 +2500,7 @@
                     const monthsRemaining = getMonthsBetween(today, deadlineDate);
                     const remainingAmount = parseFloat(String(project.remaining).replace(/[^\d.-]/g, '')) || 0;
                     
-                    if (monthsRemaining > 0 && monthIndex < monthsRemaining && remainingAmount > 0) {
+                    if (monthIndex < monthsRemaining && remainingAmount > 0) {
                         const monthlyPayment = remainingAmount / monthsRemaining;
                         breakdown.push({
                             name: project.name,
