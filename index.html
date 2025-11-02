@@ -24,6 +24,65 @@
     </script>
     
     <style>
+        /* מסך טעינה */
+        #loadingScreen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 10000;
+            transition: opacity 0.5s ease-out;
+        }
+
+        #loadingScreen.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .loading-content {
+            text-align: center;
+            color: white;
+        }
+
+        .loading-title {
+            font-size: 3em;
+            font-weight: bold;
+            margin-bottom: 30px;
+            animation: fadeInDown 0.8s ease-out;
+        }
+
+        .loading-spinner {
+            width: 60px;
+            height: 60px;
+            border: 5px solid rgba(255, 255, 255, 0.3);
+            border-top: 5px solid white;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -1197,6 +1256,53 @@
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
         }
 
+        /* Current Month Button */
+        .current-month-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: #f8f9fa;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            padding: 12px 18px;
+            margin-bottom: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+        }
+
+        .current-month-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.2);
+            border-color: #667eea;
+            background: #f0f3ff;
+        }
+
+        .current-month-label {
+            font-size: 0.75em;
+            font-weight: 600;
+            color: #999;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .current-month-name {
+            font-size: 1em;
+            font-weight: 700;
+            color: #333;
+        }
+
+        .current-month-amount {
+            font-size: 1.1em;
+            font-weight: 800;
+            color: #667eea;
+        }
+
+        .current-month-icon {
+            font-size: 0.9em;
+            color: #999;
+        }
+
         .timeline-title {
             text-align: center;
             font-size: 1em;
@@ -1944,6 +2050,14 @@
     </style>
 </head>
 <body>
+    <!-- מסך טעינה -->
+    <div id="loadingScreen">
+        <div class="loading-content">
+            <div class="loading-title">ממלכת זכרון אהרן</div>
+            <div class="loading-spinner"></div>
+        </div>
+    </div>
+
     <!-- Loading Skeleton -->
     <div class="skeleton-loader" id="skeletonLoader">
         <div class="skeleton-content">
@@ -2097,7 +2211,15 @@
         <div id="content" style="display: none;">
             <!-- Monthly Timeline -->
             <div class="monthly-timeline fade-in">
-                <div class="timeline-title">💰 תשלומים חודשיים נדרשים ל-12 החודשים הקרובים</div>
+                <!-- Current Month Button -->
+                <div class="current-month-button" id="currentMonthButton" onclick="showCurrentMonthBreakdown()" style="display: none;">
+                    <span class="current-month-label">📌 חודש נוכחי:</span>
+                    <span class="current-month-name" id="currentMonthName"></span>
+                    <span class="current-month-amount" id="currentMonthAmount"></span>
+                    <span class="current-month-icon">ℹ️</span>
+                </div>
+                
+                <div class="timeline-title">💰 תשלומים חודשיים נדרשים ל-12 החודשים הבאים</div>
                 <div id="monthlyTimeline" class="timeline-months"></div>
             </div>
 
@@ -2486,6 +2608,56 @@
             return Math.max(1, years * 12 + months);
         }
 
+        // פונקציה לחישוב תשלומים מתחילת חודש ספציפי
+        function calculateMonthPaymentsFromStart(monthStart) {
+            const activeProjects = window.allActiveProjects || [];
+            const pendingExecutionProjects = window.allPendingExecutionProjects || [];
+            const breakdown = [];
+            
+            // פרויקטים פעילים
+            activeProjects.forEach(project => {
+                const deadlineDate = parseDeadlineDate(project.deadline);
+                if (deadlineDate) {
+                    const monthsRemaining = getMonthsBetween(monthStart, deadlineDate);
+                    const remainingAmount = parseFloat(String(project.remaining).replace(/[^\d.-]/g, '')) || 0;
+                    
+                    if (monthsRemaining > 0 && remainingAmount > 0) {
+                        const monthlyPayment = remainingAmount / monthsRemaining;
+                        breakdown.push({
+                            name: project.name,
+                            amount: monthlyPayment,
+                            type: 'פעיל'
+                        });
+                    }
+                }
+            });
+
+            // פרויקטים ממתינים לביצוע
+            pendingExecutionProjects.forEach(project => {
+                const startDate = parseDeadlineDate(project.startDate);
+                const deadlineDate = parseDeadlineDate(project.deadline);
+                
+                if (startDate && deadlineDate && monthStart >= startDate) {
+                    const monthsTotal = getMonthsBetween(startDate, deadlineDate);
+                    const totalAmount = parseFloat(String(project.quoted).replace(/[^\d.-]/g, '')) || 0;
+                    const monthlyPayment = totalAmount / monthsTotal;
+                    
+                    const monthsUntilStart = getMonthsBetween(monthStart, startDate);
+                    
+                    if (monthsUntilStart <= 0) {
+                        breakdown.push({
+                            name: project.name,
+                            amount: monthlyPayment,
+                            type: 'ממתין לביצוע'
+                        });
+                    }
+                }
+            });
+
+            const total = breakdown.reduce((sum, item) => sum + item.amount, 0);
+            return { breakdown, total };
+        }
+
         // פונקציה מרכזית לחישוב תשלומים לחודש ספציפי
         function calculateMonthPayments(monthIndex) {
             const today = new Date();
@@ -2500,7 +2672,7 @@
                     const monthsRemaining = getMonthsBetween(today, deadlineDate);
                     const remainingAmount = parseFloat(String(project.remaining).replace(/[^\d.-]/g, '')) || 0;
                     
-                    if (monthIndex < monthsRemaining && remainingAmount > 0) {
+                    if (monthsRemaining > 0 && monthIndex < monthsRemaining && remainingAmount > 0) {
                         const monthlyPayment = remainingAmount / monthsRemaining;
                         breakdown.push({
                             name: project.name,
@@ -2683,33 +2855,39 @@
                 
                 const currentDay = today.getDate();
                 const currentMonth = today.getMonth();
+                const currentYear = today.getFullYear();
                 
-                let startMonth;
-                let shouldBlinkFirst = false;
+                // חישוב החודש הנוכחי לכפתור
+                const currentMonthStart = new Date(currentYear, currentMonth, 1);
+                const currentMonthData = calculateMonthPaymentsFromStart(currentMonthStart);
+                const currentMonthName = getHebrewMonthName(currentMonthStart);
                 
-                if (currentDay >= 21) {
-                    startMonth = currentMonth + 1;
-                    shouldBlinkFirst = true;
-                } else if (currentDay <= 10) {
-                    startMonth = currentMonth;
-                    shouldBlinkFirst = true;
-                } else {
-                    startMonth = currentMonth + 1;
-                    shouldBlinkFirst = false;
-                }
+                // עדכון כפתור החודש הנוכחי
+                document.getElementById('currentMonthName').textContent = `${currentMonthName} ${currentYear}`;
+                document.getElementById('currentMonthAmount').textContent = formatCurrency(currentMonthData.total.toString());
+                document.getElementById('currentMonthButton').style.display = 'inline-flex';
+                
+                // שמירת הנתונים לפירוט
+                window.currentMonthData = {
+                    name: currentMonthName,
+                    date: `01/${String(currentMonth + 1).padStart(2, '0')}/${currentYear}`,
+                    breakdown: currentMonthData.breakdown,
+                    total: currentMonthData.total
+                };
+                
+                // הטיימליין מתחיל תמיד מהחודש הבא
+                const startMonth = currentMonth + 1;
                 
                 for (let i = 0; i < 12; i++) {
-                    const monthDate = new Date(today.getFullYear(), startMonth + i, 1);
+                    const monthDate = new Date(currentYear, startMonth + i, 1);
                     const monthName = getHebrewMonthName(monthDate);
                     const monthNum = String(monthDate.getMonth() + 1).padStart(2, '0');
                     const year = monthDate.getFullYear();
                     const dateStr = `01/${monthNum}/${year}`;
                     const amount = monthlyPayments[i];
                     
-                    const blinkClass = (i === 0 && shouldBlinkFirst) ? 'payment-due' : '';
-                    
                     timelineHTML += `
-                        <div class="month-item ${blinkClass}" onclick="showMonthBreakdown(${i}, '${monthName}', '${dateStr}', ${amount})" style="cursor: pointer;">
+                        <div class="month-item" onclick="showMonthBreakdown(${i}, '${monthName}', '${dateStr}', ${amount})" style="cursor: pointer;">
                             <div class="month-name">${monthName}</div>
                             <div class="month-date">${dateStr}</div>
                             <div class="month-amount">${formatCurrency(amount.toString())}</div>
@@ -3084,6 +3262,51 @@
                     });
                 }
             });
+        }
+
+        function showCurrentMonthBreakdown() {
+            const data = window.currentMonthData;
+            if (!data) return;
+            
+            trackEvent('Monthly Timeline', 'view_current_month', data.name);
+            
+            document.getElementById('modalTitle').textContent = `פירוט תשלומים - ${data.name} (${data.date}) - החודש הנוכחי`;
+            
+            let modalBodyHTML = '';
+            
+            if (data.breakdown.length === 0) {
+                modalBodyHTML = `
+                    <div class="breakdown-empty">
+                        <div class="breakdown-empty-icon">📭</div>
+                        <div>אין תשלומים מתוכננים לחודש זה</div>
+                    </div>
+                `;
+            } else {
+                data.breakdown.sort((a, b) => b.amount - a.amount);
+                
+                data.breakdown.forEach(item => {
+                    const badge = item.type === 'ממתין לביצוע' 
+                        ? '<span style="font-size: 0.75em; background: #ffd700; color: #333; padding: 3px 8px; border-radius: 12px; margin-right: 8px;">🔜 ממתין</span>' 
+                        : '';
+                    
+                    modalBodyHTML += `
+                        <div class="breakdown-item" onclick="openProjectFromMonth('${item.name.replace(/'/g, "\\'")}', event)" style="cursor: pointer; transition: background 0.2s;">
+                            <div class="breakdown-project-name">📋 ${item.name} ${badge}</div>
+                            <div class="breakdown-amount">${formatCurrency(item.amount.toString())}</div>
+                        </div>
+                    `;
+                });
+                
+                modalBodyHTML += `
+                    <div class="breakdown-total">
+                        <div class="breakdown-total-label">💰 סה"כ לחודש:</div>
+                        <div class="breakdown-total-amount">${formatCurrency(data.total.toString())}</div>
+                    </div>
+                `;
+            }
+            
+            document.getElementById('modalBody').innerHTML = modalBodyHTML;
+            document.getElementById('monthModal').classList.add('active');
         }
 
         function showMonthBreakdown(monthIndex, monthName, dateStr, totalAmount) {
