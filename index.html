@@ -115,74 +115,28 @@
         }
 
         @keyframes neonScan {
-            0%, 100% {
-                background-position: 0% 0%;
-            }
-            50% {
-                background-position: 100% 0%;
-            }
+            0%, 100% { background-position: 0% 0%; }
+            50% { background-position: 100% 0%; }
         }
 
         @keyframes shine {
-            0% {
-                left: -100%;
-            }
-            100% {
-                left: 200%;
-            }
+            0% { left: -100%; }
+            100% { left: 200%; }
         }
 
         @keyframes sparkle {
-            0%, 100% {
-                opacity: 0;
-                transform: translate(-50%, -50%) scale(0);
-            }
-            50% {
-                opacity: 1;
-                transform: translate(-50%, -50%) scale(1);
-            }
+            0%, 100% { opacity: 0; transform: translate(-50%, -50%) scale(0); }
+            50% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
         }
 
-        .skeleton-header {
-            height: 80px;
-            margin-bottom: 20px;
-        }
-
-        .skeleton-timeline {
-            height: 150px;
-            margin-bottom: 20px;
-        }
-
-        .skeleton-title {
-            height: 60px;
-            margin-bottom: 15px;
-        }
-
-        .skeleton-filters {
-            display: flex;
-            gap: 10px;
-            margin-bottom: 15px;
-        }
-
-        .skeleton-filter {
-            height: 50px;
-            flex: 1;
-        }
-
-        .skeleton-search {
-            height: 50px;
-            margin-bottom: 15px;
-        }
-
-        .skeleton-table-header {
-            height: 60px;
-            margin-bottom: 10px;
-        }
-
-        .skeleton-card {
-            height: 60px;
-            margin-bottom: 8px;
-        }
+        .skeleton-header { height: 80px; margin-bottom: 20px; }
+        .skeleton-timeline { height: 150px; margin-bottom: 20px; }
+        .skeleton-title { height: 60px; margin-bottom: 15px; }
+        .skeleton-filters { display: flex; gap: 10px; margin-bottom: 15px; }
+        .skeleton-filter { height: 50px; flex: 1; }
+        .skeleton-search { height: 50px; margin-bottom: 15px; }
+        .skeleton-table-header { height: 60px; margin-bottom: 10px; }
+        .skeleton-card { height: 60px; margin-bottom: 8px; }
 
         /* Sidebar Toggle Button */
         .sidebar-toggle {
@@ -263,9 +217,7 @@
             text-transform: uppercase;
         }
 
-        .clock-analog-flag {
-            font-size: 1.3em;
-        }
+        .clock-analog-flag { font-size: 1.3em; }
 
         .clock-face {
             width: 100px;
@@ -298,51 +250,18 @@
             border-radius: 10px;
         }
 
-        .hour-hand {
-            width: 4px;
-            height: 28px;
-            background: #333;
-            margin-left: -2px;
-        }
+        .hour-hand { width: 4px; height: 28px; background: #333; margin-left: -2px; }
+        .minute-hand { width: 3px; height: 38px; background: #667eea; margin-left: -1.5px; }
+        .second-hand { width: 2px; height: 42px; background: #ff6b6b; margin-left: -1px; }
 
-        .minute-hand {
-            width: 3px;
-            height: 38px;
-            background: #667eea;
-            margin-left: -1.5px;
-        }
-
-        .second-hand {
-            width: 2px;
-            height: 42px;
-            background: #ff6b6b;
-            margin-left: -1px;
-        }
-
-        .clock-number {
-            position: absolute;
-            font-size: 0.7em;
-            font-weight: bold;
-            color: #667eea;
-        }
-
+        .clock-number { position: absolute; font-size: 0.7em; font-weight: bold; color: #667eea; }
         .num-12 { top: 5px; left: 50%; transform: translateX(-50%); }
         .num-3 { right: 8px; top: 50%; transform: translateY(-50%); }
         .num-6 { bottom: 5px; left: 50%; transform: translateX(-50%); }
         .num-9 { left: 8px; top: 50%; transform: translateY(-50%); }
 
-        .clock-digital-time {
-            font-size: 1.3em;
-            font-weight: bold;
-            color: #333;
-            font-family: 'Courier New', monospace;
-            letter-spacing: 1px;
-        }
-
-        .clock-digital-date {
-            font-size: 0.7em;
-            color: #666;
-        }
+        .clock-digital-time { font-size: 1.3em; font-weight: bold; color: #333; font-family: 'Courier New', monospace; letter-spacing: 1px; }
+        .clock-digital-date { font-size: 0.7em; color: #666; }
 
         /* Contact Card */
         .contact-card {
@@ -352,14 +271,7 @@
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
         }
 
-        .contact-card-title {
-            text-align: center;
-            font-size: 0.85em;
-            font-weight: 800;
-            color: #2d3748;
-            margin-bottom: 12px;
-            letter-spacing: 0.3px;
-        }
+        .contact-card-title { text-align: center; font-size: 0.85em; font-weight: 800; color: #2d3748; margin-bottom: 12px; letter-spacing: 0.3px; }
 
         .contact-item {
             padding: 10px 8px;
@@ -412,27 +324,11 @@
             box-shadow: 0 3px 8px rgba(102, 126, 234, 0.3);
         }
 
-        .contact-icon {
-            font-size: 1.2em;
-        }
+        .contact-icon { font-size: 1.2em; }
 
-        .contact-details {
-            display: flex;
-            flex-direction: column;
-            gap: 3px;
-            flex: 1;
-            min-width: 0;
-        }
+        .contact-details { display: flex; flex-direction: column; gap: 3px; flex: 1; min-width: 0; }
 
-        .contact-name {
-            font-size: 0.7em;
-            font-weight: 700;
-            color: #2d3748;
-            letter-spacing: 0.2px;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-        }
+        .contact-name { font-size: 0.7em; font-weight: 700; color: #2d3748; letter-spacing: 0.2px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 
         .contact-primary-name {
             font-size: 0.8em;
@@ -459,18 +355,8 @@
             white-space: nowrap;
         }
 
-        .contact-primary-phone {
-            color: #667eea;
-            font-size: 0.78em;
-            font-weight: 700;
-            background: rgba(102, 126, 234, 0.08);
-        }
-
-        .contact-divider {
-            height: 1px;
-            background: linear-gradient(90deg, transparent, #e2e8f0, transparent);
-            margin: 6px 0;
-        }
+        .contact-primary-phone { color: #667eea; font-size: 0.78em; font-weight: 700; background: rgba(102, 126, 234, 0.08); }
+        .contact-divider { height: 1px; background: linear-gradient(90deg, transparent, #e2e8f0, transparent); margin: 6px 0; }
 
         /* Hamburger Menu */
         .menu-toggle {
@@ -493,10 +379,7 @@
             transition: all 0.3s ease;
         }
 
-        .menu-toggle:hover {
-            transform: scale(1.05);
-            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
-        }
+        .menu-toggle:hover { transform: scale(1.05); box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4); }
 
         .menu-toggle span {
             display: block;
@@ -507,17 +390,9 @@
             transition: all 0.3s ease;
         }
 
-        .menu-toggle.active span:nth-child(1) {
-            transform: rotate(45deg) translate(7px, 7px);
-        }
-
-        .menu-toggle.active span:nth-child(2) {
-            opacity: 0;
-        }
-
-        .menu-toggle.active span:nth-child(3) {
-            transform: rotate(-45deg) translate(7px, -7px);
-        }
+        .menu-toggle.active span:nth-child(1) { transform: rotate(45deg) translate(7px, 7px); }
+        .menu-toggle.active span:nth-child(2) { opacity: 0; }
+        .menu-toggle.active span:nth-child(3) { transform: rotate(-45deg) translate(7px, -7px); }
 
         /* Side Menu */
         .side-menu {
@@ -533,9 +408,7 @@
             overflow-y: auto;
         }
 
-        .side-menu.active {
-            right: 0;
-        }
+        .side-menu.active { right: 0; }
 
         .menu-header {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
@@ -544,21 +417,9 @@
             text-align: center;
         }
 
-        .menu-header h2 {
-            margin: 0;
-            font-size: 1.5em;
-            font-weight: bold;
-        }
-
-        .menu-header p {
-            margin: 5px 0 0 0;
-            font-size: 0.85em;
-            opacity: 0.9;
-        }
-
-        .menu-items {
-            padding: 20px 0;
-        }
+        .menu-header h2 { margin: 0; font-size: 1.5em; font-weight: bold; }
+        .menu-header p { margin: 5px 0 0 0; font-size: 0.85em; opacity: 0.9; }
+        .menu-items { padding: 20px 0; }
 
         .menu-item {
             display: flex;
@@ -572,27 +433,10 @@
             cursor: pointer;
         }
 
-        .menu-item:hover {
-            background: #f8f9fa;
-            border-right-color: #667eea;
-            transform: translateX(-5px);
-        }
-
-        .menu-item.active {
-            background: linear-gradient(90deg, #f0f3ff 0%, #ffffff 100%);
-            border-right-color: #667eea;
-            font-weight: bold;
-        }
-
-        .menu-item-icon {
-            font-size: 1.5em;
-            width: 30px;
-            text-align: center;
-        }
-
-        .menu-item-text {
-            font-size: 1em;
-        }
+        .menu-item:hover { background: #f8f9fa; border-right-color: #667eea; transform: translateX(-5px); }
+        .menu-item.active { background: linear-gradient(90deg, #f0f3ff 0%, #ffffff 100%); border-right-color: #667eea; font-weight: bold; }
+        .menu-item-icon { font-size: 1.5em; width: 30px; text-align: center; }
+        .menu-item-text { font-size: 1em; }
 
         .menu-overlay {
             position: fixed;
@@ -607,10 +451,7 @@
             transition: all 0.3s ease;
         }
 
-        .menu-overlay.active {
-            opacity: 1;
-            visibility: visible;
-        }
+        .menu-overlay.active { opacity: 1; visibility: visible; }
 
         header {
             text-align: center;
@@ -623,21 +464,11 @@
             box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
         }
 
-        h1 {
-            font-size: 1.4em;
-            margin-bottom: 5px;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
-        }
-
-        .subtitle {
-            font-size: 0.9em;
-            opacity: 0.9;
-        }
+        h1 { font-size: 1.4em; margin-bottom: 5px; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); }
+        .subtitle { font-size: 0.9em; opacity: 0.9; }
 
         /* Projects Section */
-        .projects-section {
-            margin-top: 15px;
-        }
+        .projects-section { margin-top: 15px; }
 
         /* Section Title + Search */
         .section-title-row {
@@ -672,11 +503,7 @@
             margin: 0;
         }
 
-        .search-and-budget-wrapper {
-            display: flex;
-            gap: 15px;
-            align-items: center;
-        }
+        .search-and-budget-wrapper { display: flex; gap: 15px; align-items: center; }
 
         .budget-planner-btn-inline {
             padding: 12px 24px;
@@ -692,10 +519,24 @@
             white-space: nowrap;
         }
 
-        .budget-planner-btn-inline:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
+        .budget-planner-btn-inline:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6); }
+
+        /* Materials Button */
+        .materials-btn-inline {
+            padding: 12px 24px;
+            background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+            color: white;
+            border: none;
+            border-radius: 25px;
+            font-weight: 600;
+            font-size: 1em;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(17, 153, 142, 0.4);
+            white-space: nowrap;
         }
+
+        .materials-btn-inline:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(17, 153, 142, 0.6); }
 
         .search-box-inline {
             flex: 0 0 300px;
@@ -711,63 +552,19 @@
             position: relative;
         }
 
-        .search-box-inline:focus {
-            border-color: white;
-            box-shadow: 0 6px 25px rgba(255, 255, 255, 0.4);
-            background: white;
-        }
+        .search-box-inline:focus { border-color: white; box-shadow: 0 6px 25px rgba(255, 255, 255, 0.4); background: white; }
+        .search-box-inline::placeholder { color: #999; }
 
-        .search-box-inline::placeholder {
-            color: #999;
-        }
+        .search-wrapper { position: relative; flex: 0 0 300px; }
+        .search-icon { position: absolute; right: 15px; top: 50%; transform: translateY(-50%); font-size: 1.2em; color: #667eea; pointer-events: none; }
 
-        .search-wrapper {
-            position: relative;
-            flex: 0 0 300px;
-        }
+        .projects-scroll-container { max-height: 500px; overflow-y: auto; overflow-x: hidden; border-radius: 0 0 8px 8px; }
+        .projects-scroll-container::-webkit-scrollbar { width: 8px; }
+        .projects-scroll-container::-webkit-scrollbar-track { background: #f1f1f1; border-radius: 4px; }
+        .projects-scroll-container::-webkit-scrollbar-thumb { background: linear-gradient(180deg, #667eea 0%, #764ba2 100%); border-radius: 4px; }
+        .projects-scroll-container::-webkit-scrollbar-thumb:hover { background: linear-gradient(180deg, #764ba2 0%, #667eea 100%); }
 
-        .search-icon {
-            position: absolute;
-            right: 15px;
-            top: 50%;
-            transform: translateY(-50%);
-            font-size: 1.2em;
-            color: #667eea;
-            pointer-events: none;
-        }
-
-        .projects-scroll-container {
-            max-height: 500px;
-            overflow-y: auto;
-            overflow-x: hidden;
-            border-radius: 0 0 8px 8px;
-        }
-
-        .projects-scroll-container::-webkit-scrollbar {
-            width: 8px;
-        }
-
-        .projects-scroll-container::-webkit-scrollbar-track {
-            background: #f1f1f1;
-            border-radius: 4px;
-        }
-
-        .projects-scroll-container::-webkit-scrollbar-thumb {
-            background: linear-gradient(180deg, #667eea 0%, #764ba2 100%);
-            border-radius: 4px;
-        }
-
-        .projects-scroll-container::-webkit-scrollbar-thumb:hover {
-            background: linear-gradient(180deg, #764ba2 0%, #667eea 100%);
-        }
-
-        .projects-grid {
-            display: flex;
-            flex-direction: column;
-            gap: 3px;
-            max-width: 1400px;
-            margin: 0 auto;
-        }
+        .projects-grid { display: flex; flex-direction: column; gap: 3px; max-width: 1400px; margin: 0 auto; }
 
         .project-card {
             background: white;
@@ -778,14 +575,10 @@
             position: relative;
             overflow: hidden;
             border-right: 3px solid transparent;
+            cursor: pointer;
         }
 
-        .project-card:hover {
-            transform: translateX(-2px);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-            border-right-color: #4facfe;
-            background: #fafbfc;
-        }
+        .project-card:hover { transform: translateX(-2px); box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); border-right-color: #4facfe; background: #fafbfc; }
 
         .project-card::before {
             content: '';
@@ -797,13 +590,7 @@
             background: linear-gradient(180deg, #4facfe 0%, #43e97b 100%);
         }
 
-        .project-row {
-            display: grid;
-            grid-template-columns: 1.8fr 0.9fr 0.9fr 0.9fr 0.9fr 1fr 1fr;
-            gap: 0;
-            align-items: center;
-            min-height: 45px;
-        }
+        .project-row { display: grid; grid-template-columns: 1.8fr 0.9fr 0.9fr 0.9fr 0.9fr 1fr 1fr; gap: 0; align-items: center; min-height: 45px; }
 
         .project-cell {
             padding: 10px 12px;
@@ -814,130 +601,29 @@
             transition: background 0.2s ease;
         }
 
-        .project-cell:first-child {
-            border-right: none;
-            font-weight: 600;
-            color: #333;
-        }
+        .project-cell:first-child { border-right: none; font-weight: 600; color: #333; }
+        .project-cell:hover { background: #f8f9fa; }
 
-        .project-cell:hover {
-            background: #f8f9fa;
-        }
+        .cell-label { font-size: 0.65em; color: #999; text-transform: uppercase; margin-bottom: 2px; }
+        .cell-value { font-size: 0.95em; font-weight: 600; color: #333; }
+        .amount { color: #4facfe; font-size: 0.95em; }
+        .paid { color: #43e97b; font-size: 0.95em; }
+        .deadline { color: #764ba2; font-size: 0.95em; }
+        .remaining { color: #ff6b6b; font-weight: 900; font-size: 0.95em; }
 
-        .cell-label {
-            font-size: 0.65em;
-            color: #999;
-            text-transform: uppercase;
-            margin-bottom: 2px;
-        }
+        .execution-progress-cell { display: flex; align-items: center; justify-content: center; padding: 5px; font-size: 0.9em; }
+        .progress-cell-execution { padding: 5px 8px; }
+        .execution-progress { margin-top: 5px; font-size: 0.9em; }
+        .execution-row { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+        .execution-label { padding: 4px 10px; border-radius: 4px; background: rgba(255,255,255,0.9); font-weight: 600; font-size: 0.88em; white-space: nowrap; }
 
-        .cell-value {
-            font-size: 0.95em;
-            font-weight: 600;
-            color: #333;
-        }
+        .progress-cell { padding: 10px 12px; border-left: 1px solid #e9ecef; }
+        .progress-mini { display: flex; align-items: center; gap: 8px; }
+        .progress-bar-mini { flex: 1; height: 4px; background: #e9ecef; border-radius: 4px; overflow: hidden; }
+        .progress-fill { height: 100%; background: linear-gradient(90deg, #43e97b 0%, #4facfe 100%); border-radius: 4px; transition: width 0.6s ease; }
+        .progress-text { font-size: 0.95em; font-weight: 600; color: #43e97b; min-width: 45px; }
 
-        .amount {
-            color: #4facfe;
-            font-size: 0.95em;
-        }
-
-        .paid {
-            color: #43e97b;
-            font-size: 0.95em;
-        }
-
-        .deadline {
-            color: #764ba2;
-            font-size: 0.95em;
-        }
-
-        .remaining {
-            color: #ff6b6b;
-            font-weight: 900;
-            font-size: 0.95em;
-        }
-
-        .execution-progress-cell {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 5px;
-            font-size: 0.9em;
-        }
-
-        .progress-cell-execution {
-            padding: 5px 8px;
-        }
-
-        .execution-progress {
-            margin-top: 5px;
-            font-size: 0.9em;
-        }
-
-        .execution-row {
-            display: flex;
-            gap: 8px;
-            align-items: center;
-            flex-wrap: wrap;
-        }
-
-        .execution-label {
-            padding: 4px 10px;
-            border-radius: 4px;
-            background: rgba(255,255,255,0.9);
-            font-weight: 600;
-            font-size: 0.88em;
-            white-space: nowrap;
-        }
-
-        .project-card {
-            cursor: pointer;
-        }
-
-        .project-card:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-        }
-
-        .progress-cell {
-            padding: 10px 12px;
-            border-left: 1px solid #e9ecef;
-        }
-
-        .progress-mini {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .progress-bar-mini {
-            flex: 1;
-            height: 4px;
-            background: #e9ecef;
-            border-radius: 4px;
-            overflow: hidden;
-        }
-
-        .progress-fill {
-            height: 100%;
-            background: linear-gradient(90deg, #43e97b 0%, #4facfe 100%);
-            border-radius: 4px;
-            transition: width 0.6s ease;
-        }
-
-        .progress-text {
-            font-size: 0.95em;
-            font-weight: 600;
-            color: #43e97b;
-            min-width: 45px;
-        }
-
-        .completed-section {
-            margin-top: 30px;
-            padding-top: 20px;
-            border-top: 2px dashed rgba(255, 255, 255, 0.3);
-        }
+        .completed-section { margin-top: 30px; padding-top: 20px; border-top: 2px dashed rgba(255, 255, 255, 0.3); }
 
         /* Payments Section */
         .payments-section {
@@ -948,11 +634,7 @@
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
         }
 
-        .payments-section .section-title {
-            color: white;
-            margin-bottom: 20px;
-            text-align: center;
-        }
+        .payments-section .section-title { color: white; margin-bottom: 20px; text-align: center; }
 
         .payments-header {
             display: grid;
@@ -966,27 +648,9 @@
             margin-bottom: 15px;
         }
 
-        .payments-header-cell {
-            text-align: center;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            transition: color 0.3s ease;
-        }
-
-        .payments-header-cell:hover {
-            color: #667eea;
-        }
-
-        .payments-list {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            max-height: 500px;
-            overflow-y: auto;
-        }
+        .payments-header-cell { text-align: center; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; transition: color 0.3s ease; }
+        .payments-header-cell:hover { color: #667eea; }
+        .payments-list { display: flex; flex-direction: column; gap: 10px; max-height: 500px; overflow-y: auto; }
 
         .payment-item {
             background: rgba(255, 255, 255, 0.95);
@@ -1001,26 +665,9 @@
             border: 2px solid transparent;
         }
 
-        .payment-item:hover {
-            transform: translateX(-5px);
-            border-color: white;
-            background: white;
-            box-shadow: 0 4px 15px rgba(255, 255, 255, 0.4);
-        }
-
-        .payment-date {
-            font-size: 1em;
-            font-weight: 600;
-            color: #333;
-            text-align: center;
-        }
-
-        .payment-amount {
-            font-size: 1em;
-            font-weight: bold;
-            color: #667eea;
-            text-align: center;
-        }
+        .payment-item:hover { transform: translateX(-5px); border-color: white; background: white; box-shadow: 0 4px 15px rgba(255, 255, 255, 0.4); }
+        .payment-date { font-size: 1em; font-weight: 600; color: #333; text-align: center; }
+        .payment-amount { font-size: 1em; font-weight: bold; color: #667eea; text-align: center; }
 
         .modal-overlay {
             display: none;
@@ -1036,14 +683,8 @@
             backdrop-filter: blur(4px);
         }
 
-        .modal-overlay-top {
-            z-index: 1100;
-            background: rgba(0, 0, 0, 0.8);
-        }
-
-        .modal-overlay.active {
-            display: flex;
-        }
+        .modal-overlay-top { z-index: 1100; background: rgba(0, 0, 0, 0.8); }
+        .modal-overlay.active { display: flex; }
 
         .modal-content {
             background: white;
@@ -1058,14 +699,8 @@
         }
 
         @keyframes slideUp {
-            from {
-                opacity: 0;
-                transform: translateY(50px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(50px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         .modal-header {
@@ -1077,10 +712,7 @@
             align-items: center;
         }
 
-        .modal-title {
-            font-size: 1.3em;
-            font-weight: bold;
-        }
+        .modal-title { font-size: 1.3em; font-weight: bold; }
 
         .modal-close {
             background: rgba(255, 255, 255, 0.2);
@@ -1097,96 +729,28 @@
             justify-content: center;
         }
 
-        .modal-close:hover {
-            background: rgba(255, 255, 255, 0.3);
-            transform: rotate(90deg);
-        }
+        .modal-close:hover { background: rgba(255, 255, 255, 0.3); transform: rotate(90deg); }
 
-        .modal-body {
-            padding: 25px;
-            max-height: calc(80vh - 140px);
-            overflow-y: auto;
-        }
+        .modal-body { padding: 25px; max-height: calc(80vh - 140px); overflow-y: auto; }
+        .modal-body::-webkit-scrollbar { width: 6px; }
+        .modal-body::-webkit-scrollbar-track { background: #f1f1f1; }
+        .modal-body::-webkit-scrollbar-thumb { background: #667eea; border-radius: 3px; }
 
-        .modal-body::-webkit-scrollbar {
-            width: 6px;
-        }
+        .payment-details { background: white; padding: 20px; border-radius: 8px; }
+        .payment-detail-row { display: flex; justify-content: space-between; padding: 10px; border-bottom: 1px solid #e9ecef; }
+        .payment-detail-row:last-child { border-bottom: none; }
+        .payment-project { color: #666; font-weight: 500; }
+        .payment-detail-amount { color: #667eea; font-weight: 600; }
 
-        .modal-body::-webkit-scrollbar-track {
-            background: #f1f1f1;
-        }
+        .completed-card { opacity: 0.8; }
+        .completed-card::before { background: linear-gradient(90deg, #999 0%, #666 100%) !important; }
+        .pending-approval-card::before { background: linear-gradient(90deg, #f39c12 0%, #e67e22 100%) !important; }
+        .pending-execution-card::before { background: linear-gradient(90deg, #3498db 0%, #2980b9 100%) !important; }
 
-        .modal-body::-webkit-scrollbar-thumb {
-            background: #667eea;
-            border-radius: 3px;
-        }
-
-        .payment-details {
-            background: white;
-            padding: 20px;
-            border-radius: 8px;
-        }
-
-        .payment-detail-row {
-            display: flex;
-            justify-content: space-between;
-            padding: 10px;
-            border-bottom: 1px solid #e9ecef;
-        }
-
-        .payment-detail-row:last-child {
-            border-bottom: none;
-        }
-
-        .payment-project {
-            color: #666;
-            font-weight: 500;
-        }
-
-        .payment-detail-amount {
-            color: #667eea;
-            font-weight: 600;
-        }
-
-        .completed-card {
-            opacity: 0.8;
-        }
-
-        .completed-card::before {
-            background: linear-gradient(90deg, #999 0%, #666 100%) !important;
-        }
-
-        .pending-approval-card::before {
-            background: linear-gradient(90deg, #f39c12 0%, #e67e22 100%) !important;
-        }
-
-        .pending-execution-card::before {
-            background: linear-gradient(90deg, #3498db 0%, #2980b9 100%) !important;
-        }
-
-        .project-badge {
-            display: inline-block;
-            padding: 3px 8px;
-            border-radius: 12px;
-            font-size: 0.75em;
-            font-weight: bold;
-            margin-right: 8px;
-        }
-
-        .badge-completed {
-            background: #95a5a6;
-            color: white;
-        }
-
-        .badge-pending-approval {
-            background: #f39c12;
-            color: white;
-        }
-
-        .badge-pending-execution {
-            background: #3498db;
-            color: white;
-        }
+        .project-badge { display: inline-block; padding: 3px 8px; border-radius: 12px; font-size: 0.75em; font-weight: bold; margin-right: 8px; }
+        .badge-completed { background: #95a5a6; color: white; }
+        .badge-pending-approval { background: #f39c12; color: white; }
+        .badge-pending-execution { background: #3498db; color: white; }
 
         /* Monthly Timeline */
         .monthly-timeline {
@@ -1197,24 +761,10 @@
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
         }
 
-        .timeline-title {
-            text-align: center;
-            font-size: 1em;
-            font-weight: bold;
-            color: #333;
-            margin-bottom: 15px;
-            padding-bottom: 10px;
-            border-bottom: 2px solid #e9ecef;
-        }
+        .timeline-title { text-align: center; font-size: 1em; font-weight: bold; color: #333; margin-bottom: 15px; padding-bottom: 10px; border-bottom: 2px solid #e9ecef; }
 
         /* Filter Buttons */
-        .filter-container {
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-            margin-bottom: 15px;
-            flex-wrap: wrap;
-        }
+        .filter-container { display: flex; justify-content: center; gap: 10px; margin-bottom: 15px; flex-wrap: wrap; }
 
         .filter-btn {
             padding: 12px 22px;
@@ -1232,55 +782,12 @@
             box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
         }
 
-        .filter-btn:hover {
-            background: #f0f3ff;
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
-        }
+        .filter-btn:hover { background: #f0f3ff; transform: translateY(-3px); box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3); }
+        .filter-btn.active { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; box-shadow: 0 5px 20px rgba(102, 126, 234, 0.5); transform: scale(1.05); }
+        .filter-count { background: rgba(255, 255, 255, 0.35); padding: 3px 10px; border-radius: 12px; font-weight: 800; font-size: 1em; }
+        .filter-btn.active .filter-count { background: rgba(255, 255, 255, 0.3); }
 
-        .filter-btn.active {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.5);
-            transform: scale(1.05);
-        }
-
-        .filter-count {
-            background: rgba(255, 255, 255, 0.35);
-            padding: 3px 10px;
-            border-radius: 12px;
-            font-weight: 800;
-            font-size: 1em;
-        }
-
-        .filter-btn.active .filter-count {
-            background: rgba(255, 255, 255, 0.3);
-        }
-
-        /* Budget Button in Filter Row */
-        .budget-planner-btn {
-            padding: 12px 22px;
-            border: 3px solid #ffa500;
-            background: white;
-            color: #ff8800;
-            border-radius: 25px;
-            font-weight: 700;
-            font-size: 1em;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            box-shadow: 0 3px 10px rgba(255, 165, 0, 0.15);
-        }
-
-        .budget-planner-btn:hover {
-            background: #fff9f0;
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(255, 165, 0, 0.3);
-        }
-
-        /* Budget Modal - Narrow and Compact */
+        /* Budget Modal */
         .budget-modal {
             display: none;
             position: fixed;
@@ -1296,9 +803,7 @@
             padding: 20px;
         }
 
-        .budget-modal.active {
-            display: flex;
-        }
+        .budget-modal.active { display: flex; }
 
         .budget-modal-content {
             background: white;
@@ -1320,116 +825,21 @@
             align-items: center;
         }
 
-        .budget-modal-title {
-            font-size: 1.3em;
-            font-weight: bold;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
+        .budget-modal-title { font-size: 1.3em; font-weight: bold; display: flex; align-items: center; gap: 8px; }
+        .budget-modal-body { padding: 20px; max-height: calc(90vh - 80px); overflow-y: auto; }
+        .budget-modal-body::-webkit-scrollbar { width: 6px; }
+        .budget-modal-body::-webkit-scrollbar-track { background: #f1f1f1; }
+        .budget-modal-body::-webkit-scrollbar-thumb { background: #ffa500; border-radius: 3px; }
 
-        .budget-modal-body {
-            padding: 20px;
-            max-height: calc(90vh - 80px);
-            overflow-y: auto;
-        }
+        .budget-two-columns { display: grid; grid-template-columns: 40% 60%; gap: 25px; align-items: start; }
+        .budget-left-column { display: flex; flex-direction: column; gap: 20px; position: sticky; top: 0; }
+        .budget-right-column { display: flex; flex-direction: column; gap: 20px; max-height: calc(90vh - 180px); overflow-y: auto; padding-right: 10px; }
+        .budget-right-column::-webkit-scrollbar { width: 6px; }
+        .budget-right-column::-webkit-scrollbar-track { background: #f1f1f1; border-radius: 3px; }
+        .budget-right-column::-webkit-scrollbar-thumb { background: #ffa500; border-radius: 3px; }
 
-        .budget-modal-body::-webkit-scrollbar {
-            width: 6px;
-        }
-
-        .budget-modal-body::-webkit-scrollbar-track {
-            background: #f1f1f1;
-        }
-
-        .budget-modal-body::-webkit-scrollbar-thumb {
-            background: #ffa500;
-            border-radius: 3px;
-        }
-
-        .budget-two-columns {
-            display: grid;
-            grid-template-columns: 40% 60%;
-            gap: 25px;
-            align-items: start;
-        }
-
-        .budget-left-column {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-            position: sticky;
-            top: 0;
-        }
-
-        .budget-right-column {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-            max-height: calc(90vh - 180px);
-            overflow-y: auto;
-            padding-right: 10px;
-        }
-
-        .budget-right-column::-webkit-scrollbar {
-            width: 6px;
-        }
-
-        .budget-right-column::-webkit-scrollbar-track {
-            background: #f1f1f1;
-            border-radius: 3px;
-        }
-
-        .budget-right-column::-webkit-scrollbar-thumb {
-            background: #ffa500;
-            border-radius: 3px;
-        }
-
-        .budget-input-section {
-            background: #f8f9fa;
-            padding: 15px;
-            border-radius: 10px;
-            margin-bottom: 15px;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            justify-content: center;
-        }
-
-        .budget-input-section label {
-            font-weight: 600;
-            color: #333;
-            font-size: 0.95em;
-        }
-
-        .budget-input-section input {
-            max-width: 150px;
-            padding: 10px;
-            border: 2px solid #ffa500;
-            border-radius: 8px;
-            font-size: 1.1em;
-            font-weight: bold;
-            text-align: center;
-        }
-
-        .budget-input-section span {
-            font-size: 1.1em;
-            font-weight: bold;
-        }
-
-        .budget-projects-selector {
-            background: #f8f9fa;
-            padding: 15px;
-            border-radius: 10px;
-            margin-bottom: 15px;
-        }
-
-        .budget-projects-selector h4 {
-            margin-bottom: 12px;
-            color: #ff8800;
-            font-weight: 700;
-            font-size: 1em;
-        }
+        .budget-projects-selector { background: #f8f9fa; padding: 15px; border-radius: 10px; margin-bottom: 15px; }
+        .budget-projects-selector h4 { margin-bottom: 12px; color: #ff8800; font-weight: 700; font-size: 1em; }
 
         .budget-project-item {
             display: flex;
@@ -1443,10 +853,7 @@
             transition: all 0.3s ease;
         }
 
-        .budget-project-item:hover {
-            border-color: #ffa500;
-            box-shadow: 0 3px 10px rgba(255, 165, 0, 0.15);
-        }
+        .budget-project-item:hover { border-color: #ffa500; box-shadow: 0 3px 10px rgba(255, 165, 0, 0.15); }
 
         .budget-project-disabled {
             opacity: 0.6;
@@ -1455,35 +862,11 @@
             border: 2px dashed #ff9800;
         }
 
-        .budget-project-disabled:hover {
-            border-color: #ff9800;
-            transform: none;
-            box-shadow: 0 2px 8px rgba(255, 152, 0, 0.15);
-        }
-
-        .budget-project-item input[type="checkbox"] {
-            width: 20px;
-            height: 20px;
-            cursor: pointer;
-        }
-
-        .budget-project-disabled input[type="checkbox"] {
-            cursor: not-allowed;
-        }
-
-        .budget-project-info {
-            flex: 1;
-        }
-
-        .budget-project-name {
-            font-weight: 600;
-            color: #333;
-            font-size: 1em;
-            margin-bottom: 4px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
+        .budget-project-disabled:hover { border-color: #ff9800; transform: none; box-shadow: 0 2px 8px rgba(255, 152, 0, 0.15); }
+        .budget-project-item input[type="checkbox"] { width: 20px; height: 20px; cursor: pointer; }
+        .budget-project-disabled input[type="checkbox"] { cursor: not-allowed; }
+        .budget-project-info { flex: 1; }
+        .budget-project-name { font-weight: 600; color: #333; font-size: 1em; margin-bottom: 4px; display: flex; align-items: center; gap: 8px; }
 
         .warning-badge {
             background: linear-gradient(135deg, #fff3e0 0%, #ffe0b2 100%);
@@ -1498,209 +881,36 @@
             border: 1px solid #ff9800;
         }
 
-        .budget-project-details {
-            color: #666;
-            font-size: 0.9em;
-        }
+        .budget-project-details { color: #666; font-size: 0.9em; }
+        .budget-project-disabled .budget-project-details { color: #999; }
+        .budget-date-selector { display: flex; gap: 8px; align-items: center; }
+        .budget-date-selector label { font-weight: 600; font-size: 0.75em; }
+        .budget-date-selector select { padding: 6px 10px; border: 2px solid #ffa500; border-radius: 6px; font-size: 0.8em; font-weight: 600; cursor: pointer; }
+        .disabled-message { color: #999; font-size: 0.75em; font-style: italic; padding: 6px 10px; background: #f5f5f5; border-radius: 6px; border: 1px dashed #ccc; }
 
-        .budget-project-disabled .budget-project-details {
-            color: #999;
-        }
+        .budget-comparison-section h3 { font-size: 1em; font-weight: bold; color: #333; margin-bottom: 12px; text-align: center; }
 
-        .budget-date-selector {
-            display: flex;
-            gap: 8px;
-            align-items: center;
-        }
-
-        .budget-date-selector label {
-            font-weight: 600;
-            font-size: 0.75em;
-        }
-
-        .budget-date-selector select {
-            padding: 6px 10px;
-            border: 2px solid #ffa500;
-            border-radius: 6px;
-            font-size: 0.8em;
-            font-weight: 600;
-            cursor: pointer;
-        }
-
-        .disabled-message {
-            color: #999;
-            font-size: 0.75em;
-            font-style: italic;
-            padding: 6px 10px;
-            background: #f5f5f5;
-            border-radius: 6px;
-            border: 1px dashed #ccc;
-        }
-
-        .budget-comparison-section h3 {
-            font-size: 1em;
-            font-weight: bold;
-            color: #333;
-            margin-bottom: 12px;
-            text-align: center;
-        }
-
-        .budget-comparison-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 15px;
-            font-size: 1em;
-        }
-
-        .budget-comparison-table th {
-            background: linear-gradient(135deg, #ffa500 0%, #ff8800 100%);
-            color: white;
-            padding: 12px;
-            text-align: center;
-            font-size: 1em;
-            font-weight: 700;
-        }
-
-        .budget-comparison-table td {
-            padding: 12px;
-            text-align: center;
-            border: 1px solid #e0e0e0;
-            font-size: 0.95em;
-        }
-
-        .budget-comparison-table tr:nth-child(even) {
-            background: #f8f9fa;
-        }
-
-        .budget-total-column {
-            font-weight: 900 !important;
-            font-size: 1.1em !important;
-            color: #000 !important;
-            background: #fff9e6 !important;
-        }
-
-        .budget-amount {
-            font-weight: bold;
-            font-family: 'Courier New', monospace;
-            font-size: 1em;
-            color: #000;
-        }
-
-        .budget-amount-normal {
-            color: #000;
-        }
-
-        .budget-amount-increased {
-            color: #000;
-        }
-
-        .budget-amount-over {
-            color: #000;
-            font-weight: bold;
-            padding: 3px 6px;
-        }
-
-        .budget-diff {
-            font-weight: bold;
-            color: #000;
-        }
-
-        .budget-diff-up {
-            color: #000;
-        }
-
-        .budget-diff-ok {
-            color: #000;
-        }
+        .budget-comparison-table { width: 100%; border-collapse: collapse; margin-top: 15px; font-size: 1em; }
+        .budget-comparison-table th { background: linear-gradient(135deg, #ffa500 0%, #ff8800 100%); color: white; padding: 12px; text-align: center; font-size: 1em; font-weight: 700; }
+        .budget-comparison-table td { padding: 12px; text-align: center; border: 1px solid #e0e0e0; font-size: 0.95em; }
+        .budget-comparison-table tr:nth-child(even) { background: #f8f9fa; }
+        .budget-total-column { font-weight: 900 !important; font-size: 1.1em !important; color: #000 !important; background: #fff9e6 !important; }
+        .budget-amount { font-weight: bold; font-family: 'Courier New', monospace; font-size: 1em; color: #000; }
 
         /* Table Header */
-        .table-header {
-            background: white;
-            border-radius: 8px 8px 0 0;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-            position: relative;
-            z-index: 10;
-        }
+        .table-header { background: white; border-radius: 8px 8px 0 0; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); position: relative; z-index: 10; }
+        .header-row { display: grid; grid-template-columns: 1.8fr 0.9fr 0.9fr 0.9fr 0.9fr 1fr 1fr; gap: 0; border-bottom: 2px solid #e9ecef; }
+        .header-cell { padding: 12px; text-align: center; border-left: 1px solid #e9ecef; }
+        .header-cell:first-child { text-align: right; border-right: none; }
+        .header-label { font-size: 0.7em; font-weight: 700; color: #666; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 4px; display: flex; align-items: center; justify-content: center; gap: 5px; cursor: pointer; user-select: none; }
+        .sort-arrows { display: flex; flex-direction: column; gap: 1px; opacity: 0.4; transition: opacity 0.2s ease; }
+        .header-cell:hover .sort-arrows { opacity: 1; }
+        .sort-arrow { font-size: 0.7em; line-height: 0.5em; color: #667eea; cursor: pointer; transition: all 0.2s ease; }
+        .sort-arrow:hover { transform: scale(1.3); color: #764ba2; }
+        .sort-arrow.active { opacity: 1; color: #764ba2; font-weight: bold; }
+        .header-total { font-size: 0.95em; font-weight: bold; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
 
-        .header-row {
-            display: grid;
-            grid-template-columns: 1.8fr 0.9fr 0.9fr 0.9fr 0.9fr 1fr 1fr;
-            gap: 0;
-            border-bottom: 2px solid #e9ecef;
-        }
-
-        .header-cell {
-            padding: 12px;
-            text-align: center;
-            border-left: 1px solid #e9ecef;
-        }
-
-        .header-cell:first-child {
-            text-align: right;
-            border-right: none;
-        }
-
-        .header-label {
-            font-size: 0.7em;
-            font-weight: 700;
-            color: #666;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            margin-bottom: 4px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 5px;
-            cursor: pointer;
-            user-select: none;
-        }
-
-        .sort-arrows {
-            display: flex;
-            flex-direction: column;
-            gap: 1px;
-            opacity: 0.4;
-            transition: opacity 0.2s ease;
-        }
-
-        .header-cell:hover .sort-arrows {
-            opacity: 1;
-        }
-
-        .sort-arrow {
-            font-size: 0.7em;
-            line-height: 0.5em;
-            color: #667eea;
-            cursor: pointer;
-            transition: all 0.2s ease;
-        }
-
-        .sort-arrow:hover {
-            transform: scale(1.3);
-            color: #764ba2;
-        }
-
-        .sort-arrow.active {
-            opacity: 1;
-            color: #764ba2;
-            font-weight: bold;
-        }
-
-        .header-total {
-            font-size: 0.95em;
-            font-weight: bold;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .timeline-months {
-            display: grid;
-            grid-template-columns: repeat(12, 1fr);
-            gap: 8px;
-            direction: rtl;
-        }
+        .timeline-months { display: grid; grid-template-columns: repeat(12, 1fr); gap: 8px; direction: rtl; }
 
         .month-item {
             display: flex;
@@ -1713,49 +923,18 @@
             border: 2px solid transparent;
         }
 
-        .month-item:hover {
-            transform: translateY(-3px);
-            border-color: #667eea;
-            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
-        }
+        .month-item:hover { transform: translateY(-3px); border-color: #667eea; box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3); }
 
-        .month-item.payment-due {
-            animation: blink-orange 1.5s infinite;
-            border-color: #ff9800 !important;
-        }
+        .month-item.payment-due { animation: blink-orange 1.5s infinite; border-color: #ff9800 !important; }
 
         @keyframes blink-orange {
-            0%, 100% {
-                background: linear-gradient(135deg, #fff3e0 0%, #ffe0b2 100%);
-                box-shadow: 0 4px 15px rgba(255, 152, 0, 0.4);
-            }
-            50% {
-                background: linear-gradient(135deg, #ffcc80 0%, #ffb74d 100%);
-                box-shadow: 0 4px 20px rgba(255, 152, 0, 0.6);
-            }
+            0%, 100% { background: linear-gradient(135deg, #fff3e0 0%, #ffe0b2 100%); box-shadow: 0 4px 15px rgba(255, 152, 0, 0.4); }
+            50% { background: linear-gradient(135deg, #ffcc80 0%, #ffb74d 100%); box-shadow: 0 4px 20px rgba(255, 152, 0, 0.6); }
         }
 
-        .month-name {
-            font-size: 0.9em;
-            font-weight: 600;
-            color: #666;
-            margin-bottom: 4px;
-            text-align: center;
-        }
-
-        .month-date {
-            font-size: 0.8em;
-            color: #999;
-            margin-bottom: 6px;
-            text-align: center;
-        }
-
-        .month-amount {
-            font-size: 1em;
-            font-weight: bold;
-            color: #667eea;
-            text-align: center;
-        }
+        .month-name { font-size: 0.9em; font-weight: 600; color: #666; margin-bottom: 4px; text-align: center; }
+        .month-date { font-size: 0.8em; color: #999; margin-bottom: 6px; text-align: center; }
+        .month-amount { font-size: 1em; font-weight: bold; color: #667eea; text-align: center; }
 
         .breakdown-item {
             display: flex;
@@ -1770,23 +949,9 @@
             cursor: pointer;
         }
 
-        .breakdown-item:hover {
-            background: #e3e7fc;
-            transform: translateX(-5px);
-            box-shadow: 0 3px 10px rgba(102, 126, 234, 0.2);
-        }
-
-        .breakdown-project-name {
-            font-weight: 600;
-            color: #333;
-            font-size: 0.95em;
-        }
-
-        .breakdown-amount {
-            font-weight: bold;
-            color: #667eea;
-            font-size: 1.1em;
-        }
+        .breakdown-item:hover { background: #e3e7fc; transform: translateX(-5px); box-shadow: 0 3px 10px rgba(102, 126, 234, 0.2); }
+        .breakdown-project-name { font-weight: 600; color: #333; font-size: 0.95em; }
+        .breakdown-amount { font-weight: bold; color: #667eea; font-size: 1.1em; }
 
         .breakdown-total {
             margin-top: 20px;
@@ -1799,148 +964,111 @@
             border: 2px solid #667eea;
         }
 
-        .breakdown-total-label {
-            font-size: 1.1em;
-            font-weight: bold;
-            color: #333;
+        .breakdown-total-label { font-size: 1.1em; font-weight: bold; color: #333; }
+        .breakdown-total-amount { font-size: 1.4em; font-weight: bold; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        .breakdown-empty { text-align: center; padding: 40px 20px; color: #999; }
+        .breakdown-empty-icon { font-size: 3em; margin-bottom: 15px; }
+
+        /* Materials Modal Styles */
+        .materials-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 2000;
+            backdrop-filter: blur(4px);
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
         }
 
-        .breakdown-total-amount {
-            font-size: 1.4em;
-            font-weight: bold;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+        .materials-modal.active { display: flex; }
+
+        .materials-modal-content {
+            background: white;
+            border-radius: 16px;
+            width: 100%;
+            max-width: 1100px;
+            max-height: 85vh;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            animation: slideUp 0.3s ease;
         }
 
-        .breakdown-empty {
-            text-align: center;
-            padding: 40px 20px;
-            color: #999;
+        .materials-modal-header {
+            background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+            color: white;
+            padding: 20px 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
 
-        .breakdown-empty-icon {
-            font-size: 3em;
-            margin-bottom: 15px;
-        }
+        .materials-modal-title { font-size: 1.4em; font-weight: bold; display: flex; align-items: center; gap: 10px; }
+        .materials-modal-body { padding: 20px; max-height: calc(85vh - 140px); overflow-y: auto; }
+        .materials-modal-body::-webkit-scrollbar { width: 6px; }
+        .materials-modal-body::-webkit-scrollbar-track { background: #f1f1f1; }
+        .materials-modal-body::-webkit-scrollbar-thumb { background: #11998e; border-radius: 3px; }
+
+        /* Materials Table */
+        .parsha-table { width: 100%; border-collapse: collapse; }
+        .parsha-row { border-bottom: 1px solid #e0e0e0; transition: background 0.2s; }
+        .parsha-row:hover { background: #f8f9fa; }
+        .parsha-row.current { background: linear-gradient(90deg, rgba(17, 153, 142, 0.15) 0%, rgba(56, 239, 125, 0.1) 100%); border-right: 4px solid #11998e; }
+        .parsha-row.current:hover { background: linear-gradient(90deg, rgba(17, 153, 142, 0.2) 0%, rgba(56, 239, 125, 0.15) 100%); }
+        .parsha-cell { padding: 15px; vertical-align: top; }
+        .parsha-name-cell { width: 140px; white-space: nowrap; }
+        .parsha-name { font-size: 1.1em; font-weight: bold; color: #333; display: flex; align-items: center; gap: 8px; }
+        .parsha-row.current .parsha-name { color: #11998e; }
+        .parsha-date { font-size: 0.8em; color: #888; margin-top: 4px; }
+        .current-badge { background: #11998e; color: white; padding: 2px 8px; border-radius: 10px; font-size: 0.7em; font-weight: bold; }
+        .materials-cell { line-height: 1.6; }
+        .material-item { display: inline-block; background: #f0f4f8; padding: 5px 12px; border-radius: 20px; margin: 3px; font-size: 0.9em; border-right: 3px solid #667eea; }
+        .material-item:hover { background: #e3e8ed; }
+        .project-label { color: #667eea; font-weight: 600; }
+        .material-content { color: #333; }
+        .no-materials { color: #bbb; font-style: italic; font-size: 0.9em; }
+
+        .materials-summary-bar { background: linear-gradient(135deg, #f5f7fa 0%, #e4e8eb 100%); padding: 15px 20px; display: flex; justify-content: space-around; border-top: 1px solid #e0e0e0; }
+        .materials-summary-item { text-align: center; }
+        .materials-summary-number { font-size: 1.5em; font-weight: bold; color: #11998e; }
+        .materials-summary-label { font-size: 0.8em; color: #666; }
+        .materials-loading { text-align: center; padding: 40px; color: #666; }
+        .materials-loading-spinner { font-size: 3em; animation: spin 1s linear infinite; }
+        @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
 
         /* Responsive */
         @media (max-width: 768px) {
-            .section-title-row {
-                flex-direction: column;
-            }
-
-            .search-wrapper {
-                flex: 1;
-                width: 100%;
-            }
-
-            .search-box-inline {
-                flex: 1;
-                width: 100%;
-            }
-
-            .sidebar-container {
-                width: 200px;
-                left: -220px;
-            }
-
-            .sidebar-container.active {
-                left: 10px;
-            }
-
-            h1 {
-                font-size: 1.2em;
-            }
-
-            .timeline-months {
-                grid-template-columns: repeat(6, 1fr);
-                gap: 6px;
-            }
-
-            .month-name {
-                font-size: 0.6em;
-            }
-
-            .month-amount {
-                font-size: 0.75em;
-            }
-
-            .project-row {
-                grid-template-columns: 1fr;
-                gap: 0;
-            }
-
-            .project-cell {
-                border-left: none;
-                border-bottom: 1px solid #f0f0f0;
-                padding: 8px 12px;
-            }
-
-            .project-cell:last-child {
-                border-bottom: none;
-            }
-
-            .cell-label {
-                display: inline;
-                margin-left: 5px;
-            }
-
-            .cell-value {
-                display: inline;
-            }
-
-            .filter-container {
-                flex-direction: column;
-                gap: 8px;
-            }
-
-            .filter-btn {
-                width: 100%;
-            }
-
-            .header-row {
-                grid-template-columns: 1fr;
-            }
-
-            .header-cell {
-                border-left: none;
-                border-bottom: 1px solid #f0f0f0;
-                text-align: right;
-            }
-
-            .header-cell:last-child {
-                border-bottom: none;
-            }
-
-            .menu-toggle {
-                top: 15px;
-                right: 15px;
-                width: 45px;
-                height: 45px;
-            }
-
-            .side-menu {
-                width: 250px;
-                right: -250px;
-            }
+            .section-title-row { flex-direction: column; }
+            .search-wrapper { flex: 1; width: 100%; }
+            .search-box-inline { flex: 1; width: 100%; }
+            .sidebar-container { width: 200px; left: -220px; }
+            .sidebar-container.active { left: 10px; }
+            h1 { font-size: 1.2em; }
+            .timeline-months { grid-template-columns: repeat(6, 1fr); gap: 6px; }
+            .month-name { font-size: 0.6em; }
+            .month-amount { font-size: 0.75em; }
+            .project-row { grid-template-columns: 1fr; gap: 0; }
+            .project-cell { border-left: none; border-bottom: 1px solid #f0f0f0; padding: 8px 12px; }
+            .project-cell:last-child { border-bottom: none; }
+            .cell-label { display: inline; margin-left: 5px; }
+            .cell-value { display: inline; }
+            .filter-container { flex-direction: column; gap: 8px; }
+            .filter-btn { width: 100%; }
+            .header-row { grid-template-columns: 1fr; }
+            .header-cell { border-left: none; border-bottom: 1px solid #f0f0f0; text-align: right; }
+            .header-cell:last-child { border-bottom: none; }
+            .menu-toggle { top: 15px; right: 15px; width: 45px; height: 45px; }
+            .side-menu { width: 250px; right: -250px; }
+            .search-and-budget-wrapper { flex-direction: column; width: 100%; }
+            .materials-btn-inline, .budget-planner-btn-inline { width: 100%; }
         }
 
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .fade-in {
-            animation: fadeIn 0.5s ease forwards;
-        }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        .fade-in { animation: fadeIn 0.5s ease forwards; }
     </style>
 </head>
 <body>
@@ -2029,27 +1157,21 @@
             </div>
             <div class="contact-divider"></div>
             <div class="contact-item">
-                <div class="contact-icon-circle">
-                    <span class="contact-icon">📱</span>
-                </div>
+                <div class="contact-icon-circle"><span class="contact-icon">📱</span></div>
                 <div class="contact-details">
                     <div class="contact-name">ר' משה ברנסדורפר</div>
                     <div class="contact-phone">011-972-50-413-1411</div>
                 </div>
             </div>
             <div class="contact-item">
-                <div class="contact-icon-circle">
-                    <span class="contact-icon">📱</span>
-                </div>
+                <div class="contact-icon-circle"><span class="contact-icon">📱</span></div>
                 <div class="contact-details">
                     <div class="contact-name">אברמי קליין</div>
                     <div class="contact-phone">011-972-53-495-3660</div>
                 </div>
             </div>
             <div class="contact-item">
-                <div class="contact-icon-circle">
-                    <span class="contact-icon">🇮🇱</span>
-                </div>
+                <div class="contact-icon-circle"><span class="contact-icon">🇮🇱</span></div>
                 <div class="contact-details">
                     <div class="contact-name">משרד ישראל</div>
                     <div class="contact-phone">011-972-62-43277</div>
@@ -2113,9 +1235,12 @@
                         <button class="budget-planner-btn-inline" onclick="openBudgetModal()">
                             🧮 תכנון תקציב
                         </button>
+                        <button class="materials-btn-inline" onclick="openMaterialsModal()">
+                            📦 חומרים שבועיים
+                        </button>
                     </div>
                     <h2 class="section-title-center">📊 פרויקטים</h2>
-                    <div style="width: 300px;"></div> <!-- Spacer for centering -->
+                    <div style="width: 300px;"></div>
                 </div>
                 
                 <!-- Filter Buttons -->
@@ -2272,8 +1397,39 @@
                 </div>
                 <button class="modal-close" onclick="closeBudgetModal()">×</button>
             </div>
-            <div class="budget-modal-body" id="budgetModalBody">
-                <!-- Will be populated by JavaScript -->
+            <div class="budget-modal-body" id="budgetModalBody"></div>
+        </div>
+    </div>
+
+    <!-- Materials Modal -->
+    <div id="materialsModal" class="materials-modal">
+        <div class="materials-modal-content">
+            <div class="materials-modal-header">
+                <div class="materials-modal-title">
+                    <span>📦</span>
+                    <span>חומרים שבועיים - 8 שבועות קדימה</span>
+                </div>
+                <button class="modal-close" onclick="closeMaterialsModal()">×</button>
+            </div>
+            <div class="materials-modal-body" id="materialsModalBody">
+                <div class="materials-loading">
+                    <div class="materials-loading-spinner">⏳</div>
+                    <p>טוען חומרים...</p>
+                </div>
+            </div>
+            <div class="materials-summary-bar" id="materialsSummaryBar" style="display: none;">
+                <div class="materials-summary-item">
+                    <div class="materials-summary-number" id="materialsWeeksCount">0</div>
+                    <div class="materials-summary-label">שבועות</div>
+                </div>
+                <div class="materials-summary-item">
+                    <div class="materials-summary-number" id="materialsTotalCount">0</div>
+                    <div class="materials-summary-label">חומרים</div>
+                </div>
+                <div class="materials-summary-item">
+                    <div class="materials-summary-number" id="materialsProjectsCount">0</div>
+                    <div class="materials-summary-label">פרויקטים</div>
+                </div>
             </div>
         </div>
     </div>
@@ -2281,7 +1437,138 @@
     <script>
         const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxqTkFRe0YQ5tmaPn-VJrm6Q_ZfNlnMwI8D0vW1pkvGVzcmLhlTJiDZMsdhHNVnJmC-ZA/exec';
 
-        // Sidebar toggle
+        // ========== MATERIALS MODAL FUNCTIONS ==========
+        let materialsData = null;
+
+        function openMaterialsModal() {
+            document.getElementById('materialsModal').classList.add('active');
+            trackEvent('Materials', 'open_modal', 'weekly_materials');
+            loadMaterialsData();
+        }
+
+        function closeMaterialsModal() {
+            document.getElementById('materialsModal').classList.remove('active');
+        }
+
+        document.getElementById('materialsModal').addEventListener('click', function(e) {
+            if (e.target === this) closeMaterialsModal();
+        });
+
+        async function loadMaterialsData() {
+            const modalBody = document.getElementById('materialsModalBody');
+            const summaryBar = document.getElementById('materialsSummaryBar');
+            
+            modalBody.innerHTML = '<div class="materials-loading"><div class="materials-loading-spinner">⏳</div><p>טוען חומרים...</p></div>';
+            summaryBar.style.display = 'none';
+
+            try {
+                const response = await fetch(APPS_SCRIPT_URL + '?sheet=' + encodeURIComponent('חומרים לבלייער'));
+                const csv = await response.text();
+                materialsData = parseMaterialsCSV(csv);
+                displayMaterials();
+            } catch (error) {
+                console.error('Error loading materials:', error);
+                modalBody.innerHTML = '<div class="materials-loading"><p style="color: #e74c3c;">❌ שגיאה בטעינת החומרים</p><p style="font-size: 0.9em; color: #666;">נסה שוב מאוחר יותר</p></div>';
+            }
+        }
+
+        function parseMaterialsCSV(csv) {
+            const lines = csv.trim().split('\n');
+            const data = { headers: [], parshiot: {} };
+            if (lines.length === 0) return data;
+
+            const headerValues = parseCSVLine(lines[0]);
+            data.headers = headerValues.slice(1);
+
+            for (let i = 1; i < lines.length; i++) {
+                const line = lines[i];
+                if (!line.trim()) continue;
+                const values = parseCSVLine(line);
+                const parsha = values[0];
+                if (!parsha) continue;
+                data.parshiot[parsha] = {};
+                for (let j = 1; j < values.length && j <= data.headers.length; j++) {
+                    const projectName = data.headers[j - 1];
+                    const material = values[j];
+                    if (material && material.trim()) {
+                        data.parshiot[parsha][projectName] = material.trim();
+                    }
+                }
+            }
+            return data;
+        }
+
+        function parseCSVLine(line) {
+            const values = [];
+            let current = '';
+            let inQuotes = false;
+            for (let j = 0; j < line.length; j++) {
+                const char = line[j];
+                if (char === '"') {
+                    inQuotes = !inQuotes;
+                } else if (char === ',' && !inQuotes) {
+                    values.push(current.trim());
+                    current = '';
+                } else {
+                    current += char;
+                }
+            }
+            values.push(current.trim());
+            return values;
+        }
+
+        function getNextParshiot(count = 8) {
+            if (!materialsData) return [];
+            return Object.keys(materialsData.parshiot).slice(0, count);
+        }
+
+        function displayMaterials() {
+            if (!materialsData) return;
+
+            const modalBody = document.getElementById('materialsModalBody');
+            const summaryBar = document.getElementById('materialsSummaryBar');
+            
+            const parshiot = getNextParshiot(8);
+            let totalMaterials = 0;
+            const projectsSet = new Set();
+            
+            let html = '<table class="parsha-table"><tbody>';
+            
+            parshiot.forEach((parsha, index) => {
+                const isCurrent = (index === 0);
+                const materials = materialsData.parshiot[parsha] || {};
+                const materialEntries = Object.entries(materials);
+                
+                materialEntries.forEach(([project, _]) => projectsSet.add(project));
+                totalMaterials += materialEntries.length;
+                
+                html += `<tr class="parsha-row ${isCurrent ? 'current' : ''}">
+                    <td class="parsha-cell parsha-name-cell">
+                        <div class="parsha-name">📖 ${parsha} ${isCurrent ? '<span class="current-badge">השבוע</span>' : ''}</div>
+                    </td>
+                    <td class="parsha-cell materials-cell">`;
+                
+                if (materialEntries.length > 0) {
+                    materialEntries.forEach(([project, material]) => {
+                        html += `<span class="material-item"><span class="project-label">${project}:</span> <span class="material-content">${material}</span></span>`;
+                    });
+                } else {
+                    html += '<span class="no-materials">— אין חומרים מתוכננים —</span>';
+                }
+                
+                html += '</td></tr>';
+            });
+            
+            html += '</tbody></table>';
+            modalBody.innerHTML = html;
+            
+            document.getElementById('materialsWeeksCount').textContent = parshiot.length;
+            document.getElementById('materialsTotalCount').textContent = totalMaterials;
+            document.getElementById('materialsProjectsCount').textContent = projectsSet.size;
+            summaryBar.style.display = 'flex';
+        }
+
+        // ========== SIDEBAR TOGGLE ==========
         const sidebarToggle = document.getElementById('sidebarToggle');
         const sidebarContainer = document.getElementById('sidebarContainer');
         
@@ -2299,7 +1586,7 @@
             trackEvent('Sidebar', isOpen ? 'open' : 'close', 'toggle');
         });
 
-        // Budget Modal
+        // ========== BUDGET MODAL ==========
         function openBudgetModal() {
             document.getElementById('budgetModal').classList.add('active');
             trackEvent('Budget', 'open_modal', 'budget_planner');
@@ -2310,11 +1597,10 @@
         }
 
         document.getElementById('budgetModal').addEventListener('click', function(e) {
-            if (e.target === this) {
-                closeBudgetModal();
-            }
+            if (e.target === this) closeBudgetModal();
         });
 
+        // ========== CSV PARSING ==========
         function parseCSV(csv) {
             const lines = csv.trim().split('\n');
             const activeProjects = [];
@@ -2326,23 +1612,7 @@
                 const line = lines[i];
                 if (!line.trim()) continue;
                 
-                const values = [];
-                let current = '';
-                let inQuotes = false;
-                
-                for (let j = 0; j < line.length; j++) {
-                    const char = line[j];
-                    if (char === '"') {
-                        inQuotes = !inQuotes;
-                    } else if (char === ',' && !inQuotes) {
-                        values.push(current.trim());
-                        current = '';
-                    } else {
-                        current += char;
-                    }
-                }
-                values.push(current.trim());
-                
+                const values = parseCSVLine(line);
                 const clientName = values[2] || '';
                 const startDate = values[1] || '';
                 const statusF = values[5] || '';
@@ -2373,8 +1643,7 @@
                             const projectMonth = parseInt(dateParts[1]) - 1;
                             const projectYear = parseInt(dateParts[2]);
                             
-                            if (projectYear > currentYear || 
-                                (projectYear === currentYear && projectMonth > currentMonth)) {
+                            if (projectYear > currentYear || (projectYear === currentYear && projectMonth > currentMonth)) {
                                 pendingExecutionProjects.push(project);
                             } else {
                                 activeProjects.push(project);
@@ -2386,12 +1655,7 @@
                 }
             }
 
-            return { 
-                active: activeProjects, 
-                completed: completedProjects,
-                pendingApproval: pendingApprovalProjects,
-                pendingExecution: pendingExecutionProjects
-            };
+            return { active: activeProjects, completed: completedProjects, pendingApproval: pendingApprovalProjects, pendingExecution: pendingExecutionProjects };
         }
 
         function parsePinchasData(csv) {
@@ -2402,46 +1666,22 @@
                 const line = lines[i];
                 if (!line.trim()) continue;
                 
-                const values = [];
-                let current = '';
-                let inQuotes = false;
-                
-                for (let j = 0; j < line.length; j++) {
-                    const char = line[j];
-                    if (char === '"') {
-                        inQuotes = !inQuotes;
-                    } else if (char === ',' && !inQuotes) {
-                        values.push(current.trim());
-                        current = '';
-                    } else {
-                        current += char;
-                    }
-                }
-                values.push(current.trim());
-                
-                const projectName = values[1] || ''; // עמודה B
-                const statusC = values[2] || ''; // עמודה C
-                const statusD = values[3] || ''; // עמודה D  
-                const parsha = values[7] || ''; // עמודה H
-                const percentages = values[11] || ''; // עמודה L (אחוזים)
+                const values = parseCSVLine(line);
+                const projectName = values[1] || '';
+                const statusC = values[2] || '';
+                const statusD = values[3] || '';
+                const parsha = values[7] || '';
+                const percentages = values[11] || '';
                 
                 if (!projectName || statusC !== 'עריכה') continue;
                 
                 if (!projectsMap[projectName]) {
-                    projectsMap[projectName] = {
-                        completedPercent: 0,
-                        inProgressPercent: 0,
-                        completedParshiot: [],
-                        inProgressParshiot: []
-                    };
+                    projectsMap[projectName] = { completedPercent: 0, inProgressPercent: 0, completedParshiot: [], inProgressParshiot: [] };
                 }
                 
-                // חילוץ אחוזים מהטקסט
-                // פורמט: "🔵 בביצוע: 0.0% • 🟢 הושלם: 100.0%"
                 let completedMatch = percentages.match(/הושלם:\s*([\d.]+)%/);
                 let inProgressMatch = percentages.match(/בביצוע:\s*([\d.]+)%/);
                 
-                // שמירת האחוזים אם נמצאו (בשורה הראשונה של הפרויקט)
                 if (completedMatch && projectsMap[projectName].completedPercent === 0) {
                     projectsMap[projectName].completedPercent = parseFloat(completedMatch[1]);
                 }
@@ -2449,7 +1689,6 @@
                     projectsMap[projectName].inProgressPercent = parseFloat(inProgressMatch[1]);
                 }
                 
-                // הוספת פרשיות לפי סטטוס
                 if (statusD === 'הסתיים' && parsha) {
                     if (!projectsMap[projectName].completedParshiot.includes(parsha)) {
                         projectsMap[projectName].completedParshiot.push(parsha);
@@ -2464,6 +1703,7 @@
             return projectsMap;
         }
 
+        // ========== UTILITY FUNCTIONS ==========
         function formatCurrency(amount) {
             const num = parseFloat(String(amount).replace(/[^\d.-]/g, '')) || 0;
             return '$' + num.toLocaleString('en-US', { maximumFractionDigits: 0 });
@@ -2486,63 +1726,44 @@
             return Math.max(1, years * 12 + months);
         }
 
-        // פונקציה מרכזית לחישוב תשלומים לחודש ספציפי
         function calculateMonthPayments(monthIndex) {
             const today = new Date();
             const activeProjects = window.allActiveProjects || [];
             const pendingExecutionProjects = window.allPendingExecutionProjects || [];
             const breakdown = [];
             
-            // פרויקטים פעילים
             activeProjects.forEach(project => {
                 const deadlineDate = parseDeadlineDate(project.deadline);
                 if (deadlineDate) {
                     const monthsRemaining = getMonthsBetween(today, deadlineDate);
                     const remainingAmount = parseFloat(String(project.remaining).replace(/[^\d.-]/g, '')) || 0;
-                    
                     if (monthIndex < monthsRemaining && remainingAmount > 0) {
                         const monthlyPayment = remainingAmount / monthsRemaining;
-                        breakdown.push({
-                            name: project.name,
-                            amount: monthlyPayment,
-                            type: 'פעיל'
-                        });
+                        breakdown.push({ name: project.name, amount: monthlyPayment, type: 'פעיל' });
                     }
                 }
             });
 
-            // פרויקטים ממתינים לביצוע
             pendingExecutionProjects.forEach(project => {
                 const startDate = parseDeadlineDate(project.startDate);
                 const deadlineDate = parseDeadlineDate(project.deadline);
-                
                 if (startDate && deadlineDate) {
                     const monthsTotal = getMonthsBetween(startDate, deadlineDate);
                     const totalAmount = parseFloat(String(project.quoted).replace(/[^\d.-]/g, '')) || 0;
                     const monthlyPayment = totalAmount / monthsTotal;
-                    
                     const monthsUntilStart = getMonthsBetween(today, startDate);
-                    
-                    // בדיקה אם החודש הזה נכנס לטווח הביצוע
                     if (monthIndex >= monthsUntilStart && monthIndex < monthsUntilStart + monthsTotal) {
-                        breakdown.push({
-                            name: project.name,
-                            amount: monthlyPayment,
-                            type: 'ממתין לביצוע'
-                        });
+                        breakdown.push({ name: project.name, amount: monthlyPayment, type: 'ממתין לביצוע' });
                     }
                 }
             });
 
-            // חישוב סכום כולל
             const total = breakdown.reduce((sum, item) => sum + item.amount, 0);
-            
             return { breakdown, total };
         }
 
         function getHebrewMonthName(date) {
-            const months = ['ינואר', 'פברואר', 'מרץ', 'אפריל', 'מאי', 'יוני', 
-                          'יולי', 'אוגוסט', 'ספטמבר', 'אוקטובר', 'נובמבר', 'דצמבר'];
+            const months = ['ינואר', 'פברואר', 'מרץ', 'אפריל', 'מאי', 'יוני', 'יולי', 'אוגוסט', 'ספטמבר', 'אוקטובר', 'נובמבר', 'דצמבר'];
             return months[date.getMonth()];
         }
 
@@ -2558,87 +1779,45 @@
             let cardClass = 'project-card';
             let badge = '';
             
-            if (isCompleted) {
-                cardClass += ' completed-card';
-                badge = '<span class="project-badge badge-completed">✅ הסתיים</span>';
-            } else if (isPendingApproval) {
-                cardClass += ' pending-approval-card';
-                badge = '<span class="project-badge badge-pending-approval">⏳ ממתין לאישור</span>';
-            } else if (isPendingExecution) {
-                cardClass += ' pending-execution-card';
-                badge = '<span class="project-badge badge-pending-execution">🔜 ממתין לביצוע</span>';
-            }
+            if (isCompleted) { cardClass += ' completed-card'; badge = '<span class="project-badge badge-completed">✅ הסתיים</span>'; }
+            else if (isPendingApproval) { cardClass += ' pending-approval-card'; badge = '<span class="project-badge badge-pending-approval">⏳ ממתין לאישור</span>'; }
+            else if (isPendingExecution) { cardClass += ' pending-execution-card'; badge = '<span class="project-badge badge-pending-execution">🔜 ממתין לביצוע</span>'; }
             
-            // בניית תצוגת אחוזי ביצוע לעמודה נפרדת
             let executionProgressHTML = '';
             if (project.completedPercent !== undefined || project.inProgressPercent !== undefined) {
                 const completed = project.completedPercent || 0;
                 const inProgress = project.inProgressPercent || 0;
-                executionProgressHTML = `
-                    <div class="execution-progress-cell">
-                        <div class="execution-row">
-                            <span class="execution-label">🟢 הושלם ${completed.toFixed(1)}%</span>
-                            <span class="execution-label">🔵 בביצוע ${inProgress.toFixed(1)}%</span>
-                        </div>
-                    </div>
-                `;
+                executionProgressHTML = `<div class="execution-progress-cell"><div class="execution-row"><span class="execution-label">🟢 הושלם ${completed.toFixed(1)}%</span><span class="execution-label">🔵 בביצוע ${inProgress.toFixed(1)}%</span></div></div>`;
             } else {
-                executionProgressHTML = `
-                    <div class="execution-progress-cell">
-                        <span style="color: #999;">-</span>
-                    </div>
-                `;
+                executionProgressHTML = '<div class="execution-progress-cell"><span style="color: #999;">-</span></div>';
             }
             
-            return `
-                <div class="${cardClass} fade-in" onclick="openProjectDetails('${project.name.replace(/'/g, "\\'")}', event)">
-                    <div class="project-row">
-                        <div class="project-cell project-cell-name">
-                            <div class="cell-value">📋 ${project.name} ${badge}</div>
-                        </div>
-                        <div class="project-cell project-cell-amount">
-                            <div class="cell-value amount">${formatCurrency(project.quoted)}</div>
-                        </div>
-                        <div class="project-cell project-cell-amount">
-                            <div class="cell-value paid">${formatCurrency(project.paid)}</div>
-                        </div>
-                        <div class="project-cell project-cell-amount">
-                            <div class="cell-value remaining">${formatCurrency(project.remaining)}</div>
-                        </div>
-                        <div class="project-cell project-cell-deadline">
-                            <div class="cell-value deadline">📅 ${project.deadline || project.startDate || 'N/A'}</div>
-                        </div>
-                        <div class="progress-cell">
-                            <div class="progress-mini">
-                                <div class="progress-bar-mini">
-                                    <div class="progress-fill" style="width: ${progress}%"></div>
-                                </div>
-                                <div class="progress-text">${progress}%</div>
-                            </div>
-                        </div>
-                        <div class="progress-cell progress-cell-execution">
-                            ${executionProgressHTML}
-                        </div>
-                    </div>
+            return `<div class="${cardClass} fade-in" onclick="openProjectDetails('${project.name.replace(/'/g, "\\'")}', event)">
+                <div class="project-row">
+                    <div class="project-cell project-cell-name"><div class="cell-value">📋 ${project.name} ${badge}</div></div>
+                    <div class="project-cell project-cell-amount"><div class="cell-value amount">${formatCurrency(project.quoted)}</div></div>
+                    <div class="project-cell project-cell-amount"><div class="cell-value paid">${formatCurrency(project.paid)}</div></div>
+                    <div class="project-cell project-cell-amount"><div class="cell-value remaining">${formatCurrency(project.remaining)}</div></div>
+                    <div class="project-cell project-cell-deadline"><div class="cell-value deadline">📅 ${project.deadline || project.startDate || 'N/A'}</div></div>
+                    <div class="progress-cell"><div class="progress-mini"><div class="progress-bar-mini"><div class="progress-fill" style="width: ${progress}%"></div></div><div class="progress-text">${progress}%</div></div></div>
+                    <div class="progress-cell progress-cell-execution">${executionProgressHTML}</div>
                 </div>
-            `;
+            </div>`;
         }
 
+        // ========== LOAD DATA ==========
         async function loadData() {
             try {
-                // משיכת נתונים מפרויקטים/לידים
                 const response = await fetch(APPS_SCRIPT_URL + '?sheet=' + encodeURIComponent('פרויקטים/לידים'));
                 const csv = await response.text();
                 const projectsData = parseCSV(csv);
                 const activeProjects = projectsData.active;
                 const completedProjects = projectsData.completed;
 
-                // משיכת נתונים מעבודות פנחס
                 const pinchasResponse = await fetch(APPS_SCRIPT_URL + '?sheet=' + encodeURIComponent('עבודות פנחס'));
                 const pinchasCSV = await pinchasResponse.text();
                 const pinchasData = parsePinchasData(pinchasCSV);
                 
-                // שילוב הנתונים
                 activeProjects.forEach(project => {
                     const pinchasInfo = pinchasData[project.name];
                     if (pinchasInfo) {
@@ -2649,54 +1828,34 @@
                     }
                 });
 
-                let totalQuoted = 0;
-                let totalPaid = 0;
-
+                let totalQuoted = 0, totalPaid = 0;
                 activeProjects.forEach(project => {
-                    const quoted = parseFloat(String(project.quoted).replace(/[^\d.-]/g, '')) || 0;
-                    const paid = parseFloat(String(project.paid).replace(/[^\d.-]/g, '')) || 0;
-                    totalQuoted += quoted;
-                    totalPaid += paid;
+                    totalQuoted += parseFloat(String(project.quoted).replace(/[^\d.-]/g, '')) || 0;
+                    totalPaid += parseFloat(String(project.paid).replace(/[^\d.-]/g, '')) || 0;
                 });
 
-                const remaining = totalQuoted - totalPaid;
-
                 const today = new Date();
-                
-                // שמירת הפרויקטים במשתנים גלובליים לפני החישוב
                 window.allActiveProjects = activeProjects;
                 window.allCompletedProjects = completedProjects;
                 window.allPendingApprovalProjects = projectsData.pendingApproval || [];
                 window.allPendingExecutionProjects = projectsData.pendingExecution || [];
                 
-                // חישוב תשלומים חודשיים באמצעות הפונקציה המרכזית
                 const monthlyPayments = Array(12).fill(0);
                 for (let i = 0; i < 12; i++) {
                     const result = calculateMonthPayments(i);
                     monthlyPayments[i] = result.total;
                 }
 
-                console.log('Monthly Payments Array:', monthlyPayments.map(v => '$' + v.toFixed(2)));
-
                 const monthlyTimeline = document.getElementById('monthlyTimeline');
                 let timelineHTML = '';
                 
                 const currentDay = today.getDate();
                 const currentMonth = today.getMonth();
+                let startMonth, shouldBlinkFirst = false;
                 
-                let startMonth;
-                let shouldBlinkFirst = false;
-                
-                if (currentDay >= 21) {
-                    startMonth = currentMonth + 1;
-                    shouldBlinkFirst = true;
-                } else if (currentDay <= 10) {
-                    startMonth = currentMonth;
-                    shouldBlinkFirst = true;
-                } else {
-                    startMonth = currentMonth + 1;
-                    shouldBlinkFirst = false;
-                }
+                if (currentDay >= 21) { startMonth = currentMonth + 1; shouldBlinkFirst = true; }
+                else if (currentDay <= 10) { startMonth = currentMonth; shouldBlinkFirst = true; }
+                else { startMonth = currentMonth + 1; shouldBlinkFirst = false; }
                 
                 for (let i = 0; i < 12; i++) {
                     const monthDate = new Date(today.getFullYear(), startMonth + i, 1);
@@ -2705,36 +1864,25 @@
                     const year = monthDate.getFullYear();
                     const dateStr = `01/${monthNum}/${year}`;
                     const amount = monthlyPayments[i];
-                    
                     const blinkClass = (i === 0 && shouldBlinkFirst) ? 'payment-due' : '';
                     
-                    timelineHTML += `
-                        <div class="month-item ${blinkClass}" onclick="showMonthBreakdown(${i}, '${monthName}', '${dateStr}', ${amount})" style="cursor: pointer;">
-                            <div class="month-name">${monthName}</div>
-                            <div class="month-date">${dateStr}</div>
-                            <div class="month-amount">${formatCurrency(amount.toString())}</div>
-                        </div>
-                    `;
+                    timelineHTML += `<div class="month-item ${blinkClass}" onclick="showMonthBreakdown(${i}, '${monthName}', '${dateStr}', ${amount})" style="cursor: pointer;">
+                        <div class="month-name">${monthName}</div>
+                        <div class="month-date">${dateStr}</div>
+                        <div class="month-amount">${formatCurrency(amount.toString())}</div>
+                    </div>`;
                 }
                 
                 monthlyTimeline.innerHTML = timelineHTML;
-
                 updateFilterCounts();
                 displayFilteredProjects('active');
                 initBudgetPlanner();
-
-                // Hide skeleton, show content
                 document.getElementById('skeletonLoader').classList.add('hidden');
                 document.getElementById('content').style.display = 'block';
 
             } catch (error) {
                 console.error('Error loading data:', error);
-                document.getElementById('skeletonLoader').innerHTML = `
-                    <div style="text-align: center; color: white;">
-                        <p style="font-size: 1.5em;">❌ שגיאה בטעינת הנתונים</p>
-                        <p style="font-size: 1em;">אנא בדוק שהגיליון פורסם כראוי</p>
-                    </div>
-                `;
+                document.getElementById('skeletonLoader').innerHTML = '<div style="text-align: center; color: white;"><p style="font-size: 1.5em;">❌ שגיאה בטעינת הנתונים</p><p style="font-size: 1em;">אנא בדוק שהגיליון פורסם כראוי</p></div>';
             }
         }
 
@@ -2758,14 +1906,9 @@
         async function loadPayments() {
             try {
                 const response = await fetch(APPS_SCRIPT_URL + '?sheet=תקבולים');
-                
-                if (!response.ok) {
-                    throw new Error(`HTTP error! status: ${response.status}`);
-                }
-                
+                if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
                 const csv = await response.text();
                 const payments = parsePaymentsCSV(csv);
-                
                 if (payments.length === 0) {
                     document.getElementById('paymentsList').innerHTML = '<p style="text-align: center; color: #666; padding: 20px;">אין תקבולים להצגה</p>';
                 } else {
@@ -2773,148 +1916,73 @@
                 }
             } catch (error) {
                 console.error('Error loading payments:', error);
-                document.getElementById('paymentsList').innerHTML = `
-                    <p style="text-align: center; color: #e74c3c; padding: 20px;">
-                        שגיאה בטעינת תקבולים
-                    </p>
-                `;
+                document.getElementById('paymentsList').innerHTML = '<p style="text-align: center; color: #e74c3c; padding: 20px;">שגיאה בטעינת תקבולים</p>';
             }
         }
 
         function parsePaymentsCSV(csv) {
             const lines = csv.trim().split('\n');
             const payments = [];
-
             for (let i = 1; i < lines.length; i++) {
                 const line = lines[i];
                 if (!line.trim()) continue;
-                
-                const values = [];
-                let current = '';
-                let inQuotes = false;
-                
-                for (let j = 0; j < line.length; j++) {
-                    const char = line[j];
-                    if (char === '"') {
-                        inQuotes = !inQuotes;
-                    } else if (char === ',' && !inQuotes) {
-                        values.push(current.trim());
-                        current = '';
-                    } else {
-                        current += char;
-                    }
-                }
-                values.push(current.trim());
-                
+                const values = parseCSVLine(line);
                 const date = values[0] || '';
                 const client = values[1] || '';
                 const project = values[2] || '';
                 const amount = values[3] || '0';
-                
                 if (client.includes('בלייער יונתן') && date && amount) {
-                    payments.push({
-                        date: date,
-                        project: project,
-                        amount: amount
-                    });
+                    payments.push({ date, project, amount });
                 }
             }
-
             return payments;
         }
 
         function displayPayments(payments) {
             const paymentsByDate = {};
-            
             payments.forEach(payment => {
                 if (!paymentsByDate[payment.date]) {
-                    paymentsByDate[payment.date] = {
-                        total: 0,
-                        details: []
-                    };
+                    paymentsByDate[payment.date] = { total: 0, details: [] };
                 }
-                
                 const amount = parseFloat(String(payment.amount).replace(/[^\d.-]/g, '')) || 0;
                 paymentsByDate[payment.date].total += amount;
-                paymentsByDate[payment.date].details.push({
-                    project: payment.project,
-                    amount: amount
-                });
+                paymentsByDate[payment.date].details.push({ project: payment.project, amount: amount });
             });
-
             window.paymentsData = paymentsByDate;
             displayPaymentsSorted(paymentsByDate);
         }
 
         function showPaymentDetails(date) {
             trackEvent('Payments', 'view_payment_details', date);
-            
             const details = window.paymentsData[date].details;
             const modalTitle = document.getElementById('paymentModalTitle');
             const modalBody = document.getElementById('paymentModalBody');
-            
             modalTitle.textContent = `תשלומים מיום ${date}`;
-            
             let totalAmount = 0;
             const detailsHTML = details.map(detail => {
                 totalAmount += detail.amount;
-                return `
-                    <div class="payment-detail-row">
-                        <div class="payment-project">${detail.project || 'ללא שם'}</div>
-                        <div class="payment-detail-amount">${formatCurrency(detail.amount.toString())}</div>
-                    </div>
-                `;
+                return `<div class="payment-detail-row"><div class="payment-project">${detail.project || 'ללא שם'}</div><div class="payment-detail-amount">${formatCurrency(detail.amount.toString())}</div></div>`;
             }).join('');
-            
-            modalBody.innerHTML = `
-                <div class="payment-details">
-                    ${detailsHTML}
-                    <div class="payment-detail-row" style="border-top: 2px solid #667eea; margin-top: 10px; padding-top: 15px; font-weight: bold;">
-                        <div>סה"כ</div>
-                        <div class="payment-detail-amount">${formatCurrency(totalAmount.toString())}</div>
-                    </div>
-                </div>
-            `;
-            
+            modalBody.innerHTML = `<div class="payment-details">${detailsHTML}<div class="payment-detail-row" style="border-top: 2px solid #667eea; margin-top: 10px; padding-top: 15px; font-weight: bold;"><div>סה"כ</div><div class="payment-detail-amount">${formatCurrency(totalAmount.toString())}</div></div></div>`;
             document.getElementById('paymentModal').classList.add('active');
         }
 
-        function closePaymentModal() {
-            document.getElementById('paymentModal').classList.remove('active');
-        }
-
-        document.getElementById('paymentModal').addEventListener('click', function(e) {
-            if (e.target === this) {
-                closePaymentModal();
-            }
-        });
+        function closePaymentModal() { document.getElementById('paymentModal').classList.remove('active'); }
+        document.getElementById('paymentModal').addEventListener('click', function(e) { if (e.target === this) closePaymentModal(); });
 
         let paymentSortField = 'date';
         let paymentSortOrder = 'desc';
 
         function sortPayments(field) {
-            if (paymentSortField === field) {
-                paymentSortOrder = paymentSortOrder === 'asc' ? 'desc' : 'asc';
-            } else {
-                paymentSortField = field;
-                paymentSortOrder = 'desc';
-            }
-
-            document.querySelectorAll('.payments-header-cell .sort-arrow').forEach(arrow => {
-                arrow.classList.remove('active');
-            });
-            
+            if (paymentSortField === field) { paymentSortOrder = paymentSortOrder === 'asc' ? 'desc' : 'asc'; }
+            else { paymentSortField = field; paymentSortOrder = 'desc'; }
+            document.querySelectorAll('.payments-header-cell .sort-arrow').forEach(arrow => arrow.classList.remove('active'));
             const activeHeader = document.querySelector(`.payments-header-cell[onclick="sortPayments('${field}')"]`);
             if (activeHeader) {
                 const activeArrow = activeHeader.querySelector(`.sort-arrow[data-dir="${paymentSortOrder}"]`);
-                if (activeArrow) {
-                    activeArrow.classList.add('active');
-                }
+                if (activeArrow) activeArrow.classList.add('active');
             }
-
-            if (window.paymentsData) {
-                displayPaymentsSorted(window.paymentsData);
-            }
+            if (window.paymentsData) displayPaymentsSorted(window.paymentsData);
         }
 
         function displayPaymentsSorted(paymentsByDate) {
@@ -2930,43 +1998,22 @@
                 }
                 return 0;
             });
-
             const paymentsList = document.getElementById('paymentsList');
             paymentsList.innerHTML = sortedDates.map(date => {
                 const data = paymentsByDate[date];
-                return `
-                    <div class="payment-item" onclick="showPaymentDetails('${date}')">
-                        <div class="payment-date">${date}</div>
-                        <div class="payment-amount">${formatCurrency(data.total.toString())}</div>
-                    </div>
-                `;
+                return `<div class="payment-item" onclick="showPaymentDetails('${date}')"><div class="payment-date">${date}</div><div class="payment-amount">${formatCurrency(data.total.toString())}</div></div>`;
             }).join('');
         }
 
         function displayFilteredProjects(filter) {
             let projectsToShow = [];
-            
-            if (filter === 'active') {
-                projectsToShow = window.allActiveProjects || [];
-            } else if (filter === 'completed') {
-                projectsToShow = window.allCompletedProjects || [];
-            } else if (filter === 'pendingApproval') {
-                projectsToShow = window.allPendingApprovalProjects || [];
-            } else if (filter === 'pendingExecution') {
-                projectsToShow = window.allPendingExecutionProjects || [];
-            } else {
-                projectsToShow = [
-                    ...(window.allActiveProjects || []), 
-                    ...(window.allCompletedProjects || []),
-                    ...(window.allPendingApprovalProjects || []),
-                    ...(window.allPendingExecutionProjects || [])
-                ];
-            }
+            if (filter === 'active') projectsToShow = window.allActiveProjects || [];
+            else if (filter === 'completed') projectsToShow = window.allCompletedProjects || [];
+            else if (filter === 'pendingApproval') projectsToShow = window.allPendingApprovalProjects || [];
+            else if (filter === 'pendingExecution') projectsToShow = window.allPendingExecutionProjects || [];
+            else projectsToShow = [...(window.allActiveProjects || []), ...(window.allCompletedProjects || []), ...(window.allPendingApprovalProjects || []), ...(window.allPendingExecutionProjects || [])];
 
-            let totalQuoted = 0;
-            let totalPaid = 0;
-            let totalRemaining = 0;
-
+            let totalQuoted = 0, totalPaid = 0, totalRemaining = 0;
             projectsToShow.forEach(project => {
                 totalQuoted += parseFloat(String(project.quoted).replace(/[^\d.-]/g, '')) || 0;
                 totalPaid += parseFloat(String(project.paid).replace(/[^\d.-]/g, '')) || 0;
@@ -2978,7 +2025,6 @@
             document.getElementById('headerTotalRemaining').textContent = formatCurrency(totalRemaining.toString());
 
             const projectsGrid = document.getElementById('projectsGrid');
-            
             projectsGrid.innerHTML = projectsToShow.map(project => {
                 const isCompleted = (window.allCompletedProjects || []).includes(project);
                 const isPendingApproval = (window.allPendingApprovalProjects || []).includes(project);
@@ -2989,12 +2035,10 @@
 
         document.addEventListener('DOMContentLoaded', function() {
             const filterButtons = document.querySelectorAll('.filter-btn');
-            
             filterButtons.forEach(button => {
                 button.addEventListener('click', function() {
                     filterButtons.forEach(btn => btn.classList.remove('active'));
                     this.classList.add('active');
-                    
                     const filter = this.getAttribute('data-filter');
                     trackEvent('Projects', 'filter_projects', filter);
                     displayFilteredProjects(filter);
@@ -3004,22 +2048,13 @@
 
         document.getElementById('searchBox').addEventListener('input', function(e) {
             const searchTerm = e.target.value.toLowerCase();
-            
-            if (searchTerm.length > 2) {
-                trackEvent('Search', 'project_search', searchTerm);
-            }
-            
+            if (searchTerm.length > 2) trackEvent('Search', 'project_search', searchTerm);
             const allProjectCards = document.querySelectorAll('.project-card');
-            
             allProjectCards.forEach(card => {
                 const projectCells = card.querySelectorAll('.cell-value');
                 if (projectCells.length > 0) {
                     const projectName = projectCells[0].textContent.toLowerCase();
-                    if (projectName.includes(searchTerm)) {
-                        card.style.display = 'block';
-                    } else {
-                        card.style.display = 'none';
-                    }
+                    card.style.display = projectName.includes(searchTerm) ? 'block' : 'none';
                 }
             });
         });
@@ -3028,19 +2063,12 @@
         let currentSortDir = 'asc';
 
         function sortProjects(field) {
-            if (currentSortField === field) {
-                currentSortDir = currentSortDir === 'asc' ? 'desc' : 'asc';
-            } else {
-                currentSortField = field;
-                currentSortDir = 'asc';
-            }
-
+            if (currentSortField === field) { currentSortDir = currentSortDir === 'asc' ? 'desc' : 'asc'; }
+            else { currentSortField = field; currentSortDir = 'asc'; }
             const projectsGrid = document.getElementById('projectsGrid');
             const projectCards = Array.from(projectsGrid.querySelectorAll('.project-card'));
-
             projectCards.sort((a, b) => {
                 let aValue, bValue;
-
                 if (field === 'name') {
                     aValue = a.querySelector('.cell-value').textContent.toLowerCase();
                     bValue = b.querySelector('.cell-value').textContent.toLowerCase();
@@ -3059,349 +2087,160 @@
                     aValue = parseFloat(aCells[fieldIndex].textContent.replace(/[^\d.-]/g, '')) || 0;
                     bValue = parseFloat(bCells[fieldIndex].textContent.replace(/[^\d.-]/g, '')) || 0;
                 }
-
                 if (field !== 'deadline') {
-                    if (currentSortDir === 'asc') {
-                        return aValue > bValue ? 1 : aValue < bValue ? -1 : 0;
-                    } else {
-                        return aValue < bValue ? 1 : aValue > bValue ? -1 : 0;
-                    }
+                    if (currentSortDir === 'asc') return aValue > bValue ? 1 : aValue < bValue ? -1 : 0;
+                    else return aValue < bValue ? 1 : aValue > bValue ? -1 : 0;
                 }
                 return 0;
             });
-
             projectCards.forEach(card => projectsGrid.appendChild(card));
-
             document.querySelectorAll('.sort-arrow').forEach(arrow => arrow.classList.remove('active'));
             const headerLabels = document.querySelectorAll('.header-label');
             headerLabels.forEach(label => {
                 if (label.onclick && label.onclick.toString().includes(`'${field}'`)) {
                     const arrows = label.querySelectorAll('.sort-arrow');
-                    arrows.forEach(arrow => {
-                        if (arrow.dataset.dir === currentSortDir) {
-                            arrow.classList.add('active');
-                        }
-                    });
+                    arrows.forEach(arrow => { if (arrow.dataset.dir === currentSortDir) arrow.classList.add('active'); });
                 }
             });
         }
 
         function showMonthBreakdown(monthIndex, monthName, dateStr, totalAmount) {
             trackEvent('Monthly Timeline', 'view_month', monthName);
-            
-            // שימוש בפונקציה המרכזית לחישוב
             const result = calculateMonthPayments(monthIndex);
             const breakdown = result.breakdown;
             const calculatedTotal = result.total;
 
             document.getElementById('modalTitle').textContent = `פירוט תשלומים - ${monthName} (${dateStr})`;
-            
             let modalBodyHTML = '';
-            
             if (breakdown.length === 0) {
-                modalBodyHTML = `
-                    <div class="breakdown-empty">
-                        <div class="breakdown-empty-icon">📭</div>
-                        <div>אין תשלומים מתוכננים לחודש זה</div>
-                    </div>
-                `;
+                modalBodyHTML = '<div class="breakdown-empty"><div class="breakdown-empty-icon">📭</div><div>אין תשלומים מתוכננים לחודש זה</div></div>';
             } else {
                 breakdown.sort((a, b) => b.amount - a.amount);
-                
                 breakdown.forEach(item => {
-                    const badge = item.type === 'ממתין לביצוע' 
-                        ? '<span style="font-size: 0.75em; background: #ffd700; color: #333; padding: 3px 8px; border-radius: 12px; margin-right: 8px;">🔜 ממתין</span>' 
-                        : '';
-                    
-                    modalBodyHTML += `
-                        <div class="breakdown-item" onclick="openProjectFromMonth('${item.name.replace(/'/g, "\\'")}', event)" style="cursor: pointer; transition: background 0.2s;">
-                            <div class="breakdown-project-name">📋 ${item.name} ${badge}</div>
-                            <div class="breakdown-amount">${formatCurrency(item.amount.toString())}</div>
-                        </div>
-                    `;
+                    const badge = item.type === 'ממתין לביצוע' ? '<span style="font-size: 0.75em; background: #ffd700; color: #333; padding: 3px 8px; border-radius: 12px; margin-right: 8px;">🔜 ממתין</span>' : '';
+                    modalBodyHTML += `<div class="breakdown-item" onclick="openProjectFromMonth('${item.name.replace(/'/g, "\\'")}', event)" style="cursor: pointer;"><div class="breakdown-project-name">📋 ${item.name} ${badge}</div><div class="breakdown-amount">${formatCurrency(item.amount.toString())}</div></div>`;
                 });
-                
-                modalBodyHTML += `
-                    <div class="breakdown-total">
-                        <div class="breakdown-total-label">💰 סה"כ לחודש:</div>
-                        <div class="breakdown-total-amount">${formatCurrency(calculatedTotal.toString())}</div>
-                    </div>
-                `;
+                modalBodyHTML += `<div class="breakdown-total"><div class="breakdown-total-label">💰 סה"כ לחודש:</div><div class="breakdown-total-amount">${formatCurrency(calculatedTotal.toString())}</div></div>`;
             }
-            
             document.getElementById('modalBody').innerHTML = modalBodyHTML;
             document.getElementById('monthModal').classList.add('active');
         }
 
-        function closeMonthModal() {
-            document.getElementById('monthModal').classList.remove('active');
-        }
-
-        function openProjectFromMonth(projectName, event) {
-            if (event) event.stopPropagation();
-            
-            // לא סוגרים את המודל החודשי - פשוט פותחים את מודל הפרויקט מעליו
-            openProjectDetails(projectName);
-        }
+        function closeMonthModal() { document.getElementById('monthModal').classList.remove('active'); }
+        function openProjectFromMonth(projectName, event) { if (event) event.stopPropagation(); openProjectDetails(projectName); }
 
         function openProjectDetails(projectName, event) {
             if (event) event.stopPropagation();
-            
-            // חיפוש בפרויקטים פעילים וממתינים לביצוע
             let project = (window.allActiveProjects || []).find(p => p.name === projectName);
-            if (!project) {
-                project = (window.allPendingExecutionProjects || []).find(p => p.name === projectName);
-            }
-            
+            if (!project) project = (window.allPendingExecutionProjects || []).find(p => p.name === projectName);
             if (!project) return;
             
             const modal = document.getElementById('projectDetailsModal');
             const title = document.getElementById('projectDetailsTitle');
             const body = document.getElementById('projectDetailsBody');
             
-            // כותרת עם כל פרטי הפרויקט
-            title.innerHTML = `
-                <div style="display: flex; flex-wrap: wrap; gap: 12px; align-items: center; font-size: 0.8em; line-height: 1.4;">
-                    <span style="font-weight: bold; font-size: 1.1em;">📋 ${projectName}</span>
-                    <span style="white-space: nowrap;">💰 ${formatCurrency(project.quoted)}</span>
-                    <span style="color: #43e97b; white-space: nowrap;">✅ שולם: ${formatCurrency(project.paid)}</span>
-                    <span style="color: #ff6b6b; white-space: nowrap;">⏳ יתרה: ${formatCurrency(project.remaining)}</span>
-                    <span style="white-space: nowrap;">📅 ${project.deadline || project.startDate || 'N/A'}</span>
-                </div>
-            `;
+            title.innerHTML = `<div style="display: flex; flex-wrap: wrap; gap: 12px; align-items: center; font-size: 0.8em; line-height: 1.4;">
+                <span style="font-weight: bold; font-size: 1.1em;">📋 ${projectName}</span>
+                <span style="white-space: nowrap;">💰 ${formatCurrency(project.quoted)}</span>
+                <span style="color: #43e97b; white-space: nowrap;">✅ שולם: ${formatCurrency(project.paid)}</span>
+                <span style="color: #ff6b6b; white-space: nowrap;">⏳ יתרה: ${formatCurrency(project.remaining)}</span>
+                <span style="white-space: nowrap;">📅 ${project.deadline || project.startDate || 'N/A'}</span>
+            </div>`;
             
-            // גוף עם 2 עמודות
-            let html = `
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; padding: 20px;">
-            `;
+            let html = '<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; padding: 20px;">';
             
-            // עמודה שמאל - בביצוע
-            html += `
-                <div>
-                    <h3 style="margin-bottom: 20px; color: #4facfe;">🔵 בביצוע: ${(project.inProgressPercent || 0).toFixed(1)}%</h3>
-            `;
-            
+            // בביצוע
+            html += `<div><h3 style="margin-bottom: 20px; color: #4facfe;">🔵 בביצוע: ${(project.inProgressPercent || 0).toFixed(1)}%</h3>`;
             if (project.inProgressPercent > 0) {
-                html += `
-                    <div style="background: #e9ecef; height: 30px; border-radius: 8px; overflow: hidden; margin-bottom: 15px;">
-                        <div style="background: linear-gradient(90deg, #4facfe, #667eea); height: 100%; width: ${project.inProgressPercent}%; transition: width 0.6s;"></div>
-                    </div>
-                `;
-                
+                html += `<div style="background: #e9ecef; height: 30px; border-radius: 8px; overflow: hidden; margin-bottom: 15px;"><div style="background: linear-gradient(90deg, #4facfe, #667eea); height: 100%; width: ${project.inProgressPercent}%;"></div></div>`;
                 if (project.inProgressParshiot && project.inProgressParshiot.length > 0) {
-                    html += `
-                        <div style="background: #f8f9fa; padding: 15px; border-radius: 8px;">
-                            <strong style="display: block; margin-bottom: 10px;">פרשיות בביצוע:</strong>
-                    `;
-                    project.inProgressParshiot.forEach(parsha => {
-                        html += `<div style="padding: 8px; margin: 5px 0; background: white; border-radius: 6px; border-right: 3px solid #4facfe;">⏳ ${parsha}</div>`;
-                    });
-                    html += `</div>`;
-                } else {
-                    html += `<p style="color: #999; text-align: center; padding: 40px 0;">אין פרשיות בביצוע</p>`;
-                }
-            } else {
-                html += `<p style="color: #999; text-align: center; padding: 40px 0;">אין התקדמות בביצוע</p>`;
-            }
+                    html += '<div style="background: #f8f9fa; padding: 15px; border-radius: 8px;"><strong style="display: block; margin-bottom: 10px;">פרשיות בביצוע:</strong>';
+                    project.inProgressParshiot.forEach(parsha => { html += `<div style="padding: 8px; margin: 5px 0; background: white; border-radius: 6px; border-right: 3px solid #4facfe;">⏳ ${parsha}</div>`; });
+                    html += '</div>';
+                } else html += '<p style="color: #999; text-align: center; padding: 40px 0;">אין פרשיות בביצוע</p>';
+            } else html += '<p style="color: #999; text-align: center; padding: 40px 0;">אין התקדמות בביצוע</p>';
+            html += '</div>';
             
-            html += `</div>`;
-            
-            // עמודה ימין - הושלם
-            html += `
-                <div>
-                    <h3 style="margin-bottom: 20px; color: #43e97b;">🟢 הושלם: ${(project.completedPercent || 0).toFixed(1)}%</h3>
-            `;
-            
+            // הושלם
+            html += `<div><h3 style="margin-bottom: 20px; color: #43e97b;">🟢 הושלם: ${(project.completedPercent || 0).toFixed(1)}%</h3>`;
             if (project.completedPercent > 0) {
-                html += `
-                    <div style="background: #e9ecef; height: 30px; border-radius: 8px; overflow: hidden; margin-bottom: 15px;">
-                        <div style="background: linear-gradient(90deg, #43e97b, #38c96a); height: 100%; width: ${project.completedPercent}%; transition: width 0.6s;"></div>
-                    </div>
-                `;
-                
+                html += `<div style="background: #e9ecef; height: 30px; border-radius: 8px; overflow: hidden; margin-bottom: 15px;"><div style="background: linear-gradient(90deg, #43e97b, #38c96a); height: 100%; width: ${project.completedPercent}%;"></div></div>`;
                 if (project.completedParshiot && project.completedParshiot.length > 0) {
-                    html += `
-                        <div style="background: #f8f9fa; padding: 15px; border-radius: 8px;">
-                            <strong style="display: block; margin-bottom: 10px;">פרשיות שהושלמו:</strong>
-                    `;
-                    project.completedParshiot.forEach(parsha => {
-                        html += `<div style="padding: 8px; margin: 5px 0; background: white; border-radius: 6px; border-right: 3px solid #43e97b;">✅ ${parsha}</div>`;
-                    });
-                    html += `</div>`;
-                } else {
-                    html += `<p style="color: #999; text-align: center; padding: 40px 0;">אין פרשיות שהושלמו</p>`;
-                }
-            } else {
-                html += `<p style="color: #999; text-align: center; padding: 40px 0;">אין התקדמות בהשלמה</p>`;
-            }
-            
-            html += `</div></div>`;
+                    html += '<div style="background: #f8f9fa; padding: 15px; border-radius: 8px;"><strong style="display: block; margin-bottom: 10px;">פרשיות שהושלמו:</strong>';
+                    project.completedParshiot.forEach(parsha => { html += `<div style="padding: 8px; margin: 5px 0; background: white; border-radius: 6px; border-right: 3px solid #43e97b;">✅ ${parsha}</div>`; });
+                    html += '</div>';
+                } else html += '<p style="color: #999; text-align: center; padding: 40px 0;">אין פרשיות שהושלמו</p>';
+            } else html += '<p style="color: #999; text-align: center; padding: 40px 0;">אין התקדמות בהשלמה</p>';
+            html += '</div></div>';
             
             body.innerHTML = html;
             modal.classList.add('active');
         }
 
-        function closeProjectDetails() {
-            document.getElementById('projectDetailsModal').classList.remove('active');
-        }
-
-        document.getElementById('monthModal').addEventListener('click', function(e) {
-            if (e.target === this) {
-                closeMonthModal();
-            }
-        });
-
-        document.getElementById('projectDetailsModal').addEventListener('click', function(e) {
-            if (e.target === this) {
-                closeProjectDetails();
-            }
-        });
+        function closeProjectDetails() { document.getElementById('projectDetailsModal').classList.remove('active'); }
+        document.getElementById('monthModal').addEventListener('click', function(e) { if (e.target === this) closeMonthModal(); });
+        document.getElementById('projectDetailsModal').addEventListener('click', function(e) { if (e.target === this) closeProjectDetails(); });
 
         document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape') {
-                closeMonthModal();
-                closeBudgetModal();
-                closeProjectDetails();
-                closeMenu();
-            }
+            if (e.key === 'Escape') { closeMonthModal(); closeBudgetModal(); closeProjectDetails(); closeMaterialsModal(); closeMenu(); }
         });
 
         const menuToggle = document.getElementById('menuToggle');
         const sideMenu = document.getElementById('sideMenu');
         const menuOverlay = document.getElementById('menuOverlay');
 
-        menuToggle.addEventListener('click', function() {
-            toggleMenu();
-        });
+        menuToggle.addEventListener('click', function() { toggleMenu(); });
+        menuOverlay.addEventListener('click', function() { closeMenu(); });
 
-        menuOverlay.addEventListener('click', function() {
-            closeMenu();
-        });
-
-        function toggleMenu() {
-            menuToggle.classList.toggle('active');
-            sideMenu.classList.toggle('active');
-            menuOverlay.classList.toggle('active');
-        }
-
-        function closeMenu() {
-            menuToggle.classList.remove('active');
-            sideMenu.classList.remove('active');
-            menuOverlay.classList.remove('active');
-        }
+        function toggleMenu() { menuToggle.classList.toggle('active'); sideMenu.classList.toggle('active'); menuOverlay.classList.toggle('active'); }
+        function closeMenu() { menuToggle.classList.remove('active'); sideMenu.classList.remove('active'); menuOverlay.classList.remove('active'); }
 
         function navigateTo(page) {
             trackEvent('Navigation', 'menu_click', page);
-            
-            document.querySelectorAll('.menu-item').forEach(item => {
-                item.classList.remove('active');
-            });
-            
+            document.querySelectorAll('.menu-item').forEach(item => item.classList.remove('active'));
             event.currentTarget.classList.add('active');
             closeMenu();
-            
-            if (page === 'home') {
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-            } else if (page === 'projects') {
-                const projectsSection = document.querySelector('.projects-section');
-                if (projectsSection) {
-                    projectsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                }
-            } else if (page === 'payments') {
-                const paymentsSection = document.querySelector('.payments-section');
-                if (paymentsSection) {
-                    paymentsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                }
-            }
+            if (page === 'home') window.scrollTo({ top: 0, behavior: 'smooth' });
+            else if (page === 'projects') { const s = document.querySelector('.projects-section'); if (s) s.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+            else if (page === 'payments') { const s = document.querySelector('.payments-section'); if (s) s.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
         }
 
         function updateClocks() {
             const now = new Date();
-            
-            const nyTimeStr = now.toLocaleString('en-US', {
-                timeZone: 'America/New_York',
-                hour: '2-digit',
-                minute: '2-digit',
-                second: '2-digit',
-                hour12: true
-            });
-            
-            const nyDateStr = now.toLocaleDateString('he-IL', {
-                timeZone: 'America/New_York',
-                weekday: 'short',
-                day: 'numeric',
-                month: 'short'
-            });
-            
+            const nyTimeStr = now.toLocaleString('en-US', { timeZone: 'America/New_York', hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: true });
+            const nyDateStr = now.toLocaleDateString('he-IL', { timeZone: 'America/New_York', weekday: 'short', day: 'numeric', month: 'short' });
             const nyDate = new Date(now.toLocaleString('en-US', { timeZone: 'America/New_York' }));
-            const nyHours = nyDate.getHours();
-            const nyMinutes = nyDate.getMinutes();
-            const nySeconds = nyDate.getSeconds();
-            
-            const ilTimeStr = now.toLocaleTimeString('he-IL', {
-                timeZone: 'Asia/Jerusalem',
-                hour: '2-digit',
-                minute: '2-digit',
-                second: '2-digit',
-                hour12: false
-            });
-            
-            const ilDateStr = now.toLocaleDateString('he-IL', {
-                timeZone: 'Asia/Jerusalem',
-                weekday: 'short',
-                day: 'numeric',
-                month: 'short'
-            });
-            
+            const nyHours = nyDate.getHours(), nyMinutes = nyDate.getMinutes(), nySeconds = nyDate.getSeconds();
+            const ilTimeStr = now.toLocaleTimeString('he-IL', { timeZone: 'Asia/Jerusalem', hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false });
+            const ilDateStr = now.toLocaleDateString('he-IL', { timeZone: 'Asia/Jerusalem', weekday: 'short', day: 'numeric', month: 'short' });
             const ilDate = new Date(now.toLocaleString('en-US', { timeZone: 'Asia/Jerusalem' }));
-            const ilHours = ilDate.getHours();
-            const ilMinutes = ilDate.getMinutes();
-            const ilSeconds = ilDate.getSeconds();
+            const ilHours = ilDate.getHours(), ilMinutes = ilDate.getMinutes(), ilSeconds = ilDate.getSeconds();
             
-            const nyTimeEl = document.getElementById('nyTime');
-            const nyDateEl = document.getElementById('nyDate');
-            const ilTimeEl = document.getElementById('ilTime');
-            const ilDateEl = document.getElementById('ilDate');
-            
+            const nyTimeEl = document.getElementById('nyTime'), nyDateEl = document.getElementById('nyDate');
+            const ilTimeEl = document.getElementById('ilTime'), ilDateEl = document.getElementById('ilDate');
             if (nyTimeEl) nyTimeEl.textContent = nyTimeStr;
             if (nyDateEl) nyDateEl.textContent = nyDateStr;
             if (ilTimeEl) ilTimeEl.textContent = ilTimeStr;
             if (ilDateEl) ilDateEl.textContent = ilDateStr;
             
-            const nyHourDeg = (nyHours % 12) * 30 + nyMinutes * 0.5;
-            const nyMinuteDeg = nyMinutes * 6 + nySeconds * 0.1;
-            const nySecondDeg = nySeconds * 6;
-            
-            const nyHourHand = document.getElementById('nyHourHand');
-            const nyMinuteHand = document.getElementById('nyMinuteHand');
-            const nySecondHand = document.getElementById('nySecondHand');
-            
+            const nyHourDeg = (nyHours % 12) * 30 + nyMinutes * 0.5, nyMinuteDeg = nyMinutes * 6 + nySeconds * 0.1, nySecondDeg = nySeconds * 6;
+            const nyHourHand = document.getElementById('nyHourHand'), nyMinuteHand = document.getElementById('nyMinuteHand'), nySecondHand = document.getElementById('nySecondHand');
             if (nyHourHand) nyHourHand.style.transform = `rotate(${nyHourDeg}deg)`;
             if (nyMinuteHand) nyMinuteHand.style.transform = `rotate(${nyMinuteDeg}deg)`;
             if (nySecondHand) nySecondHand.style.transform = `rotate(${nySecondDeg}deg)`;
             
-            const ilHourDeg = (ilHours % 12) * 30 + ilMinutes * 0.5;
-            const ilMinuteDeg = ilMinutes * 6 + ilSeconds * 0.1;
-            const ilSecondDeg = ilSeconds * 6;
-            
-            const ilHourHand = document.getElementById('ilHourHand');
-            const ilMinuteHand = document.getElementById('ilMinuteHand');
-            const ilSecondHand = document.getElementById('ilSecondHand');
-            
+            const ilHourDeg = (ilHours % 12) * 30 + ilMinutes * 0.5, ilMinuteDeg = ilMinutes * 6 + ilSeconds * 0.1, ilSecondDeg = ilSeconds * 6;
+            const ilHourHand = document.getElementById('ilHourHand'), ilMinuteHand = document.getElementById('ilMinuteHand'), ilSecondHand = document.getElementById('ilSecondHand');
             if (ilHourHand) ilHourHand.style.transform = `rotate(${ilHourDeg}deg)`;
             if (ilMinuteHand) ilMinuteHand.style.transform = `rotate(${ilMinuteDeg}deg)`;
             if (ilSecondHand) ilSecondHand.style.transform = `rotate(${ilSecondDeg}deg)`;
         }
-        
         updateClocks();
         setInterval(updateClocks, 1000);
 
         function initBudgetPlanner() {
             const pendingApprovalProjects = window.allPendingApprovalProjects || [];
-            
-            if (pendingApprovalProjects.length === 0) {
-                return;
-            }
+            if (pendingApprovalProjects.length === 0) return;
 
             const budgetBody = document.getElementById('budgetModalBody');
             const today = new Date();
@@ -3416,55 +2255,23 @@
                 monthOptions.push({ value: i - 1, label: `${monthName} ${year}`, date: monthDate });
             }
 
-            budgetBody.innerHTML = `
-                <div class="budget-two-columns">
-                    <div class="budget-right-column">
-                        <div class="budget-projects-selector" id="budgetProjectsSelector">
-                            <h4>📋 פרויקטים ממתינים לאישור</h4>
-                        </div>
-                    </div>
-                    
-                    <div class="budget-left-column">
-                        <div class="budget-comparison-section">
-                            <h3>📊 השוואת תקציב</h3>
-                            <table class="budget-comparison-table">
-                                <thead>
-                                    <tr>
-                                        <th>חודש</th>
-                                        <th>בסיס</th>
-                                        <th>תוספת</th>
-                                        <th>סה"כ לתשלום</th>
-                                    </tr>
-                                </thead>
-                                <tbody id="budgetComparisonBody"></tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-            `;
+            budgetBody.innerHTML = `<div class="budget-two-columns">
+                <div class="budget-right-column"><div class="budget-projects-selector" id="budgetProjectsSelector"><h4>📋 פרויקטים ממתינים לאישור</h4></div></div>
+                <div class="budget-left-column"><div class="budget-comparison-section"><h3>📊 השוואת תקציב</h3><table class="budget-comparison-table"><thead><tr><th>חודש</th><th>בסיס</th><th>תוספת</th><th>סה"כ לתשלום</th></tr></thead><tbody id="budgetComparisonBody"></tbody></table></div></div>
+            </div>`;
 
             const selector = document.getElementById('budgetProjectsSelector');
-
             selector.innerHTML += pendingApprovalProjects.map((project, idx) => {
                 const amount = parseFloat(String(project.quoted).replace(/[^\d.-]/g, '')) || 0;
-                
                 const startDate = parseDeadlineDate(project.startDate);
                 const deadlineDate = parseDeadlineDate(project.deadline);
-                
-                let duration = 2;
-                let durationDisplay = 'לא ידוע';
-                let isDisabled = false;
-                let warningBadge = '';
+                let duration = 2, durationDisplay = 'לא ידוע', isDisabled = false, warningBadge = '';
                 
                 if (!startDate || !deadlineDate) {
                     isDisabled = true;
-                    if (!startDate && !deadlineDate) {
-                        warningBadge = '<span class="warning-badge">⚠️ חסר תאריך</span>';
-                    } else if (!deadlineDate) {
-                        warningBadge = '<span class="warning-badge">⚠️ חסר דדליין</span>';
-                    } else if (!startDate) {
-                        warningBadge = '<span class="warning-badge">⚠️ חסר תאריך אישור</span>';
-                    }
+                    if (!startDate && !deadlineDate) warningBadge = '<span class="warning-badge">⚠️ חסר תאריך</span>';
+                    else if (!deadlineDate) warningBadge = '<span class="warning-badge">⚠️ חסר דדליין</span>';
+                    else if (!startDate) warningBadge = '<span class="warning-badge">⚠️ חסר תאריך אישור</span>';
                 } else {
                     duration = getMonthsBetween(startDate, deadlineDate);
                     durationDisplay = `${duration} חודשים`;
@@ -3473,41 +2280,25 @@
                 const disabledClass = isDisabled ? 'budget-project-disabled' : '';
                 const disabledAttr = isDisabled ? 'disabled' : '';
                 
-                return `
-                    <div class="budget-project-item ${disabledClass}">
-                        <input type="checkbox" id="budgetProj${idx}" data-project-idx="${idx}" data-duration="${duration}" ${disabledAttr}>
-                        <div class="budget-project-info">
-                            <div class="budget-project-name">
-                                ${project.name}
-                                ${warningBadge}
-                            </div>
-                            <div class="budget-project-details">💰 $${amount.toLocaleString()} | ⏱️ ${durationDisplay}</div>
-                        </div>
-                        <div class="budget-date-selector">
-                            ${isDisabled ? 
-                                '<div class="disabled-message">🚫 חסרים נתונים</div>' :
-                                `<label>אישור בחודש:</label>
-                                <select id="budgetDate${idx}" data-project-idx="${idx}">
-                                    ${monthOptions.map((opt, optIdx) => `<option value="${opt.value}" ${optIdx === 0 ? 'selected' : ''}>${opt.label}</option>`).join('')}
-                                </select>`
-                            }
-                        </div>
+                return `<div class="budget-project-item ${disabledClass}">
+                    <input type="checkbox" id="budgetProj${idx}" data-project-idx="${idx}" data-duration="${duration}" ${disabledAttr}>
+                    <div class="budget-project-info">
+                        <div class="budget-project-name">${project.name} ${warningBadge}</div>
+                        <div class="budget-project-details">💰 $${amount.toLocaleString()} | ⏱️ ${durationDisplay}</div>
                     </div>
-                `;
+                    <div class="budget-date-selector">
+                        ${isDisabled ? '<div class="disabled-message">🚫 חסרים נתונים</div>' : 
+                        `<label>אישור בחודש:</label><select id="budgetDate${idx}" data-project-idx="${idx}">${monthOptions.map((opt, optIdx) => `<option value="${opt.value}" ${optIdx === 0 ? 'selected' : ''}>${opt.label}</option>`).join('')}</select>`}
+                    </div>
+                </div>`;
             }).join('');
 
             pendingApprovalProjects.forEach((project, idx) => {
                 const checkbox = document.getElementById(`budgetProj${idx}`);
                 const dateSelector = document.getElementById(`budgetDate${idx}`);
-                
-                if (checkbox && !checkbox.disabled) {
-                    checkbox.addEventListener('change', updateBudgetComparison);
-                }
-                if (dateSelector) {
-                    dateSelector.addEventListener('change', updateBudgetComparison);
-                }
+                if (checkbox && !checkbox.disabled) checkbox.addEventListener('change', updateBudgetComparison);
+                if (dateSelector) dateSelector.addEventListener('change', updateBudgetComparison);
             });
-
             updateBudgetComparison();
         }
 
@@ -3515,93 +2306,65 @@
             const pendingApprovalProjects = window.allPendingApprovalProjects || [];
             const activeProjects = window.allActiveProjects || [];
             const pendingExecutionProjects = window.allPendingExecutionProjects || [];
-            
             const today = new Date();
             const currentMonth = today.getMonth();
             const currentYear = today.getFullYear();
 
             const basePayments = Array(24).fill(0);
-            
             activeProjects.forEach(project => {
                 const deadlineDate = parseDeadlineDate(project.deadline);
                 if (deadlineDate) {
                     const monthsRemaining = getMonthsBetween(today, deadlineDate);
                     const remainingAmount = parseFloat(String(project.remaining).replace(/[^\d.-]/g, '')) || 0;
                     const monthlyPayment = remainingAmount / monthsRemaining;
-                    
                     const monthsToDistribute = Math.min(12, monthsRemaining);
-                    for (let i = 0; i < monthsToDistribute; i++) {
-                        basePayments[i] += monthlyPayment;
-                    }
+                    for (let i = 0; i < monthsToDistribute; i++) basePayments[i] += monthlyPayment;
                 }
             });
 
             pendingExecutionProjects.forEach(project => {
                 const startDate = parseDeadlineDate(project.startDate);
                 const deadlineDate = parseDeadlineDate(project.deadline);
-                
                 if (startDate && deadlineDate) {
                     const monthsTotal = getMonthsBetween(startDate, deadlineDate);
                     const totalAmount = parseFloat(String(project.quoted).replace(/[^\d.-]/g, '')) || 0;
                     const monthlyPayment = totalAmount / monthsTotal;
-                    
                     const monthsUntilStart = getMonthsBetween(today, startDate);
                     const monthsToDistribute = Math.min(12 - monthsUntilStart, monthsTotal);
-                    
                     for (let i = 0; i < monthsToDistribute; i++) {
                         const monthIndex = monthsUntilStart + i;
-                        if (monthIndex >= 0 && monthIndex < 12) {
-                            basePayments[monthIndex] += monthlyPayment;
-                        }
+                        if (monthIndex >= 0 && monthIndex < 12) basePayments[monthIndex] += monthlyPayment;
                     }
                 }
             });
 
             const withProjectsPayments = [...basePayments];
-            
             pendingApprovalProjects.forEach((project, idx) => {
                 const checkbox = document.getElementById(`budgetProj${idx}`);
                 if (!checkbox || !checkbox.checked) return;
-                
                 const dateSelector = document.getElementById(`budgetDate${idx}`);
                 const monthsOffset = parseInt(dateSelector.value) + 1;
                 const amount = parseFloat(String(project.quoted).replace(/[^\d.-]/g, '')) || 0;
                 const duration = parseInt(checkbox.dataset.duration) || 2;
                 const monthlyPayment = amount / duration;
-                
-                for (let i = 0; i < duration && (monthsOffset + i) < 24; i++) {
-                    withProjectsPayments[monthsOffset + i] += monthlyPayment;
-                }
+                for (let i = 0; i < duration && (monthsOffset + i) < 24; i++) withProjectsPayments[monthsOffset + i] += monthlyPayment;
             });
 
             const tbody = document.getElementById('budgetComparisonBody');
             let tableHTML = '';
-            
             let monthsToShow = 12;
             for (let i = 0; i < withProjectsPayments.length; i++) {
-                if (withProjectsPayments[i] > 0 && i >= 12) {
-                    monthsToShow = i + 1;
-                }
+                if (withProjectsPayments[i] > 0 && i >= 12) monthsToShow = i + 1;
             }
 
             for (let i = 0; i < monthsToShow; i++) {
                 const monthDate = new Date(currentYear, currentMonth + i + 1, 1);
                 const monthName = getHebrewMonthName(monthDate);
-
                 const baseAmount = basePayments[i];
                 const addition = withProjectsPayments[i] - baseAmount;
                 const totalAmount = withProjectsPayments[i];
-
-                tableHTML += `
-                    <tr>
-                        <td><strong>${monthName}</strong></td>
-                        <td><span class="budget-amount">$${Math.round(baseAmount).toLocaleString()}</span></td>
-                        <td><span class="budget-amount">${addition > 0 ? '+' : ''}$${Math.round(addition).toLocaleString()}</span></td>
-                        <td class="budget-total-column"><span class="budget-amount">$${Math.round(totalAmount).toLocaleString()}</span></td>
-                    </tr>
-                `;
+                tableHTML += `<tr><td><strong>${monthName}</strong></td><td><span class="budget-amount">$${Math.round(baseAmount).toLocaleString()}</span></td><td><span class="budget-amount">${addition > 0 ? '+' : ''}$${Math.round(addition).toLocaleString()}</span></td><td class="budget-total-column"><span class="budget-amount">$${Math.round(totalAmount).toLocaleString()}</span></td></tr>`;
             }
-
             tbody.innerHTML = tableHTML;
         }
     </script>
