@@ -505,6 +505,8 @@
 
         .search-and-budget-wrapper { display: flex; gap: 15px; align-items: center; }
 
+        .materials-wrapper { display: flex; justify-content: flex-end; min-width: 200px; }
+
         .budget-planner-btn-inline {
             padding: 12px 24px;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
@@ -1064,6 +1066,7 @@
             .menu-toggle { top: 15px; right: 15px; width: 45px; height: 45px; }
             .side-menu { width: 250px; right: -250px; }
             .search-and-budget-wrapper { flex-direction: column; width: 100%; }
+            .materials-wrapper { width: 100%; justify-content: center; }
             .materials-btn-inline, .budget-planner-btn-inline { width: 100%; }
         }
 
@@ -1235,12 +1238,13 @@
                         <button class="budget-planner-btn-inline" onclick="openBudgetModal()">
                             🧮 תכנון תקציב
                         </button>
+                    </div>
+                    <h2 class="section-title-center">📊 פרויקטים</h2>
+                    <div class="materials-wrapper">
                         <button class="materials-btn-inline" onclick="openMaterialsModal()">
                             📦 חומרים שבועיים
                         </button>
                     </div>
-                    <h2 class="section-title-center">📊 פרויקטים</h2>
-                    <div style="width: 300px;"></div>
                 </div>
                 
                 <!-- Filter Buttons -->
