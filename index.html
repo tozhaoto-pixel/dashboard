@@ -1411,7 +1411,7 @@
             <div class="materials-modal-header">
                 <div class="materials-modal-title">
                     <span>📦</span>
-                    <span>חומרים שבועיים - 8 שבועות קדימה</span>
+                    <span>חומרים שבועיים</span>
                 </div>
                 <button class="modal-close" onclick="closeMaterialsModal()">×</button>
             </div>
@@ -1421,21 +1421,6 @@
                     <p>טוען חומרים...</p>
                 </div>
             </div>
-            <div class="materials-summary-bar" id="materialsSummaryBar" style="display: none;">
-                <div class="materials-summary-item">
-                    <div class="materials-summary-number" id="materialsWeeksCount">0</div>
-                    <div class="materials-summary-label">שבועות</div>
-                </div>
-                <div class="materials-summary-item">
-                    <div class="materials-summary-number" id="materialsTotalCount">0</div>
-                    <div class="materials-summary-label">חומרים</div>
-                </div>
-                <div class="materials-summary-item">
-                    <div class="materials-summary-number" id="materialsProjectsCount">0</div>
-                    <div class="materials-summary-label">פרויקטים</div>
-                </div>
-            </div>
-        </div>
     </div>
 
     <script>
@@ -1460,10 +1445,8 @@
 
         async function loadMaterialsData() {
             const modalBody = document.getElementById('materialsModalBody');
-            const summaryBar = document.getElementById('materialsSummaryBar');
             
             modalBody.innerHTML = '<div class="materials-loading"><div class="materials-loading-spinner">⏳</div><p>טוען חומרים...</p></div>';
-            summaryBar.style.display = 'none';
 
             try {
                 const response = await fetch(APPS_SCRIPT_URL + '?sheet=' + encodeURIComponent('חומרים לבלייער'));
@@ -1530,7 +1513,6 @@
             if (!materialsData) return;
 
             const modalBody = document.getElementById('materialsModalBody');
-            const summaryBar = document.getElementById('materialsSummaryBar');
             
             const parshiot = getNextParshiot(8);
             let totalMaterials = 0;
@@ -1565,11 +1547,6 @@
             
             html += '</tbody></table>';
             modalBody.innerHTML = html;
-            
-            document.getElementById('materialsWeeksCount').textContent = parshiot.length;
-            document.getElementById('materialsTotalCount').textContent = totalMaterials;
-            document.getElementById('materialsProjectsCount').textContent = projectsSet.size;
-            summaryBar.style.display = 'flex';
         }
 
         // ========== SIDEBAR TOGGLE ==========
